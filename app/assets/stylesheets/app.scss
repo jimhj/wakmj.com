@@ -1,0 +1,63 @@
+/*
+*= require 'base'
+*= require 'sprites/icons'
+*= require_self
+*/
+@import 'global';
+
+@mixin li_nav {
+  ul li {
+    float: left;
+    margin-left: 10px;
+    a { font-size: 14px; padding: 5px 5px;  }
+    a.active { background: none repeat scroll 0 0 green; }
+  }  
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  background: #eee image-url('grey_bg.png') bottom left repeat;
+}
+
+body { background:none; }
+a { text-decoration: none;  }
+img { border: none; }
+
+.navbar {
+  width: 100%;
+  background: none repeat scroll 0 0 #000;
+  opacity: 0.5;
+  @include green-border(4px, top);
+  padding: 10px 0px;
+  a { color: $white; font-size: 18px; }
+
+  .site_logo {
+    float: left;
+    padding-left: 30px;
+    a { font-weight: bold; }
+    a span b { color: $green; }
+  }
+
+  .menu {
+    float: left;
+    margin-left: 40px;
+    @include li_nav;
+  }
+
+  .user_setting {
+    float: right;
+    padding-right: 30px;
+    @include li_nav;
+    .authlogin {
+      padding-top: -2px;
+      a { font-size: 12px; }
+      i.icon { margin-bottom: -3px; }
+    }
+  }
+}
+
+.main_container {
+  width: 90%;
+  margin: 10px auto;
+}

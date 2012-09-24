@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title 我爱看美剧
+    = stylesheet_link_tag 'app'
+    = yield :header_css
+    = javascript_include_tag 'app'
+    = yield :header_js
+    = csrf_meta_tags
+  %body
+    .navbar.clearfix
+      .site_logo
+        %a{ :href => '#' }
+          %span
+            = raw "我爱看<b>美剧</b>"
+
+      .menu
+        %ul
+          %li
+            %a.active{ :href => '#' } 首页        
+          %li
+            %a{ :href => '#' } 热门
+          %li
+            %a{ :href => '#' } 新剧
+      .user_setting
+        %ul
+          %li
+            %a{ :href => '#' } 注册
+          %li
+            %a{ :href => '#' } 登录
+          %li.authlogin
+            %a.active{ :href => '#' }
+              %i.icon.icons_weibo_s_16
+              用微博账号登录
+
+    .main_container.clearfix          
+      = yield
+
+    .footer

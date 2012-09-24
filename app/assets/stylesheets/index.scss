@@ -1,0 +1,60 @@
+@import 'global';
+
+.left_container {
+  float: left;
+  width: 80%;
+  .tv_list {
+
+    .tv { 
+      float: left;
+      margin: 10px 25px;
+
+      .cover {
+        // img { width: 0px; }
+      }
+
+      .tv_title {
+        text-align: center;
+        padding-top: 5px;
+        a { 
+          color: $green; font-size: 12px;
+          padding-bottom: 5px;
+          &:hover {
+            @include green-border(4px, bottom);
+          }
+
+        }
+    
+      }
+    }
+
+  }
+}
+
+.right_container {
+  float: right;
+  width: 20%;
+
+  .tv_tags {
+    // opacity: 0.5;     
+    // padding: 3px 0px;
+    width: 90%;
+    margin: 0 auto;
+    @include green-border(4px, bottom);
+    ul li {
+      float: left;
+      margin: 5px 5px;
+      background: none repeat scroll 0 0 $grey;
+      font-size: 14px;
+      padding: 5px 6px;
+      a { color: $white; }
+
+      &:hover {
+        background: none repeat scroll 0 0 $green;
+        opacity: 0.5;        
+      }
+
+    }
+
+  }
+}

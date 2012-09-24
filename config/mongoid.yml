@@ -1,0 +1,29 @@
+defaults: &defaults
+  options:
+    identity_map_enabled: true
+    raise_not_found_error: false
+
+development:
+  <<: *defaults
+  sessions:
+    default:
+      hosts:
+        - 127.0.0.1:27017
+      database: wakmj_dev
+
+test:
+  <<: *defaults
+  sessions:
+    default:
+      hosts:
+        - 127.0.0.1:27017
+      database: wakmj_dev
+
+# set these environment variables on your prod server
+production:
+  <<: *defaults
+  sessions:
+    default:
+      hosts:
+        - 127.0.0.1:27017
+      database: wakmj_pro

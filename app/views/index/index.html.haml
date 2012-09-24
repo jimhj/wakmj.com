@@ -1,0 +1,35 @@
+- content_for :header_css do
+  = stylesheet_link_tag 'index'
+
+.left_container
+  .tv_list
+    - 24.times do
+      .tv
+        .cover
+          %a{ :href => '#' }
+            = image_tag 'sample.jpg'
+        .tv_title
+          %a{ :href => '#' }
+            普罗米修斯
+
+.right_container
+  .tv_tags.clearfix
+    %ul
+      - 2.times do
+        %li
+          %a{ :href => '#' } 科幻
+        %li
+          %a{ :href => '#' } 战争
+        %li
+          %a{ :href => '#' } 喜剧
+        %li
+          %a{ :href => '#' } 悬疑            
+        %li
+          %a{ :href => '#' } 丧尸
+        %li
+          %a{ :href => '#' } 惊悚
+        %li
+          %a{ :href => '#' } 西部            
+        %li
+          %a{ :href => '#' } 西部
+        

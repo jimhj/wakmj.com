@@ -1,0 +1,13 @@
+$white: #FFF;
+$dark: #333333;
+$green: green;
+$red: #FF0000;
+$grey: #CCC;
+
+@mixin border($px: 1px, $side: top, $color: green) {
+  border-#{$side}: #{$px} solid #{$color};
+}
+
+@mixin green-border($px, $side) {
+  @include border($px, $side, green);
+}
