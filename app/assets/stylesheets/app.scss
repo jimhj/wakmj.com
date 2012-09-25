@@ -57,7 +57,26 @@ img { border: none; }
   }
 }
 
+.footer {
+  width: 90%;
+  margin: 10px auto;
+  border-top: 1px dotted $green;
+  font-size: 12px;
+  color: $green;
+  padding: 5px 5px;
+  line-height: 22px;
+  a { color: $green; }
+  .about_us { 
+    float: left; 
+    a { margin-right: 5px; }
+    .copyright { color: $light_grey; }
+  }
+  .weibo_page { float: right; }
+
+}
+
 .main_container {
   width: 90%;
   margin: 10px auto;
+
 }

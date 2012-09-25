@@ -3,6 +3,7 @@ $dark: #333333;
 $green: green;
 $red: #FF0000;
 $grey: #CCC;
+$light_grey: #999;
 
 @mixin border($px: 1px, $side: top, $color: green) {
   border-#{$side}: #{$px} solid #{$color};
