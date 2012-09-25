@@ -4,6 +4,7 @@ $green: green;
 $red: #FF0000;
 $grey: #CCC;
 $light_grey: #999;
+$text-color: #76838B;
 
 @mixin border($px: 1px, $side: top, $color: green) {
   border-#{$side}: #{$px} solid #{$color};
@@ -11,4 +12,13 @@ $light_grey: #999;
 
 @mixin green-border($px, $side) {
   @include border($px, $side, green);
+}
+
+@mixin border-all($px, $color) {
+  border: $px solid $color;
+}
+
+@mixin bg($color) {
+  background: none repeat scroll 0 0 $color;
+  // opacity: $opacity;
 }

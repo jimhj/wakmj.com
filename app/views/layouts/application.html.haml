@@ -8,43 +8,7 @@
     = yield :header_js
     = csrf_meta_tags
   %body
-    .navbar.clearfix
-      .site_logo
-        %a{ :href => '#' }
-          %span
-            = raw "我爱看<b>美剧</b>"
-
-      .menu
-        %ul
-          %li
-            %a.active{ :href => '#' } 首页        
-          %li
-            %a{ :href => '#' } 热门
-          %li
-            %a{ :href => '#' } 新剧
-      .user_setting
-        %ul
-          %li
-            %a{ :href => '#' } 注册
-          %li
-            %a{ :href => '#' } 登录
-          %li.authlogin
-            %a.active{ :href => '#' }
-              %i.icon.icons_weibo_s_16
-              用微博账号登录
-
+    = render 'layouts/shared/header'
     .main_container.clearfix          
       = yield
-
-    .footer.clearfix
-      .about_us
-        .navs
-          %a 关于我们
-          %a 联系我们
-          %a{ :href => 'http://www.huanarle.com', :target => '_blank' } 我爱看美剧
-        .copyright
-          Copyright © www.wakmj.com
-      .weibo_page
-        %a{ :href => '#' }
-          %i.icon.icons_weibo_s_16
-          在微博关注我们    
+    = render 'layouts/shared/footer' 

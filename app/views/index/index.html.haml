@@ -3,14 +3,31 @@
 
 .left_container
   .tv_list
-    - 24.times do
+    - 12.times do
       .tv
-        .cover
-          %a{ :href => '#' }
-            = image_tag 'sample.jpg'
-        .tv_title
-          %a{ :href => '#' }
-            普罗米修斯
+        .above.clearfix
+          .cover
+            %a{ :href => '#' }
+              = image_tag 'sample.jpg', :size => '100x150'
+          .tools
+            .tv_name
+              %a{ :href => '#' } 生活大爆炸
+            .likes
+              %a{ :href => '#' } 喜欢 1213123
+            .topics
+              %a{ :href => '#' } 主题 1232
+
+        .last_topic
+          .user.clearfix
+            .avatar
+              %a{ :href => '#' }
+                = image_tag 'sample.jpg', :size => '15x15'
+            .topic
+              %a{ :href => '#' } 浪漫主义者的悲歌——《阿拉伯的劳...
+        
+
+
+
 
 .right_container
   .tv_tags.clearfix
@@ -19,7 +36,7 @@
         %li
           %a{ :href => '#' } 科幻
         %li
-          %a{ :href => '#' } 战争
+          %a{ :href => '#' } 小子的
         %li
           %a{ :href => '#' } 喜剧
         %li
