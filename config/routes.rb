@@ -1,5 +1,6 @@
 Wakmj::Application.routes.draw do
   root :to => 'index#index', :as => :root
+  resources :tv_dramas
 
   # See how all your routes lay out with "rake routes"
 

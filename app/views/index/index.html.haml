@@ -30,7 +30,7 @@
 
 
 .right_container
-  .tv_tags.clearfix
+  .tv_cates.dotted_bottom.clearfix
     %ul
       - 2.times do
         %li
@@ -49,4 +49,74 @@
           %a{ :href => '#' } 西部            
         %li
           %a{ :href => '#' } 西部
+
+  .years.dotted_bottom.clearfix
+    %ul
+      - 2.times do
+        %li
+          %a{ :href => '#' } 1999
+        %li
+          %a{ :href => '#' } 2000
+        %li
+          %a{ :href => '#' } 2012
+        %li
+          %a{ :href => '#' } 2011            
+
+
+  .tv_topics.dotted_bottom.article_list
+    .title_bar
+      %a.title{ :href => '#' } 最新帖子
+      %a{ :href => '#' } 更多
+    %ul
+      - 2.times do
+        %li 
+          %a{ :href => '#' } 你捅一下，我戳一下…… 好欢乐
+        %li 
+          %a{ :href => '#' } 我不喜欢英雄主义电影
+        %li
+          %a{ :href => '#' } 关于本片中种特效技术的不及格运用
+        %li
+          %a{ :href => '#' } 我为什么喜欢《So You Think You Can Dance》
+        %li 
+          %a{ :href => '#' } 我不喜欢英雄主义电影          
+  .newest_tv
+    .title_bar
+      %a.title{ :href => '#' } 新剧时间表
+      %a{ :href => '#' } 更多
+
+    %ul
+      - 4.times do
+        %li
+          %a{ :href => '#' }
+            %span.time
+              2012-09-15
+            %span.title
+              星球大战：克隆战争 
+            %span.version S05E01
+        %li
+          %a{ :href => '#' }
+            %span.time
+              2012-11-20
+            %span.title
+              犯罪现场调查之纽约篇 
+            %span.version S09E01
+
+        %li
+          %a{ :href => '#' }
+            %span.time
+              2012-12-23
+            %span.title
+              泽西制造 
+            %span.version 
+              S01E01             
+
+
+
+
+
+
+
+
+
+
         

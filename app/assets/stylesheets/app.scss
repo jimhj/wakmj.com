@@ -60,12 +60,12 @@ img { border: none; }
 .footer {
   width: 90%;
   margin: 10px auto;
-  border-top: 1px dotted $green;
+  border-top: 1px dotted $text-color;
   font-size: 12px;
   color: $green;
   padding: 5px 5px;
   line-height: 22px;
-  a { color: $green; }
+  a { color: $text-color; }
   .about_us { 
     float: left; 
     a { margin-right: 5px; }

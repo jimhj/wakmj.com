@@ -10,18 +10,14 @@
       float: left;
       width: 250px;
       margin: 0px 34px 30px 0px;
+      @include shadow;
       @include bg(#FFF);
-
       .above {
-
         padding: 10px 0px 10px 10px;
         font-size: 12px;
 
         a { color: $text-color; }
-        .cover {
-          float: left;
-        }
-
+        .cover { float: left; }
         .tools {
           float: left;
           line-height: 24px;
@@ -31,7 +27,6 @@
             @include bg($green); color: $white; opacity: 0.6; 
           }
         }
-
       }
 
       .last_topic {
@@ -55,23 +50,43 @@
   float: right;
   width: 25%;
 
-  .tv_tags {
+  .years, .tv_cates {
     width: 100%;
-
     ul li {
       float: left;
-      margin: 5px 5px;
+      margin: 5px 8px 5px 0px;
       background: none repeat scroll 0 0 $light_grey;
       font-size: 14px;
       padding: 5px 6px;
       a { color: $white; }
-
-      &:hover {
-        background: none repeat scroll 0 0 $green;
-        // opacity: 0.5;        
-      }
-
+      &:hover { background: none repeat scroll 0 0 $green; }
     }
-
   }
+
+  .years { padding-top: 5px; .title_bar { margin-bottom: 5px; } }
+
+  .tv_topics {}
+
+  .newest_tv {
+    font-size: 12px;
+    padding-top: 5px;
+    line-height: 26px;
+    ul li a {
+      color: $text-color;
+      span.time { color: $green; margin-right: 10px; }
+      span.version { color: $white; @include bg($green); opacity: 0.5; padding: 2px 1px; }
+    }
+  }
+
+  // .tv_fans {
+  //   padding-top: 5px;
+  //   .avatars {
+  //     padding-top: 5px;
+  //     a { 
+  //       width: 50px;
+  //       height: 50px;
+  //       img { margin: 10px 10px 10px 0px; }
+  //     }
+  //   }
+  // }
 }

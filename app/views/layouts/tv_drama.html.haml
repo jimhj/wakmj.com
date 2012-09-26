@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title 我爱看美剧
+    = stylesheet_link_tag 'app', 'tv_drama'
+    = yield :header_css
+    = javascript_include_tag 'app'
+    = yield :header_js
+    = csrf_meta_tags
+  %body
+    = render 'layouts/shared/header'
+    .main_container.clearfix
+      .tv_left_container
+        = yield
+      .tv_right_container          
+    = render 'layouts/shared/footer' 
