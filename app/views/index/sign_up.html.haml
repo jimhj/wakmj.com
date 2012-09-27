@@ -1,0 +1,24 @@
+- content_for :header_css do
+  = stylesheet_link_tag 'sign'
+
+.sign_in_panel.large_panel
+  .panel_title
+    注册新用户
+  .form_panel
+    .blank_li
+      %span 邮箱:
+      %input.white_text{ :type => 'text' }
+    .blank_li
+      %span 用户名:
+      %input.white_text{ :type => 'text' }
+    .blank_li
+      %span 密码:
+      %input.white_text{ :type => 'text' }
+    .blank_li
+      %span 确认密码:
+      %input.white_text{ :type => 'text' }
+    .blank_li
+      %span
+      %a.submit_btn{ :href => '#' } 提交注册
+      
+  .other_way_to_login

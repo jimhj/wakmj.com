@@ -2,8 +2,6 @@
 
 .tv_left_container {
   .topic_detail {
-    @include rectangle;
-    .topic_name { @include rectangle_title; }
     .topic_content { line-height: 30px; text-indent: 2em; padding: 8px 10px; border-bottom: 1px solid $grey; font-size: 12px; }
     .info_bar {
       padding: 5px 10px;
@@ -43,11 +41,29 @@
   }
 
   .post_reply_panel {
-    @include rectangle;
     margin-top: 20px;
-    .poset_panel_title { @include rectangle_title; }
     .form_panel { padding: 10px 10px; }
     .form_panel .current_avatar { float: left; }
     .form_panel .input_panel { float: left; margin-left: 10px; }
+    .form_panel .input_panel textarea { width: 700px; height: 140px; font-size: 12px; color: $text-color; }
   }
+
+  .new_topic_panel {
+    padding-bottom: 10px;
+    .form_panel { width: 80%; margin: 10px auto;  }
+    .form_panel .blank_li { padding: 10px; }
+    .form_panel .blank_li span {
+      width: 100px;
+      float: left;
+      text-align: right;
+    }
+    .form_panel .blank_li {
+      textarea { width: 470px; height: 240px; }
+      a, input, textarea { float: left; margin-left: 15px; }
+      a.drama_name { color: $green; font-size: 14px; font-weight: bold; }
+      a.submit_btn { margin-left: 115px; }
+    }
+  }
+
+
 }

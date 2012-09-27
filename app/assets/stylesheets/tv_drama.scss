@@ -4,8 +4,6 @@
   float: left;
   width: 72%;  
   .above {
-    @include rectangle;
-    .tv_name { @include rectangle_title; }
 
     .intro {
       padding: 10px 10px;
@@ -13,7 +11,6 @@
       .summary { 
         float: left; 
         width: 80%;
-        // margin-left: 10px;
         line-height: 30px;
         span.title { font-weight: bold; margin-right: 5px; color: $dark; }
         .desc { line-height: 22px; color: $light_grey; }
@@ -27,9 +24,7 @@
   }
 
   .story {
-    @include rectangle;
     margin-top: 20px;
-    .title { @include rectangle_title; }
     .content { line-height: 22px; color: $text-color; padding: 10px 10px; }
   }
 

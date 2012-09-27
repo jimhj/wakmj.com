@@ -1,8 +1,8 @@
 - content_for :header_css do
   = stylesheet_link_tag 'topic'
 
-.topic_detail
-  .topic_name
+.topic_detail.rectangle_panel
+  .topic_name.panel_name
     广大人民群众只需花33元便可观看著名影星保剑锋被砍头
   .topic_content
     当一万个不情愿的Myka和Pete走进这座外表已经废弃的巨大仓库之后，他们彻彻底底的给惊呆了，仓库大门是背靠大山而建，走进仓库内部才
@@ -50,10 +50,10 @@
             .reply_above_right
               %a{ :href => '#' } 回复
           .relpy_content
-            据我所知，这个使用人数很多，但是它的缩进太严格了，一不小心要出错据我所知，这个使用人数很多，但是它的缩进太严格了，一不小心要出错据我所知，这个使用人数很多，但是它的缩进太严格了，一不小心要出错
+            据我所知，这个使用人数很多，但是它的缩进太严格了
 
-.post_reply_panel
-  .poset_panel_title
+.post_reply_panel.rectangle_panel
+  .poset_panel_title.panel_name
     发表回复
   .form_panel.clearfix
     .current_avatar
@@ -61,7 +61,7 @@
         = image_tag 'sample_a.jpg'
     .input_panel
       %p
-        %textarea.editor{ :name => 'content', :cols => 94, :rows => 8 }
+        %textarea.editor{ :name => 'content' }
       %p.mt10
         %a.submit_btn{ :href => 'javascript:;' } 确定
 

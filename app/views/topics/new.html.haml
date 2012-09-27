@@ -1,0 +1,18 @@
+- content_for :header_css do
+  = stylesheet_link_tag 'topic'
+
+.new_topic_panel.rectangle_panel
+  .panel_name
+    发表新主题
+  .form_panel
+    .blank_li.clearfix
+      %span 剧集:
+      %a.drama_name{ :href => '#' } 迷失 LOST
+    .blank_li.clearfix
+      %span 标题:
+      %input.long_text{ :type => 'text' }
+    .blank_li.clearfix
+      %span 正文:
+      %textarea.editor{ :name => 'content' }
+    .blank_li.clearfix
+      %a.submit_btn{ :href => '#' } 确定

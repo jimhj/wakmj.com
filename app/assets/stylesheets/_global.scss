@@ -30,6 +30,7 @@ $w_grey: #E8E7E3;
   box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);  
 }
 
+
 @mixin rectangle {
   @include bg($white);
   font-size: 12px;
@@ -44,6 +45,12 @@ $w_grey: #E8E7E3;
   font-weight: bold;           
   @include bg(#F3F3F3);  
 }
+
+/* rectangle_panel */
+.rectangle_panel {
+  @include rectangle;
+  .panel_name { @include rectangle_title; }
+} 
 
 /* margins */
 .ml10 { margin-left: 10px; }
@@ -77,9 +84,20 @@ $w_grey: #E8E7E3;
   }  
 }
 
-/* textarea editor */
+/* textarea, input editor */
 textarea.editor {
   border: 1px solid $grey;
+  vertical-align: top;
+  font-size: 12px;
+  color: $text-color;
+}
+
+input.long_text {
+  border: 1px solid $grey;
+  width: 470px;
+  height: 30px;
+  font-size: 12px;
+  color: $text-color;
 }
 
 /* buttons */
