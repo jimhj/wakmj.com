@@ -5,6 +5,7 @@ $red: #FF0000;
 $grey: #CCC;
 $light_grey: #999;
 $text-color: #76838B;
+$w_grey: #E8E7E3;
 
 @mixin border($px: 1px, $side: top, $color: green) {
   border-#{$side}: #{$px} solid #{$color};
@@ -29,6 +30,27 @@ $text-color: #76838B;
   box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);  
 }
 
+@mixin rectangle {
+  @include bg($white);
+  font-size: 12px;
+  color: $text-color;
+  @include shadow;  
+}
+
+@mixin rectangle_title {
+  font-size: 14px;
+  border-bottom: 1px solid $w_grey;
+  padding: 10px 5px; 
+  font-weight: bold;           
+  @include bg(#F3F3F3);  
+}
+
+/* margins */
+.ml10 { margin-left: 10px; }
+.mr10 { margin-right: 10px; }
+.mt10 { margin-top: 10px; }
+.mt20 { margin-top: 20px; }   
+
 /* title bar */ 
 .title_bar a.title { font-size: 14px; font-weight: bold; color: $green; }
 .title_bar a { margin-right: 10px; font-size: 12px; color: $text-color;} 
@@ -50,7 +72,22 @@ $text-color: #76838B;
       color: $white;
       opacity: 0.5;
     }
+
+    span { text-decoration: underline; }
   }  
 }
+
+/* textarea editor */
+textarea.editor {
+  border: 1px solid $grey;
+}
+
+/* buttons */
+a.submit_btn, a.btn {
+  @include bg($green);
+  color: $white;
+  padding: 10px 20px;
+  display: inline-block;
+} 
 
 

@@ -1,0 +1,68 @@
+- content_for :header_css do
+  = stylesheet_link_tag 'topic'
+
+.topic_detail
+  .topic_name
+    广大人民群众只需花33元便可观看著名影星保剑锋被砍头
+  .topic_content
+    当一万个不情愿的Myka和Pete走进这座外表已经废弃的巨大仓库之后，他们彻彻底底的给惊呆了，仓库大门是背靠大山而建，走进仓库内部才
+    发现，政府为了存放难以计数的货物，已经把这座大山给掏空，而这里所存放的货物每一件都大有来头，超自然现象在这里已经习以为常。如果说变形金刚是很巨大
+    的机器人，那么这座仓库来一个团的威震天都可以轻松装下；如果说世界历史中有很多未解的谜团，那么这里你就可以找到谜底的所在；如果你想知道是否真的有外
+    星人、尼斯湖水怪、阿拉丁神灯、甚至是任意门，那就来13号仓库翻翻吧，这里只有你想不到的，没有你找不到的。例如有这么一个茶壶，如果你对它许个愿，然
+    后摩擦它的外壁，它里面会随机生成一样东西。一个橄榄球，你把它扔出去以后，它会自己绕地球转一圈，几天后又返回投掷者手中（当然，你被它砸晕了另当别
+    论）。还有一个「魔法钱包」，每当Myka拿起它，她死去的恋人就会以「智慧精灵」的身份出现在她面前，对她「指点提携」。很多物件都来历不明，但是功能
+    「相当厉害」。
+  .info_bar.clearfix
+    .info_bar_left
+      .drama_name
+        %a{ :href => '#' }《十三号仓库》第4季连载中 
+      .topic_info
+        %a.mr10{ :href => '#' } fresh_fish
+        %span 发表于
+        %span.time.mr10 2012-10-23 12:00
+        %span 最后由
+        %a{ :href => '#' } laohuang
+        %span 于 3 分钟前回复
+    .info_bar_right
+      .user_info
+        .avatar
+          %a{ :href => '#' }
+            = image_tag 'sample_a.jpg'
+
+
+.replies
+  .relies_count
+    %span 
+      一共收到
+      %em 19
+      条回复
+  .reply_list
+    - 6.times do
+      .reply.clearfix
+        .avatar
+          %a{ :href => '#' }
+            = image_tag 'sample_a.jpg'
+        .reply_info
+          .reply_above.clearfix
+            .reply_above_left
+              %a.user_name.mr10{ :href => '#' } laohuang
+              %span.time 20分钟前
+            .reply_above_right
+              %a{ :href => '#' } 回复
+          .relpy_content
+            据我所知，这个使用人数很多，但是它的缩进太严格了，一不小心要出错据我所知，这个使用人数很多，但是它的缩进太严格了，一不小心要出错据我所知，这个使用人数很多，但是它的缩进太严格了，一不小心要出错
+
+.post_reply_panel
+  .poset_panel_title
+    发表回复
+  .form_panel.clearfix
+    .current_avatar
+      %a{ :href => '#' }
+        = image_tag 'sample_a.jpg'
+    .input_panel
+      %p
+        %textarea.editor{ :name => 'content', :cols => 94, :rows => 8 }
+      %p.mt10
+        %a.submit_btn{ :href => 'javascript:;' } 确定
+
+

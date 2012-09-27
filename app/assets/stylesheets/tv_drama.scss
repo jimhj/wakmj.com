@@ -1,23 +1,8 @@
 @import 'global';
 
-@mixin rectangle {
-  @include bg($white);
-  font-size: 12px;
-  color: $text-color;
-  @include shadow;  
-}
-
-@mixin rectangle_title {
-  font-size: 14px;
-  border-bottom: 1px solid #E8E7E3;
-  padding: 10px 5px; 
-  font-weight: bold;           
-  @include bg(#F3F3F3);  
-}
-
 .tv_left_container {
   float: left;
-  width: 75%;  
+  width: 72%;  
   .above {
     @include rectangle;
     .tv_name { @include rectangle_title; }
@@ -48,9 +33,66 @@
     .content { line-height: 22px; color: $text-color; padding: 10px 10px; }
   }
 
+  .tv_relateds {
+    font-size: 12px;
+    margin-top: 20px;
+
+    a { color: $text-color; }
+    .nav_tabs { 
+      
+      .tab { 
+        padding: 10px 10px;
+        float: left; margin-right: 10px; 
+        @include bg(#F3F3F3);
+      }
+
+      .tab.active { @include bg(#FFF); a { color: $green; font-weight: bold; } }
+    }
+
+    .resource_content {
+      @include bg($white);
+      @include shadow;
+      min-height: 300px;
+      padding: 20px 10px 10px 10px;
+      a.user_name { text-decoration: underline; font-weight: bold; }
+      a.topic_title_name:hover { text-decoration: underline; }
+
+      // topic list
+      .topics_panel {
+        .topic {
+          border-bottom: 1px solid $w_grey;
+          padding: 10px 10px;
+          .left_side { float: left; }
+          .left_side .avatar { float: left; }
+          .left_side .topic_summary { float: left; margin-left: 10px; line-height: 24px;}
+          .left_side .topic_summary .topic_title { font-size: 14px; }
+          .left_side .topic_info { color: $light_grey; }          
+          .right_side { float: right; margin-right: 80px; padding-top: 10px; }
+          .right_side a.topic_relpy { @include bg($green); padding: 5px 5px; font-size: 14px; color: $white; opacity: 0.6; }
+        }
+
+      }
+
+    }
+
+  }
+
 }
 
 .tv_right_container {
   float: right;
   width: 25%;
+  padding-left: 0px;
+  color: $text-color;
+  .new_topic { text-align: center; }
+  .comming_soon {
+    font-size: 12px;
+    line-height: 30px;
+
+    ul li {
+      color: $text-color;
+      span { margin-right: 20px; }
+      span.version { color: $white; @include bg($green); opacity: 0.5; padding: 2px 1px; }
+    }
+  }
 }

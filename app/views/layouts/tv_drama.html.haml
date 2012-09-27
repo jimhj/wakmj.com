@@ -12,5 +12,56 @@
     .main_container.clearfix
       .tv_left_container
         = yield
-      .tv_right_container          
+      .tv_right_container
+        .new_topic.dotted_bottom
+          %a.btn{ :href => '#' } 发表新主题
+        .comming_soon.dotted_bottom
+          .title_bar
+            %a.title 播出预告
+
+          %ul.notice
+            - 6.times do
+              %li
+                %span.version
+                  S01E08            
+                %span.time
+                  2012-10-21
+                %span.week
+                  周三
+
+        .new_replies.article_list.dotted_bottom
+          .title_bar
+            %a.title 最新回复
+          %ul   
+            - 2.times do
+              %li
+                %a{ :href => '#' } 
+                  %span asdasd123: 
+                  你捅一下，我戳一下…… 好欢乐
+              %li 
+                %a{ :href => '#' } 我不喜欢英雄主义电影
+              %li
+                %a{ :href => '#' } 关于本片中种特效技术的不及格运用
+              %li
+                %a{ :href => '#' } 我为什么喜欢《So You Think You Can Dance》
+              %li 
+                %a{ :href => '#' } 我不喜欢英雄主义电影 
+
+        .latest_news.article_list
+          .title_bar
+            %a.title 相关资讯
+          %ul
+            - 2.times do
+              %li 
+                %a{ :href => '#' } 你捅一下，我戳一下…… 好欢乐
+              %li 
+                %a{ :href => '#' } 我不喜欢英雄主义电影
+              %li
+                %a{ :href => '#' } 关于本片中种特效技术的不及格运用
+              %li
+                %a{ :href => '#' } 我为什么喜欢《So You Think You Can Dance》
+              %li 
+                %a{ :href => '#' } 我不喜欢英雄主义电影                     
+
+
     = render 'layouts/shared/footer' 

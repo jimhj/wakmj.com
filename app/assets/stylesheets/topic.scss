@@ -1,0 +1,53 @@
+@import 'global';
+
+.tv_left_container {
+  .topic_detail {
+    @include rectangle;
+    .topic_name { @include rectangle_title; }
+    .topic_content { line-height: 30px; text-indent: 2em; padding: 8px 10px; border-bottom: 1px solid $grey; font-size: 12px; }
+    .info_bar {
+      padding: 5px 10px;
+      color: $light_grey; font-weight: normal;
+      a { color: $green; font-weight: bold; }
+      .info_bar_left { 
+        float: left; line-height: 24px;
+        .drama_name a { font-size: 14px; }
+        .topic_info a { text-decoration: underline; } 
+      }
+      .info_bar_right { float: right; }
+    }
+  }
+
+  .replies {
+    margin-top: 20px;
+    @include rectangle;
+    .relies_count {
+      color: $light_grey;
+      padding: 10px 10px;
+    }
+
+    .reply_list {
+      .reply { border-top: 1px solid $grey; padding: 10px 10px; }
+      .reply .avatar { float: left; width: 8%; }
+      .reply .reply_info { float: left; width: 90%; }
+      .reply .reply_info .reply_above {
+        margin-bottom: 5px;
+        a { color: $green; font-weight: bold; text-decoration: underline; }
+        span { color: $light_grey; }
+        .reply_above_left { float: left; width: 80%; }
+        .reply_above_right { float: right;  }
+      }
+
+      .reply .reply_info .relpy_content { font-size: 12px; line-height: 22px; }
+    }
+  }
+
+  .post_reply_panel {
+    @include rectangle;
+    margin-top: 20px;
+    .poset_panel_title { @include rectangle_title; }
+    .form_panel { padding: 10px 10px; }
+    .form_panel .current_avatar { float: left; }
+    .form_panel .input_panel { float: left; margin-left: 10px; }
+  }
+}

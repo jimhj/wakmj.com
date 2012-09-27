@@ -3,7 +3,6 @@
 .left_container {
   float: left;
   width: 75%;
-  // padding: 0px 10px;
   padding-top: 5px;
   .tv_list {
     .tv { 
@@ -30,7 +29,7 @@
       }
 
       .last_topic {
-        border-top: 1px solid #E8E7E3;      
+        border-top: 1px solid $w_grey;      
         @include bg(#F3F3F3);
         .user {
           font-size: 12px;
@@ -77,16 +76,4 @@
       span.version { color: $white; @include bg($green); opacity: 0.5; padding: 2px 1px; }
     }
   }
-
-  // .tv_fans {
-  //   padding-top: 5px;
-  //   .avatars {
-  //     padding-top: 5px;
-  //     a { 
-  //       width: 50px;
-  //       height: 50px;
-  //       img { margin: 10px 10px 10px 0px; }
-  //     }
-  //   }
-  // }
 }
