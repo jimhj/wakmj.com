@@ -102,6 +102,7 @@ GEM
       jruby-pageant (>= 1.1.1)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
+    nokogiri (1.5.5)
     origin (1.0.9)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -172,6 +173,7 @@ DEPENDENCIES
   mongoid_secure_password
   mongoid_taggable_on (~> 0.1.4)
   multi_json
+  nokogiri
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)
   settingslogic (~> 2.0.6)

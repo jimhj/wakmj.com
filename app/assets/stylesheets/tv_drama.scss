@@ -7,7 +7,10 @@
 
     .intro {
       padding: 10px 10px;
-      .cover { float: left; img { border: 4px solid $green; } width: 18%; }
+      .cover { 
+        float: left; width: 18%; 
+        img { border: 4px solid $green; } 
+      }
       .summary { 
         float: left; 
         width: 80%;
@@ -25,7 +28,7 @@
 
   .story {
     margin-top: 20px;
-    .content { line-height: 22px; color: $text-color; padding: 10px 10px; }
+    .content { line-height: 24px; color: $text-color; padding: 10px 10px;  text-indent: 2em; }
   }
 
   .tv_relateds {

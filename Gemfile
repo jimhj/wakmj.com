@@ -25,6 +25,9 @@ gem "settingslogic", "~> 2.0.6"
 # Paginate
 gem 'will_paginate', '~> 3.0.3'
 
+# Web Parser
+gem 'nokogiri', :require => false
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

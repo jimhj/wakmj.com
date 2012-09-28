@@ -3,6 +3,7 @@ class IndexController < ApplicationController
   before_filter :check_signed_in, :only => [:sign_up, :sign_in]
 
   def index
+    @tv_dramas = TvDrama.desc('created_at').paginate(:page => params[:page], :per_page => 12)
   end
 
   def sign_up

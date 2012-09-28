@@ -10,10 +10,12 @@ class TvDrama
   field :alias_name, :type => String, :default => ''
   field :cover, :type => String
 
-  taggable_on :actors, :index => false
+  taggable_on :alias_names
+  taggable_on :actors
   taggable_on :categories
   taggable_on :directors
 
+  field :tv_station  
   field :release_date, :type => Time
   field :summary
 
@@ -23,6 +25,7 @@ class TvDrama
 
   has_many :topics
 
-  validates_presence_of :tv_name
+  validates :tv_name, :presence => true, 
+                      :uniqueness => true
 
 end
