@@ -1,0 +1,86 @@
+@import 'global';
+
+/* rectangle_panel */
+.rectangle_panel {
+  @include rectangle;
+  .panel_name { @include rectangle_title; }
+} 
+
+/* margins */
+.ml10 { margin-left: 10px; }
+.mr10 { margin-right: 10px; }
+.mt10 { margin-top: 10px; }
+.mt20 { margin-top: 20px; }   
+
+/* title bar */ 
+.title_bar a.title { font-size: 14px; font-weight: bold; color: $green; }
+.title_bar a { margin-right: 10px; font-size: 12px; color: $text-color;} 
+
+/* bottom style */ 
+.dotted_bottom { border-bottom: 1px dotted $text-color; padding-bottom: 5px; }
+.dotted_top { border-top: 1px dotted $text-color; padding-top: 5px; }
+
+/* Common UL LI Style */ 
+.article_list {
+  font-size: 12px;
+  padding-top: 5px;
+  line-height: 26px;
+  ul li a {
+    color: $text-color;
+    &:hover {
+      padding: 5px 5px;
+      @include bg($green);
+      color: $white;
+      opacity: 0.5;
+    }
+
+    span { text-decoration: underline; }
+  }  
+}
+
+/* textarea, input editor */
+textarea.editor {
+  border: 1px solid $grey;
+  vertical-align: top;
+  font-size: 12px;
+  color: $text-color;
+}
+
+input.long_text {
+  border: 1px solid $grey;
+  width: 470px;
+  height: 30px;
+  font-size: 12px;
+  color: $text-color;
+}
+
+input.white_text {
+  border: 1px solid $green;
+  width: 300px;
+  height: 36px;
+  font-size: 14px;
+  color: $text-color;
+  @include shadow;
+}
+
+/* buttons */
+a.submit_btn, a.btn {
+  @include bg($green);
+  color: $white;
+  padding: 10px 20px;
+  display: inline-block;
+  @include shadow;
+} 
+
+/* tab group */
+.nav_tabs { 
+  font-size: 12px;
+  a { color: $text-color; }
+  .tab { 
+    padding: 10px 10px;
+    float: left; margin-right: 10px; 
+    @include bg(#F3F3F3);
+  }
+
+  .tab.active { @include bg(#FFF); a { color: $green; font-weight: bold; } }
+} 

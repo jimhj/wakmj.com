@@ -1,0 +1,31 @@
+- content_for :header_css do
+  = stylesheet_link_tag 'sign'
+
+.left_container
+  .sign_in_panel.large_panel
+    .panel_title.sign_in_panel_title
+      用户登录
+    .form_panel
+      .blank_li.clearfix
+        %span 邮箱:
+        %input.white_text{ :type => 'text' }
+      .blank_li.clearfix
+        %span 密码:
+        %input.white_text{ :type => 'password' }
+      .blank_li.clearfix
+        %span &nbsp;
+        %a.submit_btn.ml10{ :href => '#' } 登录
+
+.right_container
+  .notices
+    %p
+      %a{ :href => '#' } 注册新用户
+    %p
+      %a{ :href => '#' } 忘记密码？
+    %p
+      %a{ :href => '#' } 
+        = image_tag 'weibo240.png'      
+
+
+      
+

@@ -33,16 +33,16 @@
     margin-top: 20px;
 
     a { color: $text-color; }
-    .nav_tabs { 
+    // .nav_tabs { 
       
-      .tab { 
-        padding: 10px 10px;
-        float: left; margin-right: 10px; 
-        @include bg(#F3F3F3);
-      }
+    //   .tab { 
+    //     padding: 10px 10px;
+    //     float: left; margin-right: 10px; 
+    //     @include bg(#F3F3F3);
+    //   }
 
-      .tab.active { @include bg(#FFF); a { color: $green; font-weight: bold; } }
-    }
+    //   .tab.active { @include bg(#FFF); a { color: $green; font-weight: bold; } }
+    // }
 
     .resource_content {
       @include bg($white);

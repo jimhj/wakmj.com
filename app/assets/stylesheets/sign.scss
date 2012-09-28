@@ -1,11 +1,49 @@
 @import 'global';
 
-.large_panel {
-  width: 70%;
-  margin: 10px auto;
-  .panel_title { color: $green; font-size: 18px; font-weight: bold; }
-  .form_panel {
-    
-  }
+.left_container {
+  float: left;
+  width: 60%;    
 }
+
+.right_container {
+  float: left;
+  width: 30%;  
+}
+
+.large_panel {
+  // width: 60%;
+  padding-left: 200px;
+  margin: 10px auto;
+  .panel_title { color: $green; font-size: 18px; font-weight: bold; text-shadow: 0px 1px 0px #FFF; }
+  .form_panel {
+    color: $text-color;
+    .blank_li { margin-bottom: 20px; }
+    span {
+      width: 100px;
+      float: left;
+      text-align: right;
+      height: 36px;
+      padding: 12px 0px;
+    }
+    input { float: left; vertical-align: middle; margin-left: 10px; }
+  }
+
+}
+
+.sign_in_panel .sign_in_panel_title {
+  margin: 20px 0px;
+  padding-left: 110px;
+}
+
+.notices {
+  margin-top: 60px; 
+  text-shadow: 0px 1px 0px #FFF;
+  p { margin-bottom: 15px; } 
+}
+.notices, .notices a{
+  color: $green;
+  font-size: 12px;
+  font-weight: bold;
+}
+
   
