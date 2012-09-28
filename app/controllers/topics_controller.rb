@@ -7,6 +7,7 @@ class TopicsController < ApplicationController
   end
 
   def new
+    @tv_drama = TvDrama.find_by_id(params[:tv_drama_id])
   end
 
 end

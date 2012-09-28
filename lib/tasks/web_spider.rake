@@ -4,9 +4,11 @@ require 'open-uri'
 namespace :parse do
 
   desc "get tv_dramas data from  yyets.com"
-  
+
   task :yyets => :environment do
     # TODO: Mark where does the loop ended at. 
+    # unreadable code.
+
     1.upto(2).each do |page|
       dom = Nokogiri::HTML open(res_url(page))
 
@@ -19,7 +21,6 @@ namespace :parse do
       fetch_urls.each do |url|
         begin
           tv_drama = {}
-
           d_dom = Nokogiri::HTML open(url)
           tv_drama[:tv_name] = d_dom.at('h2.tv').children[0].children[0].content
           detail_dom = d_dom.at('div.res_infobox')
@@ -41,7 +42,6 @@ namespace :parse do
         rescue Exception => e
           puts e.inspect
         end
-
         sleep(5)
       end
 
