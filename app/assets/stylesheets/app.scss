@@ -79,5 +79,24 @@ img { border: none; }
 .main_container {
   width: 90%;
   margin: 10px auto;
+  .flash_notice { width: 80%; margin: 10px auto; padding: 10px 10px; }
+  .flash_notice.error {
+    background-color: #F2DEDE;
+    border: 1px solid #B94A48; 
+    color: #B94A48;       
+    p { font-size: 14px; font-weight: bold; padding-bottom: 5px; }
+  }
 
+  .flash_notice.success {
+    background-color: #DFF0D8;
+    border: 1px solid $green;   
+    color: #468847;       
+    p { font-size: 14px; font-weight: bold; padding-bottom: 5px; }
+  }
+
+  .flash_notice .messages ul { list-style: disc outside none; padding-left: 30px; }
+  .flash_notice .messages ul li {
+    font-size: 12px;
+    line-height: 22px;
+  }
 }

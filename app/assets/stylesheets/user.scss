@@ -16,7 +16,7 @@
   }
 
   .user_resources { margin-top: 20px; }
-  .user_resources .resources_content { @include bg($white); min-height: 300px; }
+  .user_resources .resources_content { @include bg($white); min-height: 300px; @include shadow; } 
   .user_resources .resources_content .topic_panel {
     .topic { border-bottom: 1px solid $grey; line-height: 22px; padding: 10px 10px;}
     .topic .above,  .topic .above a{  font-size: 14px; color: $text-color; }

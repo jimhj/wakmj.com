@@ -1,31 +1,34 @@
 - content_for :header_css do
   = stylesheet_link_tag 'sign'
 
+= render 'shared/flash_notice'
+
 .left_container
-  .sign_in_panel.large_panel
+  .sign_in_panel.large_panel  
     .panel_title.sign_in_panel_title
       注册新用户
     .form_panel
-      .blank_li.clearfix
-        %span 邮箱:
-        %input.white_text{ :type => 'text' }
-      .blank_li.clearfix
-        %span 用户名:
-        %input.white_text{ :type => 'text' }
-      .blank_li.clearfix
-        %span 密码:
-        %input.white_text{ :type => 'text' }
-      .blank_li.clearfix
-        %span 确认密码:
-        %input.white_text{ :type => 'text' }
-      .blank_li.clearfix
-        %span &nbsp;
-        %a.submit_btn.ml10{ :href => '#' } 提交注册
+      = form_tag users_path do
+        .blank_li.clearfix
+          %span 邮箱:
+          %input.white_text{ :type => 'text', :name => 'user[email]' }
+        .blank_li.clearfix
+          %span 用户名:
+          %input.white_text{ :type => 'text', :name => 'user[login]' }
+        .blank_li.clearfix
+          %span 密码:
+          %input.white_text{ :type => 'password', :name => 'user[password]' }
+        .blank_li.clearfix
+          %span 确认密码:
+          %input.white_text{ :type => 'password', :name => 'user[password_confirmation]' }
+        .blank_li.clearfix
+          %span &nbsp;
+          %a.submit_btn.ml10{ :href => 'javascript:;' } 提交注册
 
 .right_container
   .notices
     %p
-      %a{ :href => '#' } 已有账号登录
+      %a{ :href => sign_in_path } 已有账号登录
     %p
       %a{ :href => '#' } 忘记密码？
     %p

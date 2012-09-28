@@ -68,6 +68,18 @@
 
       }
 
+      // download panel
+      .download_panel {
+        display: none;
+        .res_summary {
+          border-bottom: 1px solid $w_grey;
+          padding: 14px 10px;          
+        }
+        .res_summary span { color: $green; margin-right: 10px; padding: 5px 5px; }
+        .res_summary span.season { @include bg($green); color: $white; }
+
+      }
+
     }
 
   }

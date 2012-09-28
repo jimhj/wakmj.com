@@ -1,0 +1,17 @@
+- unless flash[:error].blank?
+  - errors = Array flash[:error]
+  .flash_notice.error
+    %p
+      = "以下 #{errors.size} 处错误导致不能提交："
+    .messages
+      %ul
+        - errors.each do |err|
+          %li= err
+
+- unless flash[:success].blank?
+  - notices = Array flash[:success]
+  .flash_notice.success
+    .messages
+      %ul
+        - notices.each do |n|
+          %li= n
