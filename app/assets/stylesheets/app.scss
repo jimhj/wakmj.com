@@ -4,6 +4,7 @@
 *= require 'sprites/icons'
 *= require_self
 */
+
 @import 'global';
 
 @mixin li_nav {
@@ -100,6 +101,9 @@ img { border: none; }
     line-height: 22px;
   }
 
+  .blank_notice { width: 100%; text-align: center; color: $grey; padding-top: 30px; }
+  .notice_ment { width: 100%; text-align: center; color: #FF0000; padding: 5px; opacity: 0.5; }
+  .notice_ment a { text-decoration: underline; }
 }
 
 .feedback_btn {

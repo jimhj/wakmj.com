@@ -22,7 +22,7 @@ class TvDrama
   field :imdb
   field :summary
   field :topics_count, :type => Integer, :default => 0
-  # field :download_resources_count, :type => Integer, :default => 0 
+  field :download_resources_count, :type => Integer, :default => 0 
   field :verify, :type => Boolean, :default => false
   field :created_by, :type => String, :default => ''
   field :last_edit_by, :type => String, :default => ''
@@ -33,6 +33,7 @@ class TvDrama
 
   has_many :topics
   has_many :pre_releases
+  embeds_many :download_resources
 
   validates :tv_name, :presence => true, :uniqueness => true
   validates_presence_of :cover

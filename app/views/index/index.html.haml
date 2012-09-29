@@ -7,15 +7,23 @@
       .tv
         .above.clearfix
           .cover
-            %a{ :href => '#' }
+            %a{ :href => tv_drama.cover_url(:large) }
               = image_tag tv_drama.cover_url(:small)
           .tools
             .tv_name
               %a{ :href => tv_drama_path(tv_drama.id), :title => tv_drama.tv_name }= tv_drama.tv_name.truncate(10)
             .likes
-              %a{ :href => '#' }= "喜欢 #{tv_drama.likes_count}"
+              %a{ :href => tv_drama_path(tv_drama.id) }
+                %span 喜欢
+                %em= tv_drama.likes_count
             .topics
-              %a{ :href => '#' }= "主题 #{tv_drama.topics_count}"
+              %a{ :href => tv_drama_path(tv_drama.id) }
+                %span 主题
+                %em= tv_drama.topics_count
+            .res
+              %a{ :href => tv_drama_path(tv_drama.id) }
+                %span 资源
+                %em= tv_drama.download_resources_count
 
         .last_topic
           .user.clearfix

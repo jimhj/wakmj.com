@@ -24,11 +24,13 @@ Wakmj.CommonEvents =
       likeable_type = $(this).data('likeable_type')
       likeable_id = $(this).data('likeable_id')
       if $(this).data('liked')
+        # TODO: unlike.
       else
         $.post '/likes', { likeable_type : likeable_type, likeable_id : likeable_id }, (res) ->
           if res.success
             $this.data('liked', 'true').html("已喜欢<span>(#{res.likes_count})</span>")
         , 'json'
+
 
 $(document).ready ->
   Wakmj.CommonEvents.init()    

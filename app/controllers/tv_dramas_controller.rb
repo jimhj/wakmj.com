@@ -8,7 +8,22 @@ class TvDramasController < ApplicationController
   load_and_authorize_resource :only => [:edit, :update, :create, :new]
 
   def show
-    @topics = @tv_drama.topics.desc('created_at')
+    @topics = @tv_drama.topics.desc('created_at').paginate(:page => params[:page])
+    @resources = @tv_drama.download_resources.desc('season').paginate(:page => params[:page])
+
+    respond_to do |format|
+      format.html
+      # Ajax Paginate.
+      format.js {
+        if params[:to] == 'downloads' 
+          html_str = render_to_string(:partial => 'resources')
+        elsif params[:to] == 'topics'
+          html_str = render_to_string(:partial => 'topics')
+        end 
+        render :text => html_str.to_json
+      }
+    end
+    
   end
 
   def edit

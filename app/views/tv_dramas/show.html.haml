@@ -1,3 +1,6 @@
+- content_for :header_js do
+  = javascript_include_tag 'tv_drama'
+
 .tv_detail.clearfix
   .above.rectangle_panel
     .tv_name.panel_name.clearfix
@@ -50,40 +53,22 @@
       .topics.tab.active
         %a{ :href => 'javascript:;' }= "讨论帖子(#{@tv_drama.topics_count})"
       .downloads.tab
-        %a{ :href => '#' } 下载资源(10)
+        %a{ :href => 'javascript:;' }= "下载资源(#{@tv_drama.download_resources_count})"
       .news.tab
-        %a{ :href => '#' } 相关剧集
+        %a{ :href => 'javascript:;' } 相关剧集
 
     .resource_content
       .topics_panel
-        - @topics.each do |topic|
-          .topic.clearfix
-            .left_side.clearfix
-              .avatar
-                %a{ :href => user_path(topic.user) }
-                  = image_tag 'sample_a.jpg'
-              .topic_summary
-                .topic_title
-                  %a.user_name{ :href => user_path(topic.user) }= "#{topic.user_login}:"
-                  %a.topic_title_name{ :href => topic_path(topic) }= topic.title
-                .topic_info
-                  %span 发表于
-                  %span.created_at= topic.created_at.strftime('%F %T')
-                  %span 最后由
-                  %a.user_name{ :href => '#' } fresh_fish
-                  %span 在 10 分钟前回复
-            .right_side
-              %a.topic_relpy{ :href => topic_path(topic) }= topic.replies_count
+        = render 'topics'
 
+      .downloads_panel.list_container
+        .notice_ment
+          .tool_bar
+          .content
+            下载资源目前只有 720P 迅雷下载，
+            %a{ :href => '#' } 欢迎添加资源.
+        = render 'resources'
 
-
-      .download_panel
-        - 8.times do 
-          .res_summary
-            %span.season S01
-            %span.size 533 MB
-            %span.ext RMVB
-            %a.download_link{ :href => '#' } Damsels in Distress (2011)x264 (MKV)1080P DD 5.1 DTS Eng NL Subs TBS
       .news_panel
 
 

@@ -8,8 +8,8 @@ namespace :parse do
   task :yyets => :environment do
     # TODO: Mark where does the loop ended at. 
     # unreadable code.
-    i = j = 1
-    1.upto(3).each do |page|
+    i = j = 0
+    1.upto(2).each do |page|
       dom = Nokogiri::HTML open(res_url(page))
 
       html_str = dom.at('div.res_listview')
@@ -22,6 +22,7 @@ namespace :parse do
         begin
           tv_drama = {}
           d_dom = Nokogiri::HTML open(url)
+
           tv_drama[:tv_name] = d_dom.at('h2.tv').children[0].children[0].content
           detail_dom = d_dom.at('div.res_infobox')
           tv_drama[:remote_cover_url] = detail_dom.at('div.f_l_img').css('a')[0].attributes['href'].value
@@ -40,7 +41,35 @@ namespace :parse do
 
           tv_drama[:verify] = true
           tv_drama.each_pair { |k, v| v.strip! if v.is_a?(String) }
-          TvDrama.create!(tv_drama)
+          new_drama = TvDrama.create!(tv_drama)
+
+          begin
+
+            p "start scraping download resources..."
+            resource = {}
+            download_dom = d_dom.css('ul.resod_list li').xpath('//li[@format="720P"]').collect do |li|
+              info = li.at('span.l a')
+
+              if info
+                resource[:link_text] = info.attribute_nodes.last.value
+                resource[:episode_format] = info.child.content
+                resource[:episode_size] = info.children.last.content
+                resource[:season] = resource[:link_text].scan(/S\d{2,2}/).first || 'S01'
+                resource[:episode] = resource[:link_text].scan(/E\d{2,2}/).first || 'E01'
+
+                link = li.at('span.r a').xpath("//a[@thunderrestitle='#{resource[:link_text]}']").first
+                resource[:download_link] = link.attribute_nodes.last.value  if link
+                new_drama.download_resources.create!(resource)
+
+              end
+
+
+            end
+          rescue Exception => e
+            p e.inspect
+            puts "scrap download resources failed."
+          end
+
           i += 1
           puts "Record added."
         rescue Exception => e
@@ -54,11 +83,6 @@ namespace :parse do
       #   ele.attributes['id'].value.delete('collect_form_') 
       # end
 
-      # drama_ids[0...1].each do |id|
-      #   res = Faraday.get(DOUBAN_API + id)
-      #   big_hash = Hash.from_xml(res.body)
-      #   p big_hash
-      # end
     end
     puts "#{i} succeed.   #{j} failed."
   end

@@ -1,0 +1,25 @@
+- if @topics.blank?
+  .blank_notice
+    暂时没有人发表...
+- else
+  - @topics.each do |topic|
+    .topic.clearfix
+      .left_side.clearfix
+        .avatar
+          %a{ :href => user_path(topic.user) }
+            = image_tag 'sample_a.jpg'
+        .topic_summary
+          .topic_title
+            %a.user_name{ :href => user_path(topic.user) }= "#{topic.user_login}:"
+            %a.topic_title_name{ :href => topic_path(topic) }= topic.title
+          .topic_info
+            %span 发表于
+            %span.created_at= topic.created_at.strftime('%F %T')
+            %span 最后由
+            %a.user_name{ :href => '#' } fresh_fish
+            %span 在 10 分钟前回复
+      .right_side
+        %a.topic_relpy{ :href => topic_path(topic) }= topic.replies_count
+        
+.pagination_panel
+  = will_paginate(@topics, :class => 'digg_pagination')        
