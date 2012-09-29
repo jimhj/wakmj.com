@@ -1,0 +1,41 @@
+.tv_detail.clearfix
+  .edit_drama_panel.common_form.rectangle_panel
+    .panel_name
+      %span 编辑:
+      %a{ :href => tv_drama_path(@tv_drama.id) }
+        = @tv_drama.tv_name
+    .form_panel
+      = form_tag tv_drama_path(@tv_drama.id), :method => 'PUT', :multipart => true do
+        .blank_li.clearfix
+          %span 剧名:
+          %input.white_text.small{ :type => 'text', :value => @tv_drama.tv_name, :name => 'drama[tv_name]' }
+        .blank_li.clearfix
+          %span 又名:
+          %input.white_text.small{ :type => 'text', :value => @tv_drama.alias_name_list, :name => 'drama[alias_name_list]' }
+        .blank_li.clearfix          
+          %span 电视台:
+          %input.white_text.small{ :type => 'text', :value => @tv_drama.tv_station, :name => 'drama[tv_station]' }          
+        .blank_li.clearfix
+          %span 主演:
+          %input.white_text.small{ :type => 'text', :value => @tv_drama.actor_list, :name => 'drama[actor_list]' }  
+        .blank_li.clearfix
+          %span 导演:
+          %input.white_text.small{ :type => 'text', :value => @tv_drama.director_list, :name => 'drama[director_list]' }  
+        .blank_li.clearfix
+          %span 上映日期:
+          %input.white_text.small{ :type => 'text', :value => @tv_drama.release_date.strftime('%F'), :name => 'drama[release_date]' }
+        .blank_li.clearfix
+          %span IMDB 评分:
+          %input.white_text.small{ :type => 'text', :value => @tv_drama.imdb, :name => 'drama[imdb]' }
+        .blank_li.clearfix
+          %span 封面海报:
+          %input{ :type => 'file', :name => 'drama[cover]' }
+        .blank_li.clearfix
+          %span &nbsp;
+          = image_tag @tv_drama.cover_url(:small)
+        .blank_li.clearfix
+          %span 简介:
+          %textarea.editor{ :name => 'drama[summary]' }= @tv_drama.summary
+        .blank_li.clearfix
+          %span &nbsp;
+          %a.submit_btn{ :href => 'javascript:;' } 确定                                                                 

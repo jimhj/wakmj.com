@@ -11,11 +11,11 @@
               = image_tag tv_drama.cover_url(:small)
           .tools
             .tv_name
-              %a{ :href => tv_drama_path(tv_drama.id), :title => tv_drama.tv_name }= tv_drama.tv_name.truncate(11)
+              %a{ :href => tv_drama_path(tv_drama.id), :title => tv_drama.tv_name }= tv_drama.tv_name.truncate(10)
             .likes
-              %a{ :href => '#' } 喜欢 1213123
+              %a{ :href => '#' }= "喜欢 #{tv_drama.likes_count}"
             .topics
-              %a{ :href => '#' } 主题 1232
+              %a{ :href => '#' }= "主题 #{tv_drama.topics_count}"
 
         .last_topic
           .user.clearfix

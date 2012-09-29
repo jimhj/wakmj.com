@@ -3,8 +3,25 @@
 /* rectangle_panel */
 .rectangle_panel {
   @include rectangle;
-  .panel_name { @include rectangle_title; }
+  .panel_name { 
+    @include rectangle_title; 
+    a { color: $green; }
+    span.origin {
+      float: left;
+      display: inline-block;
+    } 
+    .opts {
+      float: right;
+      font-size: 12px;
+      a { margin-right: 5px; }
+    }
+  }
 } 
+
+/* common form style */
+.common_form {
+  @include common_form; 
+}
 
 /* margins */
 .ml10 { margin-left: 10px; }
@@ -61,6 +78,13 @@ input.white_text {
   font-size: 14px;
   color: $text-color;
   @include shadow;
+}
+
+input.white_text.small {
+  width: 240px;
+  height: 30px;
+  font-size: 12px;
+  border: 1px solid $grey;
 }
 
 /* buttons */

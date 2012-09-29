@@ -9,6 +9,7 @@
     = csrf_meta_tags
   %body
     = render 'layouts/shared/header'
-    .main_container.clearfix          
+    .main_container.clearfix
+      = render 'shared/flash_notice'          
       = yield
     = render 'layouts/shared/footer' 

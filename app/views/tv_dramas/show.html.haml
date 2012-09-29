@@ -1,7 +1,11 @@
 .tv_detail.clearfix
   .above.rectangle_panel
-    .tv_name.panel_name
-      = @tv_drama.tv_name
+    .tv_name.panel_name.clearfix
+      %span.origin
+        = @tv_drama.tv_name
+      .opts
+        - if can?(:update, @tv_drama)
+          %a{ :href => edit_tv_drama_path(@tv_drama) } 编辑
     .intro.clearfix
       .cover
         %a{ :href => '#' }
@@ -14,23 +18,27 @@
           %span.title 类别:
           %span= @tv_drama.categories.join(' / ')
         .starring
+          %span.title 电视台:
+          %span= @tv_drama.tv_station   
+        .starring
           %span.title 主演:
           %span= @tv_drama.actors.join(' / ')
         .director
           %span.title 导演:
-          %span
+          %span= @tv_drama.directors.join(' / ')
         .release_date
           %span.title 上映日期:
           %span= @tv_drama.release_date.strftime('%Y-%m-%d')  
         .imdb
           %span.title IMDB:
-          %span
+          %span= @tv_drama.imdb
 
         .fancy
-          %i.icon.icons_fancy
-          %a{ :href => '#' } 
-            喜欢 
-            %span (123123123)
+          = fancy_tag(@tv_drama)
+          / %i.icon.icons_fancy
+          / %a.like_it{ :href => 'javascript:;', :'data-likeable_type' } 
+          /   喜欢 
+          /   %span= "(#{@tv_drama.likes_count})"
 
   .story.rectangle_panel
     .title.panel_name
@@ -40,7 +48,7 @@
   .tv_relateds
     .nav_tabs.clearfix
       .topics.tab.active
-        %a{ :href => '#' } 讨论帖子(82)
+        %a{ :href => 'javascript:;' }= "讨论帖子(#{@tv_drama.topics_count})"
       .downloads.tab
         %a{ :href => '#' } 下载资源(10)
       .news.tab
@@ -48,45 +56,24 @@
 
     .resource_content
       .topics_panel
-        - 4.times do
+        - @topics.each do |topic|
           .topic.clearfix
             .left_side.clearfix
               .avatar
-                %a{ :href => user_path(1) }
+                %a{ :href => user_path(topic.user) }
                   = image_tag 'sample_a.jpg'
               .topic_summary
                 .topic_title
-                  %a.user_name{ :href => '#' } laohuang:
-                  %a.topic_title_name{ :href => topic_path(1) } 广大人民群众只需花33元便可观看著名影星保剑锋被砍头
+                  %a.user_name{ :href => user_path(topic.user) }= "#{topic.user_login}:"
+                  %a.topic_title_name{ :href => topic_path(topic) }= topic.title
                 .topic_info
                   %span 发表于
-                  %span.created_at 2012-09-10 12:00:39
+                  %span.created_at= topic.created_at.strftime('%F %T')
                   %span 最后由
                   %a.user_name{ :href => '#' } fresh_fish
                   %span 在 10 分钟前回复
             .right_side
-              %a.topic_relpy{ :href => '#' } 102
-
-          .topic.clearfix
-            .left_side.clearfix
-              .avatar
-                %a{ :href => '#' }
-                  = image_tag 'sample_a.jpg'
-              .topic_summary
-                .topic_title
-                  %a.user_name{ :href => '#' } xiaolai:
-                  %a.topic_title_name{ :href => '#' } 我揭露一下灵雎的真实身份啊
-                .topic_info
-                  %span 发表于
-                  %span.created_at 2012-09-10 12:00:39
-                  %span 最后由
-                  %a.user_name{ :href => '#' } fresh_fish
-                  %span 在 10 分钟前回复                
-
-                  
-
-            .right_side
-              %a.topic_relpy{ :href => '#' } 1002
+              %a.topic_relpy{ :href => topic_path(topic) }= topic.replies_count
 
 
 

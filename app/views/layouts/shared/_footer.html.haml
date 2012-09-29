@@ -9,4 +9,8 @@
   .weibo_page
     %a{ :href => '#' }
       %i.icon.icons_weibo_s_16
-      在微博关注我们   
+      在微博关注我们
+      
+- if signed_in? && !current_user.has_role?('editor')
+  .feedback_btn 申请成为维护者
+

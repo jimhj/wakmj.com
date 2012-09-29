@@ -99,4 +99,21 @@ img { border: none; }
     font-size: 12px;
     line-height: 22px;
   }
+
 }
+
+.feedback_btn {
+  width: 16px;
+  /*height: 60px;*/
+  background-color: $green;
+  text-align: center;
+  padding: 5px 5px;
+  border-radius: 0 5px 5px 0px;
+  box-shadow: 5px 5px 5px #666666;
+  position: fixed;
+  color: #FFF;
+  left: 0px;
+  top: 300px;
+  font-size: 12px;
+  cursor: pointer;
+}  

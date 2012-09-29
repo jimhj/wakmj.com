@@ -48,22 +48,7 @@
     .form_panel .input_panel textarea { width: 700px; height: 140px; font-size: 12px; color: $text-color; }
   }
 
-  .new_topic_panel {
-    padding-bottom: 10px;
-    .form_panel { width: 80%; margin: 10px auto;  }
-    .form_panel .blank_li { padding: 10px; }
-    .form_panel .blank_li span {
-      width: 100px;
-      float: left;
-      text-align: right;
-    }
-    .form_panel .blank_li {
-      textarea { width: 470px; height: 240px; }
-      a, input, textarea { float: left; margin-left: 15px; }
-      a.drama_name { color: $green; font-size: 14px; font-weight: bold; }
-      a.submit_btn { margin-left: 115px; }
-    }
-  }
+  .new_topic_panel {}
 
 
 }

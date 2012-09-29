@@ -1,18 +1,21 @@
 - content_for :header_css do
   = stylesheet_link_tag 'topic'
 
-.new_topic_panel.rectangle_panel
+.new_topic_panel.rectangle_panel.common_form
   .panel_name
     发表新主题
   .form_panel
-    .blank_li.clearfix
-      %span 剧集:
-      %a.drama_name{ :href => tv_drama_path(@tv_drama) }= @tv_drama.tv_name
-    .blank_li.clearfix
-      %span 标题:
-      %input.long_text{ :type => 'text' }
-    .blank_li.clearfix
-      %span 正文:
-      %textarea.editor{ :name => 'content' }
-    .blank_li.clearfix
-      %a.submit_btn{ :href => '#' } 确定
+    = form_tag topics_path do
+      .blank_li.clearfix
+        %span 剧集:
+        %a.drama_name{ :href => tv_drama_path(@tv_drama) }= @tv_drama.tv_name
+      .blank_li.clearfix
+        %span 标题:
+        %input.long_text{ :type => 'text', :name => 'title' }
+        = hidden_field_tag 'tv_drama_id', @tv_drama.id
+      .blank_li.clearfix
+        %span 正文:
+        %textarea.editor{ :name => 'content' }
+      .blank_li.clearfix
+        %span &nbsp;
+        %a.submit_btn{ :href => '#' } 确定

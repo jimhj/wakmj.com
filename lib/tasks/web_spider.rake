@@ -8,8 +8,8 @@ namespace :parse do
   task :yyets => :environment do
     # TODO: Mark where does the loop ended at. 
     # unreadable code.
-
-    1.upto(2).each do |page|
+    i = j = 1
+    1.upto(3).each do |page|
       dom = Nokogiri::HTML open(res_url(page))
 
       html_str = dom.at('div.res_listview')
@@ -31,18 +31,23 @@ namespace :parse do
           tv_drama[:release_date] = summary_dom[2].children[-1].content.to_datetime
           tv_drama[:summary] = summary_dom[-1].at('div').content
 
+          # due to the yyets.com.
           if summary_dom.size == 6
           elsif summary_dom.size == 10
             tv_drama[:alias_name_list] = summary_dom[4].children[-1].content
             tv_drama[:actor_list] = summary_dom[-4].children[-1].content
           end
+
           tv_drama[:verify] = true
+          tv_drama.each_pair { |k, v| v.strip! if v.is_a?(String) }
           TvDrama.create!(tv_drama)
-          puts "record was added."
+          i += 1
+          puts "Record added."
         rescue Exception => e
+          j += 1
           puts e.inspect
         end
-        sleep(5)
+        # sleep(5)
       end
 
       # drama_ids = dom.xpath('//div[starts-with(@id, "collect_form_")]').collect do |ele|
@@ -55,6 +60,7 @@ namespace :parse do
       #   p big_hash
       # end
     end
+    puts "#{i} succeed.   #{j} failed."
   end
 
   def res_url(page = 1)

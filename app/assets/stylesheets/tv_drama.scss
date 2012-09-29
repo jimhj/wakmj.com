@@ -15,6 +15,7 @@
         float: left; 
         width: 80%;
         line-height: 30px;
+        margin-left: 10px;
         span.title { font-weight: bold; margin-right: 5px; color: $dark; }
         .desc { line-height: 22px; color: $light_grey; }
         .fancy { 
@@ -26,6 +27,10 @@
     }
   }
 
+ .edit_drama_panel {
+
+ }
+
   .story {
     margin-top: 20px;
     .content { line-height: 24px; color: $text-color; padding: 10px 10px;  text-indent: 2em; }
@@ -36,16 +41,6 @@
     margin-top: 20px;
 
     a { color: $text-color; }
-    // .nav_tabs { 
-      
-    //   .tab { 
-    //     padding: 10px 10px;
-    //     float: left; margin-right: 10px; 
-    //     @include bg(#F3F3F3);
-    //   }
-
-    //   .tab.active { @include bg(#FFF); a { color: $green; font-weight: bold; } }
-    // }
 
     .resource_content {
       @include bg($white);

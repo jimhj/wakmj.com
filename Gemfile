@@ -22,6 +22,9 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 # YAML
 gem "settingslogic", "~> 2.0.6"
 
+# Permission
+gem 'cancan', '~> 1.6.8'
+
 # Paginate
 gem 'will_paginate', '~> 3.0.3'
 
