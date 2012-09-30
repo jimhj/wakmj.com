@@ -78,6 +78,15 @@
 
       }
 
+      .related_dramas_panel {
+        display: none;
+        padding: 10px 10px;
+        ul li { float: left; text-align: center; margin-bottom: 30px; margin-right: 20px; }
+        ul li a { color: $green; }
+        ul li .cover { height: 140px; overflow: hidden; width: 130px;}
+        ul li .tv_name { margin-top: 5px; }
+      }
+
     }
 
   }

@@ -11,7 +11,7 @@
           %a{ :href => edit_tv_drama_path(@tv_drama) } 编辑
     .intro.clearfix
       .cover
-        %a{ :href => '#' }
+        %a{ :href => @tv_drama.cover_url(:large) }
           = image_tag @tv_drama.cover_url(:normal)
       .summary
         .alias
@@ -38,10 +38,6 @@
 
         .fancy
           = fancy_tag(@tv_drama)
-          / %i.icon.icons_fancy
-          / %a.like_it{ :href => 'javascript:;', :'data-likeable_type' } 
-          /   喜欢 
-          /   %span= "(#{@tv_drama.likes_count})"
 
   .story.rectangle_panel
     .title.panel_name
@@ -54,7 +50,7 @@
         %a{ :href => 'javascript:;' }= "讨论帖子(#{@tv_drama.topics_count})"
       .downloads.tab
         %a{ :href => 'javascript:;' }= "下载资源(#{@tv_drama.download_resources_count})"
-      .news.tab
+      .related_dramas.tab
         %a{ :href => 'javascript:;' } 相关剧集
 
     .resource_content
@@ -69,6 +65,15 @@
             %a{ :href => '#' } 欢迎添加资源.
         = render 'resources'
 
-      .news_panel
+      .related_dramas_panel
+        %ul.dramas.clearfix
+          - TvDrama.limit(10).each do |tv_drama|
+            %li
+              .cover
+                %a{ :href => tv_drama_path(tv_drama.id) }
+                  = image_tag tv_drama.cover_url(:small)
+              .tv_name
+                %a{ :href => tv_drama_path(tv_drama.id) }= tv_drama.tv_name.truncate(13)
+
 
 

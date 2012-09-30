@@ -11,12 +11,12 @@ Wakmj.TvDrama =
 
       if $this.is('.topics')
         $('.topics_panel').show()
-        $('.downloads_panel, .news_panel').hide()
+        $('.downloads_panel, .related_dramas_panel').hide()
       else if $this.is('.downloads')
         $('.downloads_panel').show()
-        $('.topics_panel, .news_panel').hide()
-      else if $this.is('.news')
-        $('.news_panel').show()
+        $('.topics_panel, .related_dramas_panel').hide()
+      else if $this.is('.related_dramas')
+        $('.related_dramas_panel').show()
         $('.topics_panel, .downloads_panel').hide()
 
   __setPaginateToAjax : ->

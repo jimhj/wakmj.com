@@ -16,6 +16,8 @@ class DownloadResource
   belongs_to :user
   embedded_in :tv_drama
 
+  index :user_id => 1
+
   counter_cache :name => :tv_drama, :inverse_of => :download_resources
   counter_cache :name => :user, :inverse_of => :download_resources
 

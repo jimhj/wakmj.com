@@ -7,7 +7,7 @@
       .tv
         .above.clearfix
           .cover
-            %a{ :href => tv_drama.cover_url(:large) }
+            %a{ :href => tv_drama_path(tv_drama.id) }
               = image_tag tv_drama.cover_url(:small)
           .tools
             .tv_name

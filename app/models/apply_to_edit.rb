@@ -10,6 +10,9 @@ class ApplyToEdit
   # 0 , 1 pass, 2 reject.
   field :status, :type => Integer, :default => 0
 
+  index :user_id => 1
+  index :status => 1
+
   def pass
     if self.update_attribute(:status, 1)
       User.find_by_id(self.user_id).update_attribute(:role, 'EDITOR')
