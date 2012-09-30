@@ -3,11 +3,12 @@
 class TopicsController < ApplicationController
   layout 'tv_drama'
 
-  load_and_authorize_resource :only => [:edit, :update, :create, :new]
+  load_and_authorize_resource :except => [:show]
 
   def show
     @topic = Topic.find_by_id params[:id]
     @tv_drama = @topic.tv_drama
+    @replies = @topic.replies.desc('created_at')
   end
 
   def new
@@ -29,5 +30,6 @@ class TopicsController < ApplicationController
     end
 
   end
+
 
 end

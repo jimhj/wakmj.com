@@ -12,11 +12,12 @@ Wakmj.CommonEvents =
 
     $('.form_panel a.submit_btn, form a.submit_btn').click ->
       $form = $(this).parents('form')
-      $form[0].submit()
-
+      $form[0].submit() if $form.length > 0
+      
     $('.form_panel input:last').keyup (e) ->
-      if e.keyCode == 13
-        $(this).parents('form')[0].submit()
+      $form = $(this).parents('form')
+      if e.keyCode == 13 && $form.length > 0 
+        $form[0].submit()
 
   __bindLikeStuffEvent : ->
     $('a.like_it').click ->

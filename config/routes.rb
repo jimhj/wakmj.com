@@ -9,7 +9,10 @@ Wakmj::Application.routes.draw do
   match 'likes' => 'likes#create', :as => :likes, :via => :post
   match 'likes' => 'likes#destroy', :as => :likes, :via => :delete
 
-  resources :topics, :except => [:index]
+  resources :topics, :except => [:index] do
+    resources :replies
+  end
+
   resources :users, :except => [:index]
 
 end

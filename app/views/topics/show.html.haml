@@ -1,5 +1,7 @@
 - content_for :header_css do
   = stylesheet_link_tag 'topic'
+- content_for :header_js do
+  = javascript_include_tag 'topic'
 
 .topic_detail.rectangle_panel
   .topic_name.panel_name.clearfix
@@ -31,23 +33,14 @@
   .relies_count
     %span 
       一共收到
-      %em 19
+      %em= @topic.replies_count
       条回复
   .reply_list
-    - 6.times do
-      .reply.clearfix
-        .avatar
-          %a{ :href => '#' }
-            = image_tag 'sample_a.jpg'
-        .reply_info
-          .reply_above.clearfix
-            .reply_above_left
-              %a.user_name.mr10{ :href => '#' } laohuang
-              %span.time 20分钟前
-            .reply_above_right
-              %a{ :href => '#' } 回复
-          .relpy_content
-            据我所知，这个使用人数很多，但是它的缩进太严格了
+    - if @replies.blank?
+      .blank_notice
+        还没有人回复...
+    - else
+      = render :partial => 'replies/reply', :collection => @replies
 
 .post_reply_panel.rectangle_panel
   .poset_panel_title.panel_name
@@ -58,8 +51,8 @@
         = image_tag 'sample_a.jpg'
     .input_panel
       %p
-        %textarea.editor{ :name => 'content' }
+        %textarea.editor.reply_content{ :name => 'content', :'data-topic_id' => @topic.id }
       %p.mt10
-        %a.submit_btn{ :href => 'javascript:;' } 确定
+        %a.submit_btn.replyBtn{ :href => 'javascript:;' } 确定
 
 

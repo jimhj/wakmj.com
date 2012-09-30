@@ -1,0 +1,13 @@
+.reply.clearfix
+  .avatar
+    %a{ :href => '#' }
+      = image_tag 'sample_a.jpg'
+  .reply_info
+    .reply_above.clearfix
+      .reply_above_left
+        %a.user_name.mr10{ :href => '#' }= reply.user_login
+        %span.time 20分钟前
+      .reply_above_right
+        %a{ :href => '#' } 回复
+    .relpy_content
+      = reply.content

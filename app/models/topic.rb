@@ -13,7 +13,7 @@ class Topic
 
   belongs_to :user, :inverse_of => :topics
   belongs_to :tv_drama, :inverse_of => :topics
-  has_many :replies
+  embeds_many :replies
 
   counter_cache :name => :tv_drama, :inverse_of => :topics
   counter_cache :name => :user, :inverse_of => :topics
