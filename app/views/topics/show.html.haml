@@ -45,14 +45,23 @@
 .post_reply_panel.rectangle_panel
   .poset_panel_title.panel_name
     发表回复
-  .form_panel.clearfix
-    .current_avatar
-      %a{ :href => '#' }
-        = image_tag 'sample_a.jpg'
-    .input_panel
-      %p
-        %textarea.editor.reply_content{ :name => 'content', :'data-topic_id' => @topic.id }
-      %p.mt10
-        %a.submit_btn.replyBtn{ :href => 'javascript:;' } 确定
+  - if signed_in?
+
+    .form_panel.clearfix
+      .current_avatar
+        %a{ :href => '#' }
+          = image_tag 'sample_a.jpg'
+      .input_panel
+        %p
+          %textarea.editor.reply_content{ :name => 'content', :'data-topic_id' => @topic.id }
+        %p.mt10
+          %a.submit_btn.replyBtn{ :href => 'javascript:;' } 确定
+  - else
+    .blank_notice
+      %a{ :href => sign_in_path } 登录
+      或
+      %a{ :href => sign_up_path } 注册
+      后才能发表回复
+
 
 

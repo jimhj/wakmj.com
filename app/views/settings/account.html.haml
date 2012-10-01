@@ -1,0 +1,12 @@
+- content_for :header_css do
+  = stylesheet_link_tag 'user'
+
+.settings_panel
+  .nav_tabs.clearfix
+    .topics.tab.active
+      %a{ :href => '#' } 账号设置
+    .downloads.tab
+      %a{ :href => '#' } 修改头像
+
+  .settings_form_panel
+    .edit_account

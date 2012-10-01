@@ -1,7 +1,8 @@
 @import 'global';
 
+// User Profile Styles
 .user_profile {
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   .user_info { color: $text-color; font-size: 14px; }
   .user_info .avatar { 
@@ -23,5 +24,15 @@
     .topic .above a.from_drama { color: $green; font-weight: bold; }
     .topic .below { font-size: 12px; color: $light_grey; }
     .topic .below a.user_name { color: $green; }
+  }
+}
+
+// Account Settings Styles
+
+.settings_panel {
+  width: 70%;
+  margin: 10px auto;
+  .settings_form_panel {
+    @include bg($white); min-height: 300px; @include shadow;
   }
 }

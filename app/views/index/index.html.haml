@@ -75,17 +75,10 @@
       %a.title{ :href => '#' } 最新帖子
       %a{ :href => '#' } 更多
     %ul
-      - 2.times do
+      - Topic.recent.each do |topic|
         %li 
-          %a{ :href => '#' } 你捅一下，我戳一下…… 好欢乐
-        %li 
-          %a{ :href => '#' } 我不喜欢英雄主义电影
-        %li
-          %a{ :href => '#' } 关于本片中种特效技术的不及格运用
-        %li
-          %a{ :href => '#' } 我为什么喜欢《So You Think You Can Dance》
-        %li 
-          %a{ :href => '#' } 我不喜欢英雄主义电影          
+          %a{ :href => topic_path(topic.id) }= topic.title
+         
   .newest_tv
     .title_bar
       %a.title{ :href => '#' } 新剧时间表

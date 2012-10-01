@@ -27,4 +27,8 @@ class Topic
 
   delegate :login, :to => :user, :prefix => true
 
+  def self.recent
+    Topic.desc('created_at').limit(10)
+  end
+
 end
