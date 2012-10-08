@@ -62,6 +62,11 @@
       a { color: $white; }
       &:hover { background: none repeat scroll 0 0 $green; }
     }
+
+    ul li.active {
+      @include bg($green);
+    }
+
   }
 
   .years { padding-top: 5px; .title_bar { margin-bottom: 5px; } }

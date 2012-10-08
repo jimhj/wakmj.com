@@ -39,29 +39,15 @@
 .right_container
   .tv_cates.dotted_bottom.clearfix
     %ul
-      - 2.times do
-        %li
-          %a{ :href => '#' } 科幻
-        %li
-          %a{ :href => '#' } 小子的
-        %li
-          %a{ :href => '#' } 喜剧
-        %li
-          %a{ :href => '#' } 悬疑            
-        %li
-          %a{ :href => '#' } 丧尸
-        %li
-          %a{ :href => '#' } 惊悚
-        %li
-          %a{ :href => '#' } 西部            
-        %li
-          %a{ :href => '#' } 西部
+      - TvCategory.all.each_with_index do |cate, index|
+        %li{ :class => index == 0 ? 'active' : nil }
+          %a{ :href => '#' }= cate.name
 
   .years.dotted_bottom.clearfix
     %ul
       - 2.times do
         %li
-          %a{ :href => '#' } 1999
+          %a.active{ :href => '#' } 1999
         %li
           %a{ :href => '#' } 2000
         %li

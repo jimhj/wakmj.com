@@ -13,6 +13,7 @@
     margin-left: 10px;
     a { font-size: 14px; padding: 5px 5px;  }
     a.active { background: none repeat scroll 0 0 green; }
+    a.active.red { @include bg($red); }
   }  
 }
 
@@ -51,9 +52,14 @@ img { border: none; }
     float: right;
     padding-right: 30px;
     @include li_nav;
+    ul li {
+      a { padding: 5px 5px; }
+      a:hover { @include bg($green); }
+    }    
     .authlogin {
       padding-top: -2px;
       a { font-size: 12px; }
+
       i.icon { margin-bottom: -3px; }
     }
   }

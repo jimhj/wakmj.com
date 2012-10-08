@@ -16,6 +16,8 @@
     %ul
       - if signed_in?
         %li
+          %a.active 0
+        %li
           %a{ :href => user_path(current_user.id) }= current_user.login
         %li
           %a{ :href => sign_out_path } 退出          
