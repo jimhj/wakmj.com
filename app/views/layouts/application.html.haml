@@ -12,4 +12,5 @@
     .main_container.clearfix
       = render 'shared/flash_notice'          
       = yield
-    = render 'layouts/shared/footer' 
+    = render 'layouts/shared/footer'
+    = yield :footer_script 

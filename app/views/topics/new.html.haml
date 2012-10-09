@@ -1,5 +1,7 @@
 - content_for :header_css do
   = stylesheet_link_tag 'topic'
+- content_for :header_js do
+  = javascript_include_tag 'lib/kindeditor/kindeditor-min', 'lib/kindeditor/lang/zh_CN'
 
 .new_topic_panel.rectangle_panel.common_form
   .panel_name
@@ -7,15 +9,36 @@
   .form_panel
     = form_tag topics_path do
       .blank_li.clearfix
-        %span 剧集:
+        %span.lab 剧集:
         %a.drama_name{ :href => tv_drama_path(@tv_drama) }= @tv_drama.tv_name
       .blank_li.clearfix
-        %span 标题:
+        %span.lab 标题:
         %input.long_text{ :type => 'text', :name => 'title' }
         = hidden_field_tag 'tv_drama_id', @tv_drama.id
       .blank_li.clearfix
-        %span 正文:
+        %span.lab 正文:
         %textarea.editor{ :name => 'content' }
       .blank_li.clearfix
-        %span &nbsp;
+        %span.lab &nbsp;
         %a.submit_btn{ :href => '#' } 确定
+
+- content_for :footer_script do
+  :javascript
+    var editor;
+    KindEditor.ready(function(K) {
+      editor = K.create('textarea.editor', {
+      resizeType: 1,
+      allowPreviewEmoticons: false,
+      allowImageUpload: false,
+      items: [
+        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+        'removeformat', 'select_photo', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+        'insertunorderedlist', 'quickformat', '|', 'link']
+      });
+    });
+
+    $('.form_panel a.submit_btn').click(function(){
+      editor.sync();
+    });
+
+

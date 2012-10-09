@@ -10,7 +10,7 @@
       - if can?(:update, @topic)
         %a{ :href => edit_topic_path(@topic) } 编辑 
   .topic_content
-    = @topic.content
+    = raw(@topic.content)
   .info_bar.clearfix
     .info_bar_left
       .drama_name

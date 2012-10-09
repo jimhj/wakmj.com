@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = '没有权限进行此项操作，请联系管理员'
-    redirect_to :back
+    redirect_to :root
     return
   end
 
