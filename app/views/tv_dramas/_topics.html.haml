@@ -7,7 +7,7 @@
       .left_side.clearfix
         .avatar
           %a{ :href => user_path(topic.user) }
-            = image_tag 'sample_a.jpg'
+            = image_tag topic.user.avatar_url(:small)
         .topic_summary
           .topic_title
             %a.user_name{ :href => user_path(topic.user) }= "#{topic.user_login}:"

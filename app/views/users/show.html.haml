@@ -4,18 +4,18 @@
 .user_profile
   .user_info.clearfix
     .avatar
-      = image_tag 'sample_b.jpg'
+      = image_tag @user.avatar_url(:big)
     .info
       %p
-        %span.user_name laohuang
+        %span.user_name= @user.login
       %p
         %span.topics
           主题数:
-          %em 287
+          %em= @user.topics_count
       %p
         %span.downloads
           下载资源: 
-          %em 17
+          %em= @user.download_resources_count
       %p
         %a.btn{ :href => '#' } 申请创建剧集组
 
@@ -33,11 +33,11 @@
 
     .resources_content
       .topic_panel
-        - 8.times do
+        - @topics.each do |topic|
           .topic
             .above
-              %a.from_drama{ :href => '#' } [生活大爆炸]
-              %a.topic_name{ :href => '#' } 广大人民群众只需花33元便可观看著名影星保剑锋被砍头
+              %a.from_drama{ :href => tv_drama_path(topic.tv_drama_id) }= "•#{topic.tv_drama.tv_name}•"
+              %a.topic_name{ :href => topic_path(topic.id) }= topic.title
             .below
               %span 发表于
               %span.created_at 2012-09-10 12:00:39

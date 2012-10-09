@@ -3,6 +3,8 @@
 class UsersController < ApplicationController
   
   def show
+    @user = User.find_by_id params[:id]
+    @topics = @user.topics.includes(:tv_drama).desc('created_at')
   end
 
   def create

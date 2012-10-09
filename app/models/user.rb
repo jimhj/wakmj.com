@@ -8,8 +8,11 @@ class User
 
   field :email, :type => String
   field :login, :type => String
-
+  field :avatar, :type => String, :default => ''
+  
   field :topics_count, :type => Integer, :default => 0
+  field :download_resources_count, :type => Integer, :default => 0
+
   field :weibo_uid, :type => String, :default => ''
   field :weibo_token, :type => String, :default => ''
 
@@ -28,6 +31,8 @@ class User
   validates_length_of :password, :minimum => 6
 
   attr_accessible :email, :login, :weibo_token, :weibo_uid
+
+  mount_uploader :avatar, AvatarUploader
 
   def has_role?(role)
     self.roles.include?(role)

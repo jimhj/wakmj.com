@@ -8,7 +8,7 @@ class TvDramasController < ApplicationController
   load_and_authorize_resource :only => [:edit, :update, :create, :new]
 
   def show
-    @topics = @tv_drama.topics.desc('created_at').paginate(:page => params[:page])
+    @topics = @tv_drama.topics.desc('created_at').includes(:user).paginate(:page => params[:page])
     @resources = @tv_drama.download_resources.desc('season').paginate(:page => params[:page])
 
     respond_to do |format|

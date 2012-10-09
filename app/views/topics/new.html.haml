@@ -17,6 +17,7 @@
         = hidden_field_tag 'tv_drama_id', @tv_drama.id
       .blank_li.clearfix
         %span.lab 正文:
+        %span{ :style => 'float:left;width:16px;' }
         %textarea.editor{ :name => 'content' }
       .blank_li.clearfix
         %span.lab &nbsp;
@@ -28,6 +29,8 @@
     KindEditor.ready(function(K) {
       editor = K.create('textarea.editor', {
       resizeType: 1,
+      width: '470px',
+      height: '300px',
       allowPreviewEmoticons: false,
       allowImageUpload: false,
       items: [
@@ -35,6 +38,7 @@
         'removeformat', 'select_photo', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
         'insertunorderedlist', 'quickformat', '|', 'link']
       });
+
     });
 
     $('.form_panel a.submit_btn').click(function(){

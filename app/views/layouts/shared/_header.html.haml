@@ -20,6 +20,8 @@
         %li
           %a{ :href => user_path(current_user.id) }= current_user.login
         %li
+          %a{ :href => account_setting_path } 设置          
+        %li
           %a{ :href => sign_out_path } 退出          
       - else
         %li

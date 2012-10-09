@@ -6,7 +6,19 @@
     .topics.tab.active
       %a{ :href => '#' } 账号设置
     .downloads.tab
-      %a{ :href => '#' } 修改头像
+      %a{ :href => '#' } 上传头像
+    .downloads.tab
+      %a{ :href => '#' } 修改密码
 
-  .settings_form_panel
+  .settings_form_panel.common_form
     .edit_account
+      .form_panel
+        .blank_li.clearfix
+          %span.lab 邮箱：
+          %input.white_text
+        .blank_li.clearfix
+          %span.lab 昵称：
+          %input.white_text
+        .blank_li.clearfix
+          %span.lab &nbsp;
+          %a.submit_btn{ :href => '#' } 确定        
