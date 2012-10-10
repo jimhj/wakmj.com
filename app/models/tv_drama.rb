@@ -38,4 +38,7 @@ class TvDrama
   validates :tv_name, :presence => true, :uniqueness => true
   validates_presence_of :cover
 
+  # def pre_releases
+  # end
+
 end

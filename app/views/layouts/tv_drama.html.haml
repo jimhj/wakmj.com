@@ -22,14 +22,19 @@
             %a.title 播出预告
 
           %ul.notice
-            - 6.times do
+            - pres = @tv_drama.pre_releases
+            - if pres.blank?
               %li
-                %span.version
-                  S01E08            
-                %span.time
-                  2012-10-21
-                %span.week
-                  周三
+                暂时没有播出信息...
+            - else
+              - @tv_drama.pre_releases.each do |pre|
+                %li
+                  %span.version
+                    = pre.season_epi            
+                  %span.time
+                    = pre.release_date.strftime('%F')
+                  %span.week
+                    = pre.release_day_of_week
 
         .new_replies.article_list.dotted_bottom
           .title_bar

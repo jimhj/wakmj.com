@@ -71,30 +71,14 @@
       %a{ :href => '#' } 更多
 
     %ul
-      - 4.times do
+      - PreRelease.recent.each do |pre|
         %li
-          %a{ :href => '#' }
+          %a{ :href => tv_drama_path(pre.tv_drama_id) }
             %span.time
-              2012-09-15
+              = pre.release_date.strftime('%F')
             %span.title
-              星球大战：克隆战争 
-            %span.version S05E01
-        %li
-          %a{ :href => '#' }
-            %span.time
-              2012-11-20
-            %span.title
-              犯罪现场调查之纽约篇 
-            %span.version S09E01
-
-        %li
-          %a{ :href => '#' }
-            %span.time
-              2012-12-23
-            %span.title
-              泽西制造 
-            %span.version 
-              S01E01             
+              = pre.tv_drama.tv_name 
+            %span.version= pre.season_epi            
 
 
 

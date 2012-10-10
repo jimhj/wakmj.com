@@ -7,12 +7,13 @@
   .settings_form_panel.common_form
     .edit_account
       .form_panel
-        .blank_li.clearfix
-          %span.lab 邮箱：
-          %input.white_text
-        .blank_li.clearfix
-          %span.lab 昵称：
-          %input.white_text
-        .blank_li.clearfix
-          %span.lab &nbsp;
-          %a.submit_btn{ :href => '#' } 确定      
+        = form_tag account_setting_path do
+          .blank_li.clearfix
+            %span.lab 邮箱：
+            %input.white_text{ :value => current_user.email, :disabled => true }
+          .blank_li.clearfix
+            %span.lab 昵称：
+            %input.white_text{ :name => 'login', :value => current_user.login }
+          .blank_li.clearfix
+            %span.lab &nbsp;
+            %a.submit_btn{ :href => 'javascript:;' } 确定      
