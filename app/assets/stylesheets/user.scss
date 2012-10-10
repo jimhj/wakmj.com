@@ -35,6 +35,10 @@
   .settings_form_panel {
     @include bg($white); min-height: 400px; @include shadow;
     color: $text-color;
-    .form_panel { padding: 10px 10px; margin-top: 0px; padding-top: 40px; }  
+    .edit_account .tit { font-size: 14px; color: $green; font-weight: bold; padding-bottom: 10px; padding-top: 20px; }
+    .form_panel { padding: 10px 10px; margin-top: 0px; padding-top: 40px; }
+
+    .current_avatar { float: left; margin-left: 80px; }
+    .upload { float: left; margin-left: 40px; p { margin-bottom: 10px; } }  
   }
 }

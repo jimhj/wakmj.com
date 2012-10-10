@@ -16,8 +16,9 @@ Wakmj::Application.routes.draw do
   resources :users, :except => [:index]
 
   scope 'settings' do
-    match 'avatar' => 'settings#avatar', :as => :avatar_setting
+    match 'avatar' => 'settings#avatar', :as => :avatar_setting, :via => [:get, :post]
     match 'account' => 'settings#account', :as => :account_setting, :via => [:get, :post]
+    match 'password' => 'settings#password', :as => :password_setting, :via => [:get, :post]
   end
 
 end

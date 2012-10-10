@@ -1,0 +1,24 @@
+- content_for :header_css do
+  = stylesheet_link_tag 'user'
+
+.settings_panel
+  = render 'tabs'
+
+  .settings_form_panel
+    .edit_account.clearfix
+      .current_avatar
+        .tit
+          当前头像
+        .avatar
+          = image_tag current_user.avatar_url(:big)
+
+      .upload
+        .tit
+          上传新头像
+        .upload_form
+          = form_tag avatar_setting_path, :multipart => true do
+            %p
+              %input{ :type => 'file', :name => 'avatar' }
+            %p
+              %a.submit_btn{ :href => 'javascript:;' } 确定
+       

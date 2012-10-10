@@ -1,0 +1,7 @@
+.nav_tabs.clearfix
+  .topics.tab{ :class => url_for == account_setting_path ? 'active' : nil }
+    %a{ :href => account_setting_path } 账号设置
+  .avatar.tab{ :class => url_for == avatar_setting_path ? 'active' : nil }
+    %a{ :href => avatar_setting_path } 上传头像
+  .password.tab{ :class => url_for == password_setting_path ? 'active' : nil }
+    %a{ :href => password_setting_path } 修改密码

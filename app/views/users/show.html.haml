@@ -26,10 +26,11 @@
         %a{ :href => '#' } 帖子
       .downloads.tab
         %a{ :href => '#' } 下载资源
-      .at_me.tab
-        %a{ :href => '#' } @我的
-      .notifies.tab
-        %a{ :href => '#' } 消息  
+      - if @user == current_user
+        .at_me.tab
+          %a{ :href => '#' } @我的
+        .notifies.tab
+          %a{ :href => '#' } 消息  
 
     .resources_content
       .topic_panel

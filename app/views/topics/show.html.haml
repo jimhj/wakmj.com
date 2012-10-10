@@ -16,7 +16,7 @@
       .drama_name
         %a{ :href => tv_drama_path(@tv_drama) }= @tv_drama.tv_name
       .topic_info
-        %a.mr10{ :href => '#' }= @topic.user_login
+        %a.mr10{ :href => user_path(@topic.user_id) }= @topic.user_login
         %span 发表于
         %span.time.mr10= @topic.created_at.strftime('%F %T')
         %span 最后由
@@ -25,8 +25,8 @@
     .info_bar_right
       .user_info
         .avatar
-          %a{ :href => '#' }
-            = image_tag 'sample_a.jpg'
+          %a{ :href => user_path(@topic.user_id) }
+            = image_tag @topic.user.avatar_url(:small)
 
 
 .replies
@@ -49,8 +49,8 @@
 
     .form_panel.clearfix
       .current_avatar
-        %a{ :href => '#' }
-          = image_tag 'sample_a.jpg'
+        %a{ :href => user_path(current_user) }
+          = image_tag current_user.avatar_url(:small)
       .input_panel
         %p
           %textarea.editor.reply_content{ :name => 'content', :'data-topic_id' => @topic.id }
