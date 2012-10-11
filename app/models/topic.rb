@@ -11,9 +11,12 @@ class Topic
   field :content
   field :replies_count, :type => Integer, :default => 0
 
+  field :last_replied_user_id
+  field :last_replied_at, :type => Time
+
   belongs_to :user, :inverse_of => :topics
   belongs_to :tv_drama, :inverse_of => :topics
-  embeds_many :replies
+  has_many :replies
 
   counter_cache :name => :tv_drama, :inverse_of => :topics
   counter_cache :name => :user, :inverse_of => :topics
@@ -26,9 +29,14 @@ class Topic
   validates_presence_of :user_id, :tv_drama_id
 
   delegate :login, :to => :user, :prefix => true
+  scope :recent, desc('created_at').limit(10)
 
-  def self.recent
-    Topic.desc('created_at').limit(10)
+  def last_replier
+    User.find_by_id(self.last_replied_user_id)
   end
+
+  # def self.recent
+  #   Topic.desc('created_at').limit(10)
+  # end
 
 end

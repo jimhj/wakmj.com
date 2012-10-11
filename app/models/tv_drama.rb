@@ -26,6 +26,7 @@ class TvDrama
   field :verify, :type => Boolean, :default => false
   field :created_by, :type => String, :default => ''
   field :last_edit_by, :type => String, :default => ''
+  field :last_topic_id
 
   index :verify => 1
 
@@ -33,10 +34,16 @@ class TvDrama
 
   has_many :topics
   has_many :pre_releases
+  has_many :replies
   embeds_many :download_resources
 
   validates :tv_name, :presence => true, :uniqueness => true
   validates_presence_of :cover
+
+  def last_topic
+    Topic.find_by_id(self.last_topic_id)
+  end
+
 
   # def pre_releases
   # end

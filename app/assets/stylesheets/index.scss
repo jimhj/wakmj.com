@@ -25,7 +25,6 @@
             padding: 5px 5px; font-size: 12px;  
             @include bg($green); color: $white; opacity: 0.6; 
           }
-
           a em { color: $green; font-weight: bold; padding-left: 5px; }
         }
       }
@@ -33,13 +32,20 @@
       .last_topic {
         border-top: 1px solid $w_grey;      
         @include bg(#F3F3F3);
+        font-size: 12px;
+        height: 20px;
+        padding: 5px 5px;
         .user {
-          font-size: 12px;
-          padding: 8px 5px;
+
           a { color: $text-color; }
           .avatar { float: left; }
           .topic { float: left; margin-left: 3px; }
         }
+
+        .none_topic {
+          color: $text-color;
+        }
+
       }
     
     }

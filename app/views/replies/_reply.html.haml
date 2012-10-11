@@ -1,12 +1,12 @@
 .reply.clearfix
   .avatar
-    %a{ :href => '#' }
-      = image_tag 'sample_a.jpg'
+    %a{ :href => user_path(reply.user) }
+      = image_tag reply.user.avatar_url(:small)
   .reply_info
     .reply_above.clearfix
       .reply_above_left
-        %a.user_name.mr10{ :href => '#' }= reply.user_login
-        %span.time 20分钟前
+        %a.user_name.mr10{ :href => user_path(reply.user) }= reply.user_login
+        %span.time.timeago{ :title => reply.created_at }
       .reply_above_right
         %a{ :href => '#' } 回复
     .relpy_content

@@ -14,10 +14,13 @@
             %a.topic_title_name{ :href => topic_path(topic) }= topic.title
           .topic_info
             %span 发表于
-            %span.created_at= topic.created_at.strftime('%F %T')
-            %span 最后由
-            %a.user_name{ :href => '#' } fresh_fish
-            %span 在 10 分钟前回复
+            %span.created_at.timeago{ :title => topic.created_at }
+            - if topic.last_replied_user_id.present?
+              %span 最后由
+              %a.user_name{ :href => user_path(topic.last_replied_user_id) }= topic.last_replier.login
+              %span 于
+              %span.timeago{ :title => topic.last_replied_at }
+              %span 回复
       .right_side
         %a.topic_relpy{ :href => topic_path(topic) }= topic.replies_count
         

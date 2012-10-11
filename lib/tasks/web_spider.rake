@@ -27,62 +27,6 @@ namespace :parse do
           scrap_download_res(new_drama, d_dom)
 
 
-
-
-
-
-          # tv_drama = {}
-          # d_dom = Nokogiri::HTML open(url)
-
-          # tv_drama[:tv_name] = d_dom.at('h2.tv').children[0].children[0].content
-          # detail_dom = d_dom.at('div.res_infobox')
-          # tv_drama[:remote_cover_url] = detail_dom.at('div.f_l_img').css('a')[0].attributes['href'].value
-          # summary_dom = detail_dom.at('ul.r_d_info').css('li')
-          # tv_drama[:category_list] = summary_dom[0].children[-1].content
-          # tv_drama[:tv_station] = summary_dom[0].children[1].content        
-          # tv_drama[:release_date] = summary_dom[2].children[-1].content.to_datetime
-          # tv_drama[:summary] = summary_dom[-1].at('div').content
-
-          # # due to the yyets.com.
-          # if summary_dom.size == 6
-          # elsif summary_dom.size == 10
-          #   tv_drama[:alias_name_list] = summary_dom[4].children[-1].content
-          #   tv_drama[:actor_list] = summary_dom[-4].children[-1].content
-          # end
-
-          # tv_drama[:verify] = true
-          # tv_drama.each_pair { |k, v| v.strip! if v.is_a?(String) }
-
-          # new_drama = TvDrama.create!(tv_drama)
-
-          # begin
-
-          #   p "start scraping download resources..."
-          #   resource = {}
-          #   download_dom = d_dom.css('ul.resod_list li').xpath('//li[@format="720P"]').collect do |li|
-          #     info = li.at('span.l a')
-
-          #     if info
-          #       resource[:link_text] = info.attribute_nodes.last.value
-          #       resource[:episode_format] = info.child.content
-          #       resource[:episode_size] = info.children.last.content
-          #       resource[:season] = resource[:link_text].scan(/S\d{2,2}/).first || 'S01'
-          #       resource[:episode] = resource[:link_text].scan(/E\d{2,2}/).first || 'E01'
-
-          #       link = li.at('span.r a').xpath("//a[@thunderrestitle='#{resource[:link_text]}']").first
-          #       resource[:download_link] = link.attribute_nodes.last.value  if link
-          #       new_drama.download_resources.create!(resource)
-
-          #     end
-
-
-          #   end
-          # rescue Exception => e
-          #   p e.inspect
-          #   puts "scrap download resources failed."
-          # end
-
-
           i += 1
           puts "Record added."
         rescue Exception => e

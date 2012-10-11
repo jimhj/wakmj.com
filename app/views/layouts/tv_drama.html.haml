@@ -39,20 +39,15 @@
         .new_replies.article_list.dotted_bottom
           .title_bar
             %a.title 最新回复
-          %ul   
-            - 2.times do
-              %li
-                %a{ :href => '#' } 
-                  %span asdasd123: 
-                  你捅一下，我戳一下…… 好欢乐
-              %li 
-                %a{ :href => '#' } 我不喜欢英雄主义电影
-              %li
-                %a{ :href => '#' } 关于本片中种特效技术的不及格运用
-              %li
-                %a{ :href => '#' } 我为什么喜欢《So You Think You Can Dance》
-              %li 
-                %a{ :href => '#' } 我不喜欢英雄主义电影 
+          %ul
+            - if @tv_drama.replies.recent.blank?
+              %li 暂无回复...
+            - else   
+              - @tv_drama.replies.recent.each do |reply|
+                %li
+                  %a{ :href => topic_path(reply.topic) } 
+                    %span= reply.user_login 
+                    = reply.content
 
         .latest_news.article_list
           .title_bar

@@ -18,10 +18,11 @@
       .topic_info
         %a.mr10{ :href => user_path(@topic.user_id) }= @topic.user_login
         %span 发表于
-        %span.time.mr10= @topic.created_at.strftime('%F %T')
-        %span 最后由
-        %a{ :href => '#' } laohuang
-        %span 于 3 分钟前回复
+        %span.time.mr10.timeago{ :title => @topic.created_at }
+        - if @topic.last_replied_user_id.present?
+          %span 最后由
+          %a{ :href => user_path(@topic.last_replied_user_id) }= @topic.last_replier.login
+          %span.timeago{ :title => @topic.last_replied_at }
     .info_bar_right
       .user_info
         .avatar

@@ -9,6 +9,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find_by_id params[:id]
     @tv_drama = @topic.tv_drama
     @replies = @topic.replies.desc('created_at')
+    # @recent_replies = @replies.recent
   end
 
   def new
@@ -23,6 +24,7 @@ class TopicsController < ApplicationController
     )
 
     if topic.save
+      topic.tv_drama.update_attribute(:last_topic_id, topic.id)
       redirect_to topic_path(topic)
     else
       flash[:error] = topic.errors.full_messages

@@ -8,7 +8,7 @@ class Reply
 
   field :content
     
-  embedded_in :topic
+  belongs_to :topic, :inverse_of => :replies
   belongs_to :user, :inverse_of => :replies
   belongs_to :tv_drama, :inverse_of => :replies
 
@@ -19,6 +19,9 @@ class Reply
   index :topic_id => 1
   index :user_id => 1
   index :tv_drama_id => 1
+  
+  delegate :login, :to => :user, :prefix => true
+  scope :recent, desc('created_at').limit(10)
 
 
   

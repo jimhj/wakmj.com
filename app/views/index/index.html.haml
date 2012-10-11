@@ -26,12 +26,16 @@
                 %em= tv_drama.download_resources_count
 
         .last_topic
-          .user.clearfix
-            .avatar
-              %a{ :href => '#' }
-                = image_tag 'sample.jpg', :size => '15x15'
-            .topic
-              %a{ :href => '#' } 浪漫主义者的悲歌——《阿拉伯的劳...
+          - if tv_drama.last_topic.present?
+            .user.clearfix
+              .avatar
+                %a{ :href => user_path(tv_drama.last_topic.user_id), :title => tv_drama.last_topic.user_login }
+                  = image_tag tv_drama.last_topic.user.avatar_url(:small), :size => '15x15'
+              .topic
+                %a{ :href => topic_path(tv_drama.last_topic_id), :title => tv_drama.last_topic.title }= tv_drama.last_topic.title.truncate(16)
+          - else
+            .none_topic
+              暂无主题...
 
   .pagination_panel
     = will_paginate(@tv_dramas, :class => 'digg_pagination')
@@ -59,7 +63,7 @@
   .tv_topics.dotted_bottom.article_list
     .title_bar
       %a.title{ :href => '#' } 最新帖子
-      %a{ :href => '#' } 更多
+      / %a{ :href => '#' } 更多
     %ul
       - Topic.recent.each do |topic|
         %li 
@@ -68,7 +72,7 @@
   .newest_tv
     .title_bar
       %a.title{ :href => '#' } 新剧时间表
-      %a{ :href => '#' } 更多
+      / %a{ :href => '#' } 更多
 
     %ul
       - PreRelease.recent.each do |pre|

@@ -1,5 +1,8 @@
 # = require jquery
 # = require jquery_ujs
+# = require lib/jquery.timeago
+# = require lib/jquery.timeago.zh-CN
+# = require_self
 
 Wakmj = window.Wakmj = {}
 
@@ -7,6 +10,10 @@ Wakmj.CommonEvents =
   init : ->
     this.__bindFormSubmitEvent()
     this.__bindLikeStuffEvent()
+    this.__bindJqueryTimeago()
+
+  __bindJqueryTimeago : ->
+    $('span.timeago').timeago()    
 
   __bindFormSubmitEvent : ->
 
