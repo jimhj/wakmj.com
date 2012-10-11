@@ -53,17 +53,14 @@
           .title_bar
             %a.title 相关资讯
           %ul
-            - 2.times do
-              %li 
-                %a{ :href => '#' } 你捅一下，我戳一下…… 好欢乐
-              %li 
-                %a{ :href => '#' } 我不喜欢英雄主义电影
+            - articles = @tv_drama.articles.limit(10)
+            - if articles.blank?
               %li
-                %a{ :href => '#' } 关于本片中种特效技术的不及格运用
-              %li
-                %a{ :href => '#' } 我为什么喜欢《So You Think You Can Dance》
-              %li 
-                %a{ :href => '#' } 我不喜欢英雄主义电影                     
+                %span 暂无相关资讯...
+            - else
+              - articles.each do |article|
+                %li 
+                  %a{ :href => article_path(article), :title => article.title }= article.title.truncate(30)                
 
 
     = render 'layouts/shared/footer'

@@ -1,28 +1,29 @@
-- if @topics.blank?
+- if topics.blank?
   .blank_notice
     暂时没有人发表...
+    %a{ :href => new_topic_path } 新建帖子
 - else
-  - @topics.each do |topic|
+  - topics.each do |topic|
     .topic.clearfix
       .left_side.clearfix
         .avatar
-          %a{ :href => user_path(topic.user) }
+          %a{ :href => user_path(topic.user_login) }
             = image_tag topic.user.avatar_url(:small)
         .topic_summary
           .topic_title
-            %a.user_name{ :href => user_path(topic.user) }= "#{topic.user_login}:"
+            %a.user_name{ :href => user_path(topic.user_login) }= "#{topic.user_login}:"
             %a.topic_title_name{ :href => topic_path(topic) }= topic.title
           .topic_info
             %span 发表于
             %span.created_at.timeago{ :title => topic.created_at }
             - if topic.last_replied_user_id.present?
               %span 最后由
-              %a.user_name{ :href => user_path(topic.last_replied_user_id) }= topic.last_replier.login
+              %a.user_name{ :href => user_path(topic.last_replier.login) }= topic.last_replier.login
               %span 于
               %span.timeago{ :title => topic.last_replied_at }
               %span 回复
       .right_side
         %a.topic_relpy{ :href => topic_path(topic) }= topic.replies_count
-        
+
 .pagination_panel
-  = will_paginate(@topics, :class => 'digg_pagination')        
+  = will_paginate(topics, :class => 'digg_pagination')        

@@ -1,0 +1,25 @@
+- content_for :header_css do
+  = stylesheet_link_tag 'topic'
+- content_for :header_js do
+  = javascript_include_tag 'topic'
+
+.topic_detail.rectangle_panel
+  .topic_name.panel_name.clearfix
+    %sapn.origin= @article.title
+    .opts
+  .topic_content
+    = simple_format(@article.content)
+  .info_bar.clearfix
+    .info_bar_left   
+      .topic_info
+        %a{ :href => tv_drama_path(@tv_drama) }= @tv_drama.tv_name
+    .info_bar_right{ :style => 'line-height:24px' }
+      %span 来自：
+      %a{ :href => @article.from }= @article.from
+      %span.time.mr10.timeago{ :title => @article.created_at }       
+
+
+
+
+
+

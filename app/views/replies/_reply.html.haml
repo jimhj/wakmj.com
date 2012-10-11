@@ -1,13 +1,13 @@
 .reply.clearfix
   .avatar
-    %a{ :href => user_path(reply.user) }
+    %a{ :href => user_path(reply.user_login) }
       = image_tag reply.user.avatar_url(:small)
   .reply_info
     .reply_above.clearfix
       .reply_above_left
-        %a.user_name.mr10{ :href => user_path(reply.user) }= reply.user_login
+        %a.user_name.mr10{ :href => user_path(reply.user_login) }= reply.user_login
         %span.time.timeago{ :title => reply.created_at }
       .reply_above_right
         %a{ :href => '#' } 回复
     .relpy_content
-      = reply.content
+      = replace_at_sym(reply.content)

@@ -10,6 +10,7 @@ class Ability
       can :manage, :all
       basic_read_only
     elsif user.has_role?('member')
+      # Like
       can :like, :resources
       # Topic
       can :create, Topic
@@ -27,6 +28,15 @@ class Ability
       end
       can :destroy, Reply do |reply|
         reply.user_id == user.id
+      end
+
+      # Comment 
+      can :create, Comment
+      can :update, Comment do |comment|
+        comment.user_id == user.id
+      end
+      can :destroy, Comment do |comment|
+        comment.user_id == user.id
       end
 
       if user.has_role?('editor')

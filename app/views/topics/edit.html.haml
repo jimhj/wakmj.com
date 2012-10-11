@@ -7,21 +7,20 @@
   .panel_name
     发表新主题
   .form_panel
-    = form_tag topics_path do
+    = form_tag topic_path(@topic), :method => 'PUT' do
       .blank_li.clearfix
         %span.lab 剧集:
         %a.drama_name{ :href => tv_drama_path(@tv_drama) }= @tv_drama.tv_name
       .blank_li.clearfix
         %span.lab 标题:
-        %input.long_text{ :type => 'text', :name => 'title' }
-        = hidden_field_tag 'tv_drama_id', @tv_drama.id
+        %input.long_text{ :type => 'text', :name => 'title', :value => @topic.title }
       .blank_li.clearfix
         %span.lab 正文:
         %span{ :style => 'float:left;width:16px;' }
-        %textarea.editor{ :name => 'content' }
+        %textarea.editor{ :name => 'content' }= @topic.content
       .blank_li.clearfix
         %span.lab &nbsp;
-        %a.submit_btn{ :href => '#' } 确定
+        %a.submit_btn{ :href => 'javascript:;' } 确定
 
 = render 'editor_js'
 

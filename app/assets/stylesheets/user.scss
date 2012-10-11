@@ -17,13 +17,32 @@
   }
 
   .user_resources { margin-top: 20px; }
-  .user_resources .resources_content { @include bg($white); min-height: 300px; @include shadow; } 
+  .user_resources .resources_content { @include bg($white); min-height: 300px; @include shadow; }
+  .user_resources .resources_content .blank_notice { font-size: 14px; } 
   .user_resources .resources_content .topic_panel {
     .topic { border-bottom: 1px solid $grey; line-height: 22px; padding: 10px 10px;}
-    .topic .above,  .topic .above a{  font-size: 14px; color: $text-color; }
+    .topic .above,  .topic .above a{  font-size: 12px; color: $text-color; }
     .topic .above a.from_drama { color: $green; font-weight: bold; }
     .topic .below { font-size: 12px; color: $light_grey; }
     .topic .below a.user_name { color: $green; }
+    .pagination_panel { padding: 5px 5px; font-size: 12px; }
+  }
+
+  .user_resources .resources_content .notifies_panel {
+    font-size: 12px;
+    color: $text-color;
+    .notify { border-bottom: 1px solid $grey; line-height: 22px; padding: 10px 10px;}
+    .notify a { color: $green; font-weight: bold; text-decoration: underline; padding: 0px 5px; }
+    .notify .above {
+      .left_side { float: left;  span.unread { color: $red; } }
+      .right_side { float: right; }
+    }
+
+    .notify .below {
+      color: $light_grey;
+      padding-top: 6px;
+      padding-left: 20px;
+    }
   }
 }
 

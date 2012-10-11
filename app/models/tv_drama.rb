@@ -32,13 +32,17 @@ class TvDrama
 
   mount_uploader :cover, CoverUploader
 
-  has_many :topics
-  has_many :pre_releases
-  has_many :replies
+  has_many :topics, :dependent => :destroy
+  has_many :pre_releases, :dependent => :destroy
+  has_many :replies, :dependent => :destroy
+  has_many :articles, :dependent => :destroy
+
   embeds_many :download_resources
 
   validates :tv_name, :presence => true, :uniqueness => true
   validates_presence_of :cover
+
+  scope :hots, desc(:likes_count)
 
   def last_topic
     Topic.find_by_id(self.last_topic_id)

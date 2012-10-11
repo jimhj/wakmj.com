@@ -43,7 +43,7 @@
     .title.panel_name
       简介
     .content
-      = @tv_drama.summary
+      = simple_format @tv_drama.summary
   .tv_relateds
     .nav_tabs.clearfix
       .topics.tab.active
@@ -55,7 +55,7 @@
 
     .resource_content
       .topics_panel
-        = render 'topics'
+        = render :partial => 'topics', :locals => { :topics => @topics }
 
       .downloads_panel.list_container
         .notice_ment

@@ -1,0 +1,15 @@
+.notify
+  .above.clearfix
+    .left_side
+      %span •
+      - unless notification.readed?
+        %span.unread 新
+      %a{ :href => user_path(notification.mentionable.user_login) }= notification.mentionable.user_login
+      %span 在对主题 
+      %a{ :href => topic_path(notification.mentionable.topic_id), :title => notification.mentionable.topic_title }= notification.mentionable.topic_title.truncate(40)
+      %span 的回复中提到了你
+    .right_side
+      %a{ :href => '#' } 删除
+  .below
+    = replace_at_sym notification.mentionable_content
+    

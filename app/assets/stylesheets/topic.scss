@@ -36,7 +36,7 @@
         .reply_above_right { float: right;  }
       }
 
-      .reply .reply_info .relpy_content { font-size: 12px; line-height: 22px; }
+      .reply .reply_info .relpy_content { font-size: 12px; line-height: 22px;  a { color: $green; font-weight: bold;} }
     }
   }
 

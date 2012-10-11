@@ -1,0 +1,155 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+$.fn.timeago	app/assets/javascripts/lib/jquery.timeago.js	/^  $.fn.timeago = function() {$/;"	f
+$t	app/assets/javascripts/lib/jquery.timeago.js	/^  var $t = $.timeago;$/;"	v
+A	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.2 (2012-07-21), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(z,m){function W(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function cb(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function M(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function k(a,b){if(W(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function A(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	f
+Ability	app/models/ability.rb	/^class Ability$/;"	c
+ActiveSupport	test/test_helper.rb	/^class ActiveSupport::TestCase$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Wakmj
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+ApplyToEdit	app/models/apply_to_edit.rb	/^class ApplyToEdit$/;"	c
+Article	app/models/article.rb	/^class Article$/;"	c
+ArticlesController	app/controllers/articles_controller.rb	/^class ArticlesController < ApplicationController$/;"	c
+AvatarUploader	app/uploaders/avatar_uploader.rb	/^class AvatarUploader < BaseUploader$/;"	c
+BaseModel	app/models/mongoid/base_model.rb	/^  module BaseModel$/;"	m	class:Mongoid
+BaseUploader	app/uploaders/base_uploader.rb	/^class BaseUploader < CarrierWave::Uploader::Base$/;"	c
+BrowsingTest	test/performance/browsing_test.rb	/^class BrowsingTest < ActionDispatch::PerformanceTest$/;"	c
+ClassMethods	app/models/mongoid/base_model.rb	/^    module ClassMethods$/;"	m	class:Mongoid.BaseModel
+ClassMethods	app/models/mongoid/counter_cache.rb	/^    module ClassMethods$/;"	m	class:Mongoid.CounterCache
+Comment	app/models/comment.rb	/^class Comment$/;"	c
+CounterCache	app/models/mongoid/counter_cache.rb	/^  module CounterCache$/;"	m	class:Mongoid
+CoverUploader	app/uploaders/cover_uploader.rb	/^class CoverUploader < BaseUploader$/;"	c
+DownloadResource	app/models/download_resource.rb	/^class DownloadResource$/;"	c
+IndexController	app/controllers/index_controller.rb	/^class IndexController < ApplicationController$/;"	c
+K.swfupload	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^K.swfupload = function(element, options) {$/;"	f
+Likeable	app/models/mongoid/likeable.rb	/^  module Likeable$/;"	m	class:Mongoid
+LikesController	app/controllers/likes_controller.rb	/^class LikesController < ApplicationController$/;"	c
+Mongoid	app/models/mongoid/base_model.rb	/^module Mongoid$/;"	m
+Mongoid	app/models/mongoid/counter_cache.rb	/^module Mongoid$/;"	m
+Mongoid	app/models/mongoid/likeable.rb	/^module Mongoid$/;"	m
+Mongoid	app/models/mongoid/will_paginate.rb	/^module Mongoid$/;"	m
+Object	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.2 (2012-07-21), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(z,m){function W(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function cb(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function M(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function k(a,b){if(W(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function A(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	c
+Object.toString	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.2 (2012-07-21), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(z,m){function W(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function cb(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function M(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function k(a,b){if(W(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function A(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	m
+PreRelease	app/models/pre_release.rb	/^class PreRelease$/;"	c
+RepliesController	app/controllers/replies_controller.rb	/^class RepliesController < ApplicationController$/;"	c
+Reply	app/models/reply.rb	/^class Reply$/;"	c
+SWFUpload	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^SWFUpload.prototype.initSWFUpload = function (settings) {$/;"	c
+SWFUpload.BUTTON_ACTION.SELECT_FILE	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^	SELECT_FILE  : -100,$/;"	p
+SWFUpload.CURSOR.ARROW	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^	ARROW : -1,$/;"	p
+SWFUpload.FILE_STATUS.QUEUED	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^	QUEUED		 : -1,$/;"	p
+SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^	QUEUE_LIMIT_EXCEEDED	  		: -100,$/;"	p
+SWFUpload.UPLOAD_ERROR.HTTP_ERROR	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^	HTTP_ERROR				  		: -200,$/;"	p
+SWFUpload.WINDOW_MODE.OPAQUE	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^	OPAQUE : "opaque"$/;"	p
+SWFUpload.WINDOW_MODE.TRANSPARENT	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^	TRANSPARENT : "transparent",$/;"	p
+SWFUpload.WINDOW_MODE.WINDOW	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^	WINDOW : "window",$/;"	p
+SWFUpload.initSWFUpload	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^SWFUpload.prototype.initSWFUpload = function (settings) {$/;"	m
+SettingsController	app/controllers/settings_controller.rb	/^class SettingsController < ApplicationController$/;"	c
+Topic	app/models/topic.rb	/^class Topic$/;"	c
+TopicsController	app/controllers/topics_controller.rb	/^class TopicsController < ApplicationController$/;"	c
+TvCategory	app/models/tv_category.rb	/^class TvCategory$/;"	c
+TvDrama	app/models/tv_drama.rb	/^class TvDrama$/;"	c
+TvDramasController	app/controllers/tv_dramas_controller.rb	/^class TvDramasController < ApplicationController$/;"	c
+User	app/models/user.rb	/^class User$/;"	c
+UsersController	app/controllers/users_controller.rb	/^class UsersController < ApplicationController$/;"	c
+Wakmj	config/application.rb	/^module Wakmj$/;"	m
+WillPaginate	app/models/mongoid/will_paginate.rb	/^  module WillPaginate$/;"	m	class:Mongoid
+account	app/controllers/settings_controller.rb	/^  def account$/;"	f	class:SettingsController
+authenticate	app/models/user.rb	/^    def authenticate(email, password)$/;"	f	class:User
+avatar	app/controllers/settings_controller.rb	/^  def avatar$/;"	f	class:SettingsController
+base_options	app/models/mongoid/will_paginate.rb	/^    def base_options(options)$/;"	f	class:Mongoid.WillPaginate
+basic_read_only	app/models/ability.rb	/^  def basic_read_only$/;"	f	class:Ability
+cb	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.2 (2012-07-21), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(z,m){function W(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function cb(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function M(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function k(a,b){if(W(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function A(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	f
+cb.M	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.2 (2012-07-21), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(z,m){function W(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function cb(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function M(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function k(a,b){if(W(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function A(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	f
+cb.k	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.2 (2012-07-21), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(z,m){function W(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function cb(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function M(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function k(a,b){if(W(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function A(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	f
+check_signed_in	app/controllers/index_controller.rb	/^  def check_signed_in$/;"	f	class:IndexController
+clear_login_state	app/controllers/application_controller.rb	/^  def clear_login_state$/;"	f	class:ApplicationController
+counter_cache	app/models/mongoid/counter_cache.rb	/^      def counter_cache(metadata)$/;"	f	class:Mongoid.CounterCache.ClassMethods
+create	app/controllers/likes_controller.rb	/^  def create$/;"	f	class:LikesController
+create	app/controllers/replies_controller.rb	/^  def create$/;"	f	class:RepliesController
+create	app/controllers/topics_controller.rb	/^  def create$/;"	f	class:TopicsController
+create	app/controllers/tv_dramas_controller.rb	/^  def create$/;"	f	class:TvDramasController
+create	app/controllers/users_controller.rb	/^  def create$/;"	f	class:UsersController
+current_user	app/controllers/application_controller.rb	/^  def current_user    $/;"	f	class:ApplicationController
+current_user=	app/controllers/application_controller.rb	/^  def current_user=(new_user)$/;"	f	class:ApplicationController
+default_url	app/uploaders/avatar_uploader.rb	/^  def default_url$/;"	f	class:AvatarUploader
+destroy	app/controllers/likes_controller.rb	/^  def destroy$/;"	f	class:LikesController
+distance	app/assets/javascripts/lib/jquery.timeago.js	/^  function distance(date) {$/;"	f
+e	app/assets/javascripts/lib/kindeditor/plugins/code/prettify.js	/^(function(){function L(a){function m(a){var f=a.charCodeAt(0);if(f!==92)return f;var b=a.charAt(1);return(f=r[b])?f:"0"<=b&&b<="7"?parseInt(a.substring(1),8):b==="u"||b==="x"?parseInt(a.substring(2),16):a.charCodeAt(1)}function e(a){if(a<32)return(a<16?"\\\\x0":"\\\\x")+a.toString(16);a=String.fromCharCode(a);if(a==="\\\\"||a==="-"||a==="["||a==="]")a="\\\\"+a;return a}function h(a){for(var f=a.substring(1,a.length-1).match(\/\\\\u[\\dA-Fa-f]{4}|\\\\x[\\dA-Fa-f]{2}|\\\\[0-3][0-7]{0,2}|\\\\[0-7]{1,2}|\\\\[\\S\\s]|[^\\\\]\/g),a=$/;"	f
+edit	app/controllers/tv_dramas_controller.rb	/^  def edit$/;"	f	class:TvDramasController
+extension_white_list	app/uploaders/base_uploader.rb	/^  def extension_white_list$/;"	f	class:BaseUploader
+fancy_tag	app/helpers/application_helper.rb	/^  def fancy_tag(likeable)$/;"	f	class:ApplicationHelper
+filename	app/uploaders/base_uploader.rb	/^  def filename$/;"	f	class:BaseUploader
+fill_pager_with	app/models/mongoid/will_paginate.rb	/^    def fill_pager_with(medias, size, pager)$/;"	f	class:Mongoid.WillPaginate
+find_by_id	app/models/mongoid/base_model.rb	/^      def find_by_id(id)$/;"	f	class:Mongoid.BaseModel.ClassMethods
+find_in_batches	app/models/mongoid/base_model.rb	/^      def find_in_batches(opts = {})$/;"	f	class:Mongoid.BaseModel.ClassMethods
+find_likeable	app/controllers/likes_controller.rb	/^  def find_likeable$/;"	f	class:LikesController
+h	app/assets/javascripts/lib/kindeditor/plugins/code/prettify.js	/^(function(){function L(a){function m(a){var f=a.charCodeAt(0);if(f!==92)return f;var b=a.charAt(1);return(f=r[b])?f:"0"<=b&&b<="7"?parseInt(a.substring(1),8):b==="u"||b==="x"?parseInt(a.substring(2),16):a.charCodeAt(1)}function e(a){if(a<32)return(a<16?"\\\\x0":"\\\\x")+a.toString(16);a=String.fromCharCode(a);if(a==="\\\\"||a==="-"||a==="["||a==="]")a="\\\\"+a;return a}function h(a){for(var f=a.substring(1,a.length-1).match(\/\\\\u[\\dA-Fa-f]{4}|\\\\x[\\dA-Fa-f]{2}|\\\\[0-3][0-7]{0,2}|\\\\[0-7]{1,2}|\\\\[\\S\\s]|[^\\\\]\/g),a=$/;"	f
+has_role?	app/models/user.rb	/^  def has_role?(role)$/;"	f	class:User
+inWords	app/assets/javascripts/lib/jquery.timeago.js	/^  function inWords(date) {$/;"	f
+index	app/controllers/articles_controller.rb	/^  def index$/;"	f	class:ArticlesController
+index	app/controllers/index_controller.rb	/^  def index$/;"	f	class:IndexController
+init_tv_drama	app/controllers/tv_dramas_controller.rb	/^  def init_tv_drama$/;"	f	class:TvDramasController
+initialize	app/assets/javascripts/lib/kindeditor/plugins/baidumap/map.html	/^			function initialize() {$/;"	f
+initialize	app/assets/javascripts/lib/kindeditor/plugins/map/map.html	/^		function initialize() {$/;"	f
+initialize	app/models/ability.rb	/^  def initialize(user)$/;"	f	class:Ability
+jQuery.timeago.settings.strings.day	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  day: "1 天",$/;"	p
+jQuery.timeago.settings.strings.days	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  days: "%d 天",$/;"	p
+jQuery.timeago.settings.strings.hour	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  hour: "大约 1 小时",$/;"	p
+jQuery.timeago.settings.strings.hours	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  hours: "大约 %d 小时",$/;"	p
+jQuery.timeago.settings.strings.minute	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  minute: "大约 1 分钟",$/;"	p
+jQuery.timeago.settings.strings.minutes	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  minutes: "%d 分钟",$/;"	p
+jQuery.timeago.settings.strings.month	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  month: "大约 1 个月",$/;"	p
+jQuery.timeago.settings.strings.months	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  months: "%d 月",$/;"	p
+jQuery.timeago.settings.strings.numbers	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  numbers: [],$/;"	p
+jQuery.timeago.settings.strings.prefixAgo	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  prefixAgo: null,$/;"	p
+jQuery.timeago.settings.strings.prefixFromNow	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  prefixFromNow: "从现在开始",$/;"	p
+jQuery.timeago.settings.strings.seconds	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  seconds: "不到 1 分钟",$/;"	p
+jQuery.timeago.settings.strings.suffixAgo	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  suffixAgo: "之前",$/;"	p
+jQuery.timeago.settings.strings.suffixFromNow	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  suffixFromNow: null,$/;"	p
+jQuery.timeago.settings.strings.year	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  year: "大约 1 年",$/;"	p
+jQuery.timeago.settings.strings.years	app/assets/javascripts/lib/jquery.timeago.zh-CN.js	/^  years: "%d 年",$/;"	p
+last_replier	app/models/topic.rb	/^  def last_replier$/;"	f	class:Topic
+last_topic	app/models/tv_drama.rb	/^  def last_topic$/;"	f	class:TvDrama
+like	app/models/user.rb	/^  def like(likeable)$/;"	f	class:User
+liked_by_user?	app/models/mongoid/likeable.rb	/^    def liked_by_user?(user)$/;"	f	class:Mongoid.Likeable
+login_from_cookie	app/controllers/application_controller.rb	/^  def login_from_cookie$/;"	f	class:ApplicationController
+login_from_session	app/controllers/application_controller.rb	/^  def login_from_session$/;"	f	class:ApplicationController
+new	app/controllers/topics_controller.rb	/^  def new$/;"	f	class:TopicsController
+new	app/controllers/tv_dramas_controller.rb	/^  def new$/;"	f	class:TvDramasController
+paginate	app/models/mongoid/will_paginate.rb	/^    def paginate(options = {})$/;"	f	class:Mongoid.WillPaginate
+pass	app/models/apply_to_edit.rb	/^  def pass$/;"	f	class:ApplyToEdit
+password	app/controllers/settings_controller.rb	/^  def password$/;"	f	class:SettingsController
+prepareData	app/assets/javascripts/lib/jquery.timeago.js	/^  function prepareData(element) {$/;"	f
+q	app/assets/javascripts/lib/kindeditor/plugins/code/prettify.js	/^var q=null;window.PR_SHOULD_USE_CONTINUATION=!0;$/;"	v
+ra	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^"")}function ra(a,b,c){c=c===m?",":c;return(c+b+c).indexOf(c+a+c)>=0}function r(a){return a&&\/^\\d+$\/.test(a)?a+"px":a}function s(a){var b;return a&&(b=\/(\\d+)\/.exec(a))?parseInt(b[1],10):0}function D(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function Fa(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function da(a){var b=a.split("-"),a="";k(b,function(b,d){a+=b>0?d.charAt(0).toUpperCase()+d.substr(1):$/;"	f
+ra.D	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^"")}function ra(a,b,c){c=c===m?",":c;return(c+b+c).indexOf(c+a+c)>=0}function r(a){return a&&\/^\\d+$\/.test(a)?a+"px":a}function s(a){var b;return a&&(b=\/(\\d+)\/.exec(a))?parseInt(b[1],10):0}function D(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function Fa(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function da(a){var b=a.split("-"),a="";k(b,function(b,d){a+=b>0?d.charAt(0).toUpperCase()+d.substr(1):$/;"	f
+ra.r	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^"")}function ra(a,b,c){c=c===m?",":c;return(c+b+c).indexOf(c+a+c)>=0}function r(a){return a&&\/^\\d+$\/.test(a)?a+"px":a}function s(a){var b;return a&&(b=\/(\\d+)\/.exec(a))?parseInt(b[1],10):0}function D(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function Fa(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function da(a){var b=a.split("-"),a="";k(b,function(b,d){a+=b>0?d.charAt(0).toUpperCase()+d.substr(1):$/;"	f
+ra.s	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^"")}function ra(a,b,c){c=c===m?",":c;return(c+b+c).indexOf(c+a+c)>=0}function r(a){return a&&\/^\\d+$\/.test(a)?a+"px":a}function s(a){var b;return a&&(b=\/(\\d+)\/.exec(a))?parseInt(b[1],10):0}function D(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function Fa(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function da(a){var b=a.split("-"),a="";k(b,function(b,d){a+=b>0?d.charAt(0).toUpperCase()+d.substr(1):$/;"	f
+recent	app/models/pre_release.rb	/^  def self.recent$/;"	F	class:PreRelease
+refresh	app/assets/javascripts/lib/jquery.timeago.js	/^  function refresh() {$/;"	f
+release_day_of_week	app/models/pre_release.rb	/^  def release_day_of_week$/;"	f	class:PreRelease
+require_login	app/controllers/application_controller.rb	/^  def require_login$/;"	f	class:ApplicationController
+return	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.2 (2012-07-21), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(z,m){function W(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function cb(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function M(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function k(a,b){if(W(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function A(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	c
+return.toString	app/assets/javascripts/lib/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.2 (2012-07-21), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(z,m){function W(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function cb(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function M(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function k(a,b){if(W(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function A(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	m
+search	app/assets/javascripts/lib/kindeditor/plugins/baidumap/map.html	/^			function search(address) {$/;"	f
+search	app/assets/javascripts/lib/kindeditor/plugins/map/map.html	/^		function search(address) {$/;"	f
+season_epi	app/models/pre_release.rb	/^  def season_epi$/;"	f	class:PreRelease
+show	app/controllers/articles_controller.rb	/^  def show$/;"	f	class:ArticlesController
+show	app/controllers/topics_controller.rb	/^  def show$/;"	f	class:TopicsController
+show	app/controllers/tv_dramas_controller.rb	/^  def show$/;"	f	class:TvDramasController
+show	app/controllers/users_controller.rb	/^  def show$/;"	f	class:UsersController
+sign_in	app/controllers/index_controller.rb	/^  def sign_in$/;"	f	class:IndexController
+sign_out	app/controllers/index_controller.rb	/^  def sign_out$/;"	f	class:IndexController
+sign_up	app/controllers/index_controller.rb	/^  def sign_up$/;"	f	class:IndexController
+signed_in?	app/controllers/application_controller.rb	/^  def signed_in?$/;"	f	class:ApplicationController
+store_dir	app/uploaders/base_uploader.rb	/^  def store_dir$/;"	f	class:BaseUploader
+test_homepage	test/performance/browsing_test.rb	/^  def test_homepage$/;"	f	class:BrowsingTest
+timeago	app/assets/javascripts/lib/jquery.timeago.js	/^\/**$/;"	f
+unlike	app/models/user.rb	/^  def unlike(likeable)$/;"	f	class:User
+update	app/controllers/tv_dramas_controller.rb	/^  def update$/;"	f	class:TvDramasController
+window.SWFUpload	app/assets/javascripts/lib/kindeditor/plugins/multiimage/multiimage.js	/^window.SWFUpload = function (settings) {$/;"	c

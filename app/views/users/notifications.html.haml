@@ -1,0 +1,24 @@
+- content_for :header_css do
+  = stylesheet_link_tag 'user'
+
+.user_profile
+  = render 'profile'
+
+  .user_resources
+    = render 'tabs'
+
+    .resources_content
+      .notifies_panel
+        - if @notifications.blank?
+          .blank_notice
+            暂无消息...
+        - else
+          - @notifications.each do |notification|
+            = render :partial => "users/#{notification.class.name.underscore}", :locals => { :notification => notification }
+          .pagination_panel
+            = will_paginate(@notifications, :class => 'digg_pagination')            
+
+
+
+
+

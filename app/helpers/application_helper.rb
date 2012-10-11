@@ -17,4 +17,15 @@ module ApplicationHelper
     raw(icon + link)
   end
 
+
+  def replace_at_sym(text)
+    return '' if text.blank?
+    user_names = text.scan(/@(.[^\s]{1,20})/).flatten
+    user_names.each do |user_name|
+      _u = '@' + user_name
+      text[_u] = link_to(_u, user_path(user_name))
+    end
+    text.html_safe
+  end  
+
 end

@@ -31,6 +31,9 @@ gem 'will_paginate', '~> 3.0.3'
 # Web Parser
 gem 'nokogiri', :require => false
 
+# Queue
+gem 'sidekiq', '~> 2.1.0'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

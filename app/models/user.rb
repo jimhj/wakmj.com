@@ -12,6 +12,7 @@ class User
   
   field :topics_count, :type => Integer, :default => 0
   field :download_resources_count, :type => Integer, :default => 0
+  field :notifications_count, :type => Integer, :default => 0
 
   field :weibo_uid, :type => String, :default => ''
   field :weibo_token, :type => String, :default => ''
@@ -22,7 +23,9 @@ class User
   index :email => 1
   index :login => 1
 
-  has_many :topics
+  has_many :topics, :dependent => :destroy
+  has_many :notifications, :class_name => 'Notification::Base', :dependent => :destroy
+  has_many :replies, :dependent => :destroy
 
   validates :email, :presence => true, 
                     :uniqueness => true,
@@ -30,8 +33,10 @@ class User
   # validates :login, :presence => true, :length => { :minimum => 2, :maximum => 20 }
   validates_length_of :login, :minimum => 2, :maximum => 20
   validates_length_of :password, :minimum => 6
+  validates_uniqueness_of :login
+  validates_presence_of :password, :password_confirmation
 
-  attr_accessible :email, :login, :weibo_token, :weibo_uid
+  attr_accessible :email, :login, :weibo_token, :weibo_uid, :roles
 
   mount_uploader :avatar, AvatarUploader
 
@@ -55,6 +60,20 @@ class User
     likeable.touch
   end
 
+  def read_notifications(notifications)
+    unread_ids = notifications.find_all{ |notification| !notification.readed? }.map(&:_id)
+    if unread_ids.any?
+      Notification::Base.where({
+        :user_id => self.id,
+        :_id.in  => unread_ids,
+        :readed    => false
+      }).update_all(:readed => true)
+    end    
+  end
+
+  def unread_notifications_count
+    self.notifications.where(:readed => false).count
+  end
 
   class << self
 

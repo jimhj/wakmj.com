@@ -1,0 +1,10 @@
+.nav_tabs.clearfix
+  .topics.tab{ :class => url_for == user_path(@user.login) ? 'active' : nil }
+    %a{ :href => user_path(@user.login) } 帖子
+  / .downloads.tab
+  /   %a{ :href => '#' } 下载资源
+  - if @user == current_user
+    / .at_me.tab
+    /   %a{ :href => '#' } @我的
+    .notifies.tab{ :class => url_for == notifications_user_path(@user.login) ? 'active' : nil }
+      %a{ :href => notifications_user_path(@user.login) } 消息  

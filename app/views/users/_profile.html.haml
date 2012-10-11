@@ -1,0 +1,16 @@
+.user_info.clearfix
+  .avatar
+    = image_tag @user.avatar_url(:big)
+  .info
+    %p
+      %span.user_name= @user.login
+    %p
+      %span.topics
+        帖子数:
+        %em= @user.topics_count
+    %p
+      %span.downloads
+        下载资源: 
+        %em= @user.download_resources_count
+    %p
+      %a.btn{ :href => '#' } 申请创建剧集组

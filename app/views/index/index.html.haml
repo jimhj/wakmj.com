@@ -3,39 +3,44 @@
 
 .left_container
   .tv_list
-    - @tv_dramas.each do |tv_drama|
-      .tv
-        .above.clearfix
-          .cover
-            %a{ :href => tv_drama_path(tv_drama.id) }
-              = image_tag tv_drama.cover_url(:small)
-          .tools
-            .tv_name
-              %a{ :href => tv_drama_path(tv_drama.id), :title => tv_drama.tv_name }= tv_drama.tv_name.truncate(10)
-            .likes
+    - if @tv_dramas.blank?
+      .blank_notice{ :style => 'color: green;' }
+        %span 没有找到匹配的数据....
+    - else
+      - @tv_dramas.each do |tv_drama|
+        .tv
+          .above.clearfix
+            .cover
               %a{ :href => tv_drama_path(tv_drama.id) }
-                %span 喜欢
-                %em= tv_drama.likes_count
-            .topics
-              %a{ :href => tv_drama_path(tv_drama.id) }
-                %span 主题
-                %em= tv_drama.topics_count
-            .res
-              %a{ :href => tv_drama_path(tv_drama.id) }
-                %span 资源
-                %em= tv_drama.download_resources_count
+                = image_tag tv_drama.cover_url(:small)
+            .tools
+              .tv_name
+                %a{ :href => tv_drama_path(tv_drama.id), :title => tv_drama.tv_name }= tv_drama.tv_name.truncate(10)
+              .likes
+                %a{ :href => tv_drama_path(tv_drama.id) }
+                  %span 喜欢
+                  %em= tv_drama.likes_count
+              .topics
+                %a{ :href => tv_drama_path(tv_drama.id) }
+                  %span 主题
+                  %em= tv_drama.topics_count
+              .res
+                %a{ :href => tv_drama_path(tv_drama.id) }
+                  %span 资源
+                  %em= tv_drama.download_resources_count
 
-        .last_topic
-          - if tv_drama.last_topic.present?
-            .user.clearfix
-              .avatar
-                %a{ :href => user_path(tv_drama.last_topic.user_id), :title => tv_drama.last_topic.user_login }
-                  = image_tag tv_drama.last_topic.user.avatar_url(:small), :size => '15x15'
-              .topic
-                %a{ :href => topic_path(tv_drama.last_topic_id), :title => tv_drama.last_topic.title }= tv_drama.last_topic.title.truncate(16)
-          - else
-            .none_topic
-              暂无主题...
+          .last_topic
+            - if tv_drama.last_topic_id.present?
+              - last_topic = tv_drama.last_topic
+              .user.clearfix
+                .avatar
+                  %a{ :href => user_path(last_topic.user_login), :title => last_topic.user_login }
+                    = image_tag last_topic.user.avatar_url(:small), :size => '15x15'
+                .topic
+                  %a{ :href => topic_path(tv_drama.last_topic_id), :title => last_topic.title }= last_topic.title.truncate(16)
+            - else
+              .none_topic
+                暂无主题...
 
   .pagination_panel
     = will_paginate(@tv_dramas, :class => 'digg_pagination')
@@ -43,21 +48,19 @@
 .right_container
   .tv_cates.dotted_bottom.clearfix
     %ul
+      %li{ :class => params[:cate].blank? ? 'active' : nil }
+        %a{ :href => url_for(:year => request.query_parameters[:year]) } 全部
       - TvCategory.all.each_with_index do |cate, index|
-        %li{ :class => index == 0 ? 'active' : nil }
-          %a{ :href => '#' }= cate.name
+        %li{ :class => params[:cate] == cate.name ? 'active' : nil }
+          %a{ :href => url_for(:cate => cate.name, :year => request.query_parameters[:year]) }= cate.name
 
   .years.dotted_bottom.clearfix
     %ul
-      - 2.times do
-        %li
-          %a.active{ :href => '#' } 1999
-        %li
-          %a{ :href => '#' } 2000
-        %li
-          %a{ :href => '#' } 2012
-        %li
-          %a{ :href => '#' } 2011            
+      %li{ :class => params[:year].blank? ? 'active' : nil }
+        %a{ :href => url_for(:cate => request.query_parameters[:cate]) } 全部
+      - 1999.upto(2012).each do |year|
+        %li{ :class => params[:year] == year.to_s ? 'active' : nil }
+          %a.active{ :href => url_for(:year => year, :cate => request.query_parameters[:cate]) }= year        
 
 
   .tv_topics.dotted_bottom.article_list

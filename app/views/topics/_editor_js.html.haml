@@ -1,0 +1,21 @@
+- content_for :footer_script do
+  :javascript
+    var editor;
+    KindEditor.ready(function(K) {
+      editor = K.create('textarea.editor', {
+      resizeType: 1,
+      width: '470px',
+      height: '300px',
+      allowPreviewEmoticons: false,
+      allowImageUpload: false,
+      items: [
+        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+        'removeformat', 'select_photo', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+        'insertunorderedlist', 'quickformat', '|', 'link']
+      });
+
+    });
+
+    $('.form_panel a.submit_btn').click(function(){
+      editor.sync();
+    });

@@ -4,12 +4,11 @@ class TopicsController < ApplicationController
   layout 'tv_drama'
 
   load_and_authorize_resource :except => [:show]
+  before_filter :init_topic, :only => [:show, :edit, :update]
 
   def show
-    @topic = Topic.find_by_id params[:id]
     @tv_drama = @topic.tv_drama
-    @replies = @topic.replies.desc('created_at')
-    # @recent_replies = @replies.recent
+    @replies = @topic.replies.asc('created_at')
   end
 
   def new
@@ -31,6 +30,27 @@ class TopicsController < ApplicationController
       redirect_to :back
     end
 
+  end
+
+  def edit
+    @tv_drama = @topic.tv_drama
+  end
+
+  def update
+    @topic.title = params[:title]
+    @topic.content = params[:content]
+    if @topic.save
+      redirect_to topic_path(@topic)
+    else
+      flash[:error] = @topic.errors.full_messages
+      redirect_to :back
+    end
+  end
+
+  private
+
+  def init_topic
+    @topic = Topic.find_by_id params[:id]
   end
 
 
