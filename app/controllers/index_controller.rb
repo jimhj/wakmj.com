@@ -4,7 +4,7 @@ class IndexController < ApplicationController
   before_filter :require_login, :only => [:sign_out]
 
   def index
-    @tv_dramas = TvDrama.desc('created_at')
+    @tv_dramas = TvDrama.asc('created_at')
     if params[:cate]
       @tv_dramas = @tv_dramas.where(:categories => params[:cate])
     end
