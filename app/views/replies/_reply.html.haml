@@ -8,6 +8,6 @@
         %a.user_name.mr10{ :href => user_path(reply.user_login) }= reply.user_login
         %span.time.timeago{ :title => reply.created_at }
       .reply_above_right
-        %a{ :href => '#' } 回复
+        %a.at_user{ :href => 'javascript:;', :'data-user_login' => reply.user_login } 回复
     .relpy_content
       = replace_at_sym(reply.content)
