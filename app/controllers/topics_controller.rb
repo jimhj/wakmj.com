@@ -9,10 +9,12 @@ class TopicsController < ApplicationController
   def show
     @tv_drama = @topic.tv_drama
     @replies = @topic.replies.asc('created_at')
+    set_seo_meta(@topic.title, nil, @topic.content.truncate(100))
   end
 
   def new
     @tv_drama = TvDrama.find_by_id(params[:tv_drama_id])
+    set_seo_meta("新建帖子")
   end
 
   def create
@@ -34,6 +36,7 @@ class TopicsController < ApplicationController
 
   def edit
     @tv_drama = @topic.tv_drama
+    set_seo_meta("编辑")
   end
 
   def update

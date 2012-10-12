@@ -10,8 +10,8 @@
 
 # Init super admin:
 super_admin = User.new({
-  :login => 'laohuang2',
-  :email => 'bzu_2007@128.com',
+  :login => 'laohuang',
+  :email => 'bzu_2007@126.com',
   :password => '123456',
   :password_confirmation => '123456',
   :roles => ['superadmin']

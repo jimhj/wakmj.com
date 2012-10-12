@@ -26,6 +26,11 @@ module ApplicationHelper
       text[_u] = link_to(_u, user_path(user_name))
     end
     text.html_safe
-  end  
+  end
+  
+  def render_page_title
+    title = @page_title ? "#{@page_title} | #{SITE_NAME}" : SITE_NAME rescue "SITE_NAME"
+    content_tag("title", title, nil, false)
+  end      
 
 end

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   
   def show
     @topics = @user.topics.includes(:tv_drama).desc('created_at').paginate(:page => params[:page], :per_page => 15)
+    set_seo_meta(@user.login)
   end
 
   def create
@@ -24,6 +25,7 @@ class UsersController < ApplicationController
     @user = current_user
     @notifications = @user.notifications.desc('created_at').paginate(:page => params[:page], :per_page => 15)
     @user.read_notifications(@notifications)
+    set_seo_meta(@user.login)
   end
 
   private

@@ -16,22 +16,25 @@ class IndexController < ApplicationController
     end
 
     @tv_dramas = @tv_dramas.includes(:topics).paginate(:page => params[:page], :per_page => 12)
-
+    set_seo_meta
   end
 
   def recents
     b_time = '20120101'.to_datetime.at_beginning_of_year
     e_time = b_time.at_end_of_year
     @tv_dramas = TvDrama.between(:release_date => b_time..e_time).paginate(:page => params[:page], :per_page => 12)
+    set_seo_meta('新剧')
     render :action => :index
   end
 
   def hots
     @tv_dramas = TvDrama.hots.paginate(:page => params[:page], :per_page => 12)
+    set_seo_meta('热门')
     render :action => :index
   end
 
   def sign_up
+    set_seo_meta('注册')
   end
 
   def sign_in
@@ -44,7 +47,8 @@ class IndexController < ApplicationController
         flash[:error] = '账号或者密码不正确'
       end
       redirect_to :back
-    end    
+    end
+    set_seo_meta('登录')    
   end
 
   def sign_out

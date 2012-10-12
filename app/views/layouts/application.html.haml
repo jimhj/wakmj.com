@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 %html
   %head
-    %title 我爱看美剧
+    = render_page_title
     = stylesheet_link_tag 'app'
     = yield :header_css
     = javascript_include_tag 'app'
     = yield :header_js
     = csrf_meta_tags
+    %meta{ :name => 'keywords', :content => @keywords }
+    %meta{ :name => 'description', :content => @description }
+
   %body
     = render 'layouts/shared/header'
     .main_container.clearfix

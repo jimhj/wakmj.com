@@ -10,7 +10,7 @@ class AvatarUploader < BaseUploader
 
   version :large do
     process :resize_to_limit => [680, nil]
-  end  
+  end
 
   def default_url
     "avatar/avatar_#{version_name}.jpg"

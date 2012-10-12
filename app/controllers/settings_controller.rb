@@ -11,6 +11,7 @@ class SettingsController < ApplicationController
       end
       redirect_to :back
     end
+    set_seo_meta("设置")
   end
 
   def avatar
@@ -21,6 +22,7 @@ class SettingsController < ApplicationController
       end
       redirect_to :back
     end
+    set_seo_meta("设置")
   end
 
   def password
@@ -39,6 +41,7 @@ class SettingsController < ApplicationController
 
       redirect_to :back
     end
+    set_seo_meta("设置")
   end
 
 

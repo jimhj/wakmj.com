@@ -10,6 +10,7 @@ class TvDramasController < ApplicationController
   def show
     @topics = @tv_drama.topics.desc('created_at').includes(:user).paginate(:page => params[:page])
     @resources = @tv_drama.download_resources.desc('season').paginate(:page => params[:page])
+    set_seo_meta(@tv_drama.tv_name, @tv_drama.category_list, @tv_drama.summary)
 
     respond_to do |format|
       format.html
