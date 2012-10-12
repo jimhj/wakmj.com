@@ -43,6 +43,9 @@ end
 
 gem 'jquery-rails'
 
+# Deploy with Capistrano
+gem 'capistrano', :require => false
+
 
 # HTTP Client
 gem 'faraday', '~> 0.8.0'
