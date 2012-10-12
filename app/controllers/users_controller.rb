@@ -9,18 +9,6 @@ class UsersController < ApplicationController
     set_seo_meta(@user.login)
   end
 
-  def create
-    user = User.new(params[:user])
-    if user.save
-      self.current_user = user
-      user.update_attribute(:last_signed_in_at, Time.now)
-      redirect_to :root
-    else
-      flash[:error] = user.errors.full_messages
-      redirect_to :back
-    end
-  end
-
   def notifications
     @user = current_user
     @notifications = @user.notifications.desc('created_at').paginate(:page => params[:page], :per_page => 15)

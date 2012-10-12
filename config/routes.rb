@@ -5,7 +5,7 @@ Wakmj::Application.routes.draw do
   match 'hots' => 'index#hots', :as => :hots_dramas
 
   match 'sign_in' => 'index#sign_in', :as => :sign_in, :via => [:get, :post]
-  match 'sign_up' => 'index#sign_up', :as => :sign_up, :via => :get
+  match 'sign_up' => 'index#sign_up', :as => :sign_up, :via => [:get, :post]
   match 'sign_out' => 'index#sign_out', :as => :sign_out
 
   resources :tv_dramas
@@ -17,7 +17,7 @@ Wakmj::Application.routes.draw do
     resources :replies
   end
 
-  resources :users, :except => [:index], :path => '' do
+  resources :users, :only => [:show], :path => '' do
     member do
       get :notifications
     end

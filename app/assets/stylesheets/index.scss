@@ -7,7 +7,8 @@
   .tv_list {
     .tv { 
       float: left;
-      width: 250px;
+      // width: 250px;
+      width: 29%;
       margin: 0px 34px 30px 0px;
       @include shadow;
       @include bg(#FFF);

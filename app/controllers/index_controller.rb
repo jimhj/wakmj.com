@@ -34,6 +34,23 @@ class IndexController < ApplicationController
   end
 
   def sign_up
+    if request.post?
+      user = User.new(params[:user])
+      if user.valid?
+        if params[:user][:password].length < 6
+          flash[:error] = "密码不能少于6位"
+          redirect_to :back
+        else
+          user.save!
+          self.current_user = user
+          user.update_attribute(:last_signed_in_at, Time.now)
+          redirect_to :root
+        end
+      else
+        flash[:error] = user.errors.full_messages
+        redirect_to :back
+      end
+    end
     set_seo_meta('注册')
   end
 

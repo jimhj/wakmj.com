@@ -30,15 +30,18 @@ class SettingsController < ApplicationController
       if current_user.password == params[:orig_password]
         current_user.password = params[:password]
         current_user.password_confirmation = params[:password_confirmation]
-        if current_user.save
-          flash[:success] = '修改密码成功'
+        if params[:password].length < 6
+          flash[:error] = '密码不能少于6位'
         else
-          flash[:error] = current_user.errors.full_messages
+          if current_user.save
+            flash[:success] = '修改密码成功'
+          else
+            flash[:error] = current_user.errors.full_messages
+          end
         end
       else
         flash[:error] = '原密码输入错误'
       end
-
       redirect_to :back
     end
     set_seo_meta("设置")

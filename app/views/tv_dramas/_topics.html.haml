@@ -1,7 +1,7 @@
 - if topics.blank?
   .blank_notice
     暂时没有人发表...
-    %a{ :href => new_topic_path } 新建帖子
+    %a{ :href => new_topic_path(:tv_drama_id => @tv_drama.id) } 新建帖子
 - else
   - topics.each do |topic|
     .topic.clearfix

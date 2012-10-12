@@ -30,11 +30,9 @@ class User
   validates :email, :presence => true, 
                     :uniqueness => true,
                     :format => { :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i }
-  # validates :login, :presence => true, :length => { :minimum => 2, :maximum => 20 }
   validates_length_of :login, :minimum => 2, :maximum => 20
-  validates_length_of :password, :minimum => 6
+  # validates_length_of :password, :minimum => 6
   validates_uniqueness_of :login
-  validates_presence_of :password, :password_confirmation
 
   attr_accessible :email, :login, :weibo_token, :weibo_uid, :roles
 
