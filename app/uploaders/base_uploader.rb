@@ -16,7 +16,7 @@ class BaseUploader < CarrierWave::Uploader::Base
   # end
 
   def store_dir
-    "#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "system/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end  
 
   # Add a white list of extensions which are allowed to be uploaded.
