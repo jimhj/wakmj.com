@@ -14,3 +14,6 @@
 - if signed_in? && !current_user.has_role?('editor')
   .feedback_btn 申请成为维护者
 
+- content_for :footer_script do
+  = render 'shared/google_analytics'
+
