@@ -9,7 +9,7 @@ namespace :parse do
     # TODO: Mark where does the loop ended at. 
     # unreadable code.
     i = j = 0
-    1.upto(2).each do |page|
+    1.upto(20).each do |page|
       dom = Nokogiri::HTML open(res_url(page))
 
       html_str = dom.at('div.res_listview')
