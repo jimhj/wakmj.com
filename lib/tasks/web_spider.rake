@@ -9,7 +9,8 @@ namespace :parse do
     # TODO: Mark where does the loop ended at. 
     # unreadable code.
     i = j = 0
-    1.upto(20).each do |page|
+    1.upto(30).each do |page|
+      p "start scraping articles on page #{j + 1}..."
       dom = Nokogiri::HTML open(res_url(page))
 
       html_str = dom.at('div.res_listview')
@@ -33,7 +34,7 @@ namespace :parse do
           j += 1
           puts e.inspect
         end
-        # sleep(5)
+        sleep(1)
       end
 
       # drama_ids = dom.xpath('//div[starts-with(@id, "collect_form_")]').collect do |ele|
