@@ -20,9 +20,7 @@ class IndexController < ApplicationController
   end
 
   def recents
-    b_time = '20120101'.to_datetime.at_beginning_of_year
-    e_time = b_time.at_end_of_year
-    @tv_dramas = TvDrama.between(:release_date => b_time..e_time).paginate(:page => params[:page], :per_page => 12)
+    @tv_dramas = TvDrama.recents.paginate(:page => params[:page], :per_page => 12)
     set_seo_meta('新剧')
     render :action => :index
   end

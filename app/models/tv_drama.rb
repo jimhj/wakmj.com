@@ -48,6 +48,12 @@ class TvDrama
     Topic.find_by_id(self.last_topic_id)
   end
 
+  def self.recents
+    b_time = '20120101'.to_datetime.at_beginning_of_year
+    e_time = b_time.at_end_of_year
+    self.between(:release_date => b_time..e_time)   
+  end
+
 
   # def pre_releases
   # end

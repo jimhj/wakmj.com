@@ -1,0 +1,27 @@
+
+%p{ :style => 'font-size:14px;' } 
+  Dear
+  %span{ :style => 'font-weight: bold;' }= "#{@user.login}："
+
+%p{ :style => 'font-size:14px; margin-top: 10px;' }
+  您好！您已成功注册了 
+  %a{ :href => 'http://www.wakmj.com', :target => '_blank' } 我爱看美剧 - 美剧迷社区
+  
+%div
+  %p 新剧
+  %ul
+    - TvDrama.recents.limit(10).each do |tv_drama|
+      %li
+        %a{ :href => tv_drama_url(tv_drama.id) }= tv_drama.tv_name
+
+%div
+  %p 新帖
+  %ul
+    - Topic.desc('created_at').limit(10).each do |topic|
+      %li
+        %a{ :href => topic_url(topic.id) }= topic.title        
+
+%p{ :style => 'font-size:12px; margin-top: 100px; border-top: 1px solid #ccc; text-align:center; padding-top: 10px; bottom: 5px;' }
+  你之所以收到这封邮件是因为你曾经注册了
+  &nbsp;&nbsp;
+  %a{ :href => 'http://www.wakmj.com', :target => '_blank' } 我爱看美剧 - 美剧迷社区

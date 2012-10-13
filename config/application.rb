@@ -48,21 +48,23 @@ module Wakmj
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
 
-    # Use SQL instead of Active Record's schema dumper when creating the database.
-    # This is necessary if your schema can't be completely dumped by the schema dumper,
-    # like if you have constraints or database-specific column types
-    # config.active_record.schema_format = :sql
-
-    # Enforce whitelist mode for mass assignment.
-    # This will create an empty whitelist of attributes available for mass-assignment for all models
-    # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
-    # parameters by using an attr_accessible or attr_protected declaration.
-    # config.active_record.whitelist_attributes = true
-
     # Enable the asset pipeline
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Email SMTP Settings
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { :host => "wakmj.com" }    
+    config.action_mailer.smtp_settings = {
+        :address => "smtp.exmail.qq.com",
+        :port => "25",
+        :domain => "wakmj.com",
+        :authentication => "login",
+        :user_name => "webmaster@wakmj.com",
+        :password => "huangjin0819",
+        :enable_starttls_auto => true
+     }      
   end
 end
