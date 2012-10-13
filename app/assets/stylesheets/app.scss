@@ -84,7 +84,8 @@ img { border: none; }
 }
 
 .main_container {
-  width: 90%;
+  // width: 90%;
+  width: 1160px;
   margin: 10px auto;
   .flash_notice { width: 80%; margin: 10px auto; padding: 10px 10px; }
   .flash_notice.error {
