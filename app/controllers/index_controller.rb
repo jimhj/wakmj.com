@@ -39,7 +39,7 @@ class IndexController < ApplicationController
           flash[:error] = "密码不能少于6位"
           redirect_to :back
         else
-          user.save!
+          user.save && User.perform_async(:send_sign_up_mail, user._id)
           self.current_user = user
           user.update_attribute(:last_signed_in_at, Time.now)
           redirect_to :root

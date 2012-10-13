@@ -5,6 +5,7 @@ class User
   include Mongoid::Timestamps
   include Mongoid::BaseModel
   include Mongoid::SecurePassword
+  include Mongoid::DelayedDocument
 
   field :email, :type => String
   field :login, :type => String
@@ -72,6 +73,17 @@ class User
   def unread_notifications_count
     self.notifications.where(:readed => false).count
   end
+
+  def self.send_sign_up_mail(user_id)
+    user = self.find_by_id(user_id)
+    begin
+      UserMailer.sign_up(user).deliver
+    rescue Exception => e
+      Logger.new("#{Rails.root}/log/mail.error.log").info(e)
+      # Rails.logger.error e
+    end
+  end
+
 
   class << self
 
