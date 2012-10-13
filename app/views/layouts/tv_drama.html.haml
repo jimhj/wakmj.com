@@ -30,7 +30,7 @@
               %li
                 暂时没有播出信息...
             - else
-              - @tv_drama.pre_releases.each do |pre|
+              - pres.each do |pre|
                 %li
                   %span.version
                     = pre.season_epi            
