@@ -8,7 +8,7 @@ class PreRelease
   # field :tv_name
   field :season
   field :episode
-  field :release_date
+  field :release_date, :type => Time
 
   belongs_to :tv_drama, :inverse_of => :pre_releases
 

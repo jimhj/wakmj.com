@@ -25,7 +25,7 @@
             %a.title 播出预告
 
           %ul.notice
-            - pres = @tv_drama.pre_releases
+            - pres = @tv_drama.pre_releases.asc('release_date')
             - if pres.blank?
               %li
                 暂时没有播出信息...

@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'nokogiri'
 require 'open-uri'
 namespace :parse do
@@ -7,11 +8,13 @@ namespace :parse do
   task :pre_release => :environment do
     year = 2012
     months = [10, 11, 12]
+    init_n = 1
     months.each do |month|
       begin
-        dom = Nokogiri::HTML open(remote_url(:year => year, :month => month))      
+        dom = Nokogiri::HTML open(remote_url(:year => year, :month => month))    
         dom.at('table.playTime_tv').css('td.ihbg, td.cur').css('dl').each_with_index do |ele, i|
-          datetime = "#{year}#{month}#{ '%02d' % (i+1) }"
+          d =  ele.at('dt').content.scan(/\d{1,2}/).first.to_i
+          datetime = "#{year}#{month}#{ '%02d' % d }"          
           dd_dom = ele.css('dd').each_with_index do |_ele, _i|
             opts = {}
             link = _ele.at('a')
@@ -21,11 +24,11 @@ namespace :parse do
               opts[:season] = pre_v.scan(/S\d{2,2}/).first || 'S01'
               opts[:episode] = pre_v.scan(/E\d{2,2}/).first || 'E01'
               opts[:release_date] = datetime.to_datetime
-              p tv_name
               tv_drama = TvDrama.any_of(:tv_name => /#{tv_name}/).first
               if tv_drama.present?
                 tv_drama.pre_releases.create!(opts)
-                p "create #{_i + 1}"
+                init_n += 1
+                p "create #{init_n}"
               end
             end
           end
@@ -36,7 +39,7 @@ namespace :parse do
     end
   end
 
-  def remote_url(time = {})
+  def remote_url(time)
     time[:year] ||= 2012
     time[:month] ||= 10
     "http://www.yyets.com/php/tv/schedule/index/year/#{time[:year]}/month/#{time[:month]}"
