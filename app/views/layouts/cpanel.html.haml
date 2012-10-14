@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title 后台管理
+    = stylesheet_link_tag 'app', 'cpanel', 'lib/bootstrap.min'
+    = yield :header_css
+    = javascript_include_tag 'app', 'lib/bootstrap.min'
+    = yield :header_js
+    = csrf_meta_tags
+
+  %body
+    = render 'layouts/shared/admin_header'
+    .main_container.clearfix
+      = render 'shared/flash_notice'
+      .cpanel          
+        = yield
+    = yield :footer_script 

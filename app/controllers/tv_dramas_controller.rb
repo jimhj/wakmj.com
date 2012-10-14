@@ -49,7 +49,7 @@ class TvDramasController < ApplicationController
   private
 
   def init_tv_drama
-    @tv_drama = TvDrama.find_by_id(params[:id])
+    @tv_drama = TvDrama.find_by(:_id => params[:id])
   end
 
 end

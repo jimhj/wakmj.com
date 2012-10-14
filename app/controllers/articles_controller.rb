@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find_by_id(params[:id])
+    @article = Article.find_by(:_id => params[:id])
     @tv_drama = @article.tv_drama
     set_seo_meta(@article.title, nil, @article.summary)
   end

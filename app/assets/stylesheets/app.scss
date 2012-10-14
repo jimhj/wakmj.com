@@ -112,6 +112,15 @@ img { border: none; }
   .blank_notice a { color: $green; text-decoration: underline; }
   .notice_ment { width: 100%; text-align: center; color: #FF0000; padding: 5px; opacity: 0.5; }
   .notice_ment a { text-decoration: underline; }
+
+  #error_page {
+    text-align: center;
+    color: $green;
+    height: 500px;
+    margin-top: 20px;
+    h1 { font-size: 200px; }
+    p { margin-top: 20px; color: $text-color; }
+  }
 }
 
 .feedback_btn {

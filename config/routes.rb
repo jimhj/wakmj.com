@@ -17,11 +17,7 @@ Wakmj::Application.routes.draw do
     resources :replies
   end
 
-  resources :users, :only => [:show], :path => '' do
-    member do
-      get :notifications
-    end
-  end
+
 
   resources :articles
 
@@ -30,5 +26,15 @@ Wakmj::Application.routes.draw do
     match 'account' => 'settings#account', :as => :account_setting, :via => [:get, :post]
     match 'password' => 'settings#password', :as => :password_setting, :via => [:get, :post]
   end
+
+  namespace :cpanel do
+    root :to => 'index#index' 
+  end
+    
+  resources :users, :only => [:show], :path => '' do
+    member do
+      get :notifications
+    end
+  end  
 
 end

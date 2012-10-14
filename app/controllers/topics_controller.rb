@@ -2,9 +2,10 @@
 
 class TopicsController < ApplicationController
   layout 'tv_drama'
-
+  before_filter :require_login, :except => [:show]
   load_and_authorize_resource :except => [:show]
   before_filter :init_topic, :only => [:show, :edit, :update]
+
 
   def show
     @tv_drama = @topic.tv_drama
@@ -13,7 +14,7 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @tv_drama = TvDrama.find_by_id(params[:tv_drama_id])
+    @tv_drama = TvDrama.find_by(:_id => params[:tv_drama_id])
     set_seo_meta("新建帖子")
   end
 
@@ -53,7 +54,7 @@ class TopicsController < ApplicationController
   private
 
   def init_topic
-    @topic = Topic.find_by_id params[:id]
+    @topic = Topic.find_by(:_id => params[:id])
   end
 
 

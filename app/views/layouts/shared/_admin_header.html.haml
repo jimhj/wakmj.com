@@ -1,0 +1,27 @@
+.navbar.clearfix
+  .site_logo
+    %a{ :href => cpanel_root_path }
+      %span
+        = raw "后台<b>管理</b>"
+  .menu
+    %ul
+      %li
+        %a{ :href => cpanel_root_path, :class => url_for == cpanel_root_path ? 'active' : nil } 首页
+      %li
+        %a{ :href => hots_dramas_path, :class => url_for == hots_dramas_path ? 'active' : nil } 申请
+
+      %li
+        %a{ :href => hots_dramas_path, :class => url_for == hots_dramas_path ? 'active' : nil } 用户
+      %li
+        %a{ :href => recents_dramas_path, :class => url_for == recents_dramas_path ? 'active' : nil  } 剧集
+        
+  .user_setting
+    %ul
+      %li
+        %a.active{ :href => notifications_user_path(current_user.login), :class => current_user.unread_notifications_count > 0 ? 'red' : nil }= current_user.unread_notifications_count
+      %li
+        %a{ :href => user_path(current_user.login), :class => url_for == user_path(current_user.login) ? 'active' : nil }= current_user.login
+      %li
+        %a{ :href => account_setting_path, :class => url_for == account_setting_path ? 'active' : nil } 设置          
+      %li
+        %a{ :href => sign_out_path } 退出          

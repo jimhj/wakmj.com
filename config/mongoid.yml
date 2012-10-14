@@ -1,7 +1,7 @@
 defaults: &defaults
   options:
     identity_map_enabled: true
-    raise_not_found_error: false
+    raise_not_found_error: true
 
 development:
   <<: *defaults
