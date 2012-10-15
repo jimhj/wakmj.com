@@ -52,6 +52,13 @@ class IndexController < ApplicationController
     set_seo_meta('注册')
   end
 
+  def search
+    ids = Redis::Search.query('TvDrama', params[:q], :conditions => { :verify => true }).collect{ |h| h['id'] }
+    @tv_dramas = TvDrama.where(:_id.in => ids).paginate(:page => params[:page], :per_page => 12)
+    # @tv_dramas = TvDrama.all.paginate(:page => params[:page], :per_page => 12)
+    set_seo_meta('搜索剧集')
+  end
+
   def sign_in
     if request.post?
       user = User.authenticate(params[:email], params[:password])

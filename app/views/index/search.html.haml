@@ -1,0 +1,45 @@
+- content_for :header_css do
+  = stylesheet_link_tag 'index'
+
+.left_container
+  .search_panel
+    .keywords
+      %span 搜索：
+      %span.q= params[:q]
+    .search-result
+      %ul.clearfix
+
+        - @tv_dramas.each do |tv_drama|
+          %li.clearfix
+            .cover
+              = image_tag tv_drama.cover_url(:small)
+            .summary
+              %p
+                %a.tit{ :href => tv_drama_path(tv_drama.id) }= tv_drama.tv_name
+              %p
+                %span.r 类别：
+                %span= tv_drama.categories.join(' / ')
+              %p
+                %span 上映日期：
+                %span.r= tv_drama.release_date.strftime('%Y-%m-%d') rescue ''
+              %p 
+                %span 主题数：
+                %a{ :href => tv_drama_path(tv_drama.id) }= tv_drama.topics_count
+              %p
+                %span 喜欢数：
+                %span.r= tv_drama.likes_count
+  .pagination_panel
+    = will_paginate(@tv_dramas, :class => 'digg_pagination')                
+
+= render 'shared_right'            
+
+
+
+
+
+
+
+
+
+
+        

@@ -32,11 +32,12 @@ img { border: none; }
   background: none repeat scroll 0 0 #000;
   opacity: 0.5;
   @include green-border(4px, top);
-  padding: 10px 0px;
+  padding: 8px 0px;
   a { color: $white; font-size: 18px; }
 
   .site_logo {
     float: left;
+    padding-top: 5px;
     padding-left: 30px;
     a { font-weight: bold; }
     a span b { color: $green; }
@@ -44,12 +45,22 @@ img { border: none; }
 
   .menu {
     float: left;
+    padding-top: 5px;
     margin-left: 40px;
     @include li_nav;
   }
 
+  .search_panel {
+    float: left;
+    // padding-top: 10px;
+    margin-left: 100px;
+    input { height: 25px; border-radius: 5px 5px; }
+
+  }
+
   .user_setting {
     float: right;
+    padding-top: 5px;
     padding-right: 30px;
     @include li_nav;
     ul li {

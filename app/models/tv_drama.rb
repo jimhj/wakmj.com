@@ -6,6 +6,8 @@ class TvDrama
   include Mongoid::BaseModel
   include Mongoid::TaggableOn
   include Mongoid::Likeable
+  include Redis::Search
+
   # include Mongoid::CounterCache
 
   field :tv_name, :type => String
@@ -53,6 +55,11 @@ class TvDrama
     e_time = b_time.at_end_of_year
     self.between(:release_date => b_time..e_time)   
   end
+
+  redis_search_index(:title_field => :tv_name,
+                     :score_field => :likes_count,
+                     :condition_fields => [:verify],
+                     :ext_fields => [:alias_names, :categories, :release_date, :topics_count, :likes_count])  
 
 
   # def pre_releases

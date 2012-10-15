@@ -45,47 +45,7 @@
   .pagination_panel
     = will_paginate(@tv_dramas, :class => 'digg_pagination')
         
-.right_container
-  .tv_cates.dotted_bottom.clearfix
-    %ul
-      %li{ :class => params[:cate].blank? ? 'active' : nil }
-        %a{ :href => url_for(:year => request.query_parameters[:year]) } 全部
-      - TvCategory.all.each_with_index do |cate, index|
-        %li{ :class => params[:cate] == cate.name ? 'active' : nil }
-          %a{ :href => url_for(:cate => cate.name, :year => request.query_parameters[:year]) }= cate.name
-
-  .years.dotted_bottom.clearfix
-    %ul
-      %li{ :class => params[:year].blank? ? 'active' : nil }
-        %a{ :href => url_for(:cate => request.query_parameters[:cate]) } 全部
-      - 1999.upto(2012).each do |year|
-        %li{ :class => params[:year] == year.to_s ? 'active' : nil }
-          %a.active{ :href => url_for(:year => year, :cate => request.query_parameters[:cate]) }= year        
-
-
-  .tv_topics.dotted_bottom.article_list
-    .title_bar
-      %a.title{ :href => '#' } 最新帖子
-      / %a{ :href => '#' } 更多
-    %ul
-      - Topic.recent.each do |topic|
-        %li 
-          %a{ :href => topic_path(topic.id) }= topic.title
-         
-  .newest_tv
-    .title_bar
-      %a.title{ :href => '#' } 新剧时间表
-      / %a{ :href => '#' } 更多
-
-    %ul
-      - PreRelease.recent.each do |pre|
-        %li
-          %a{ :href => tv_drama_path(pre.tv_drama_id) }
-            %span.time
-              = pre.release_date.strftime('%F')
-            %span.title
-              = pre.tv_drama.tv_name 
-            %span.version= pre.season_epi            
+= render 'shared_right'            
 
 
 

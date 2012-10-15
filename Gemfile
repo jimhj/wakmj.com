@@ -3,9 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 
 # Mongoid 
-gem "mongoid", "~> 3.0.0"
+gem "mongoid", "~> 3.0.1"
 gem "mongoid_colored_logger", :git => "git://github.com/huacnlee/mongoid_colored_logger.git"
-gem 'mongoid_auto_increment_id', "0.5.0"
+gem 'mongoid_auto_increment_id'
 gem 'mongoid_taggable_on', '~> 0.1.4'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -33,6 +33,12 @@ gem 'nokogiri', :require => false
 
 # Queue
 gem 'sidekiq', '~> 2.1.0'
+
+# Redis-Search
+gem 'chinese_pinyin', '0.4.1'
+gem 'rmmseg-cpp-huacnlee', '0.2.9'
+gem 'redis-search', '0.9.0'
+
 
 
 group :assets do

@@ -4,6 +4,38 @@
   float: left;
   width: 75%;
   padding-top: 5px;
+
+  .search_panel {
+    color: $text-color; 
+    .keywords { 
+      border-bottom: 1px dotted $text-color; width: 94%; 
+      padding-left: 5px;
+      padding-bottom: 10px;
+      span.q { color: $green; }
+    }
+
+    .search-result {
+      padding-left: 5px;
+      padding-top: 10px;
+      font-size: 12px;
+      ul li {
+        float: left;
+        // padding: 5px;
+        // border-bottom: 1px dotted $text-color;
+        padding-right: 10px;
+        padding-bottom: 20px;
+        .cover { float: left; height: 150px; width: 100px; }
+        .summary { float: left; margin-left: 10px; }
+        .summary a { color: $green; }
+        .summary p { 
+          margin-bottom: 10px; 
+          a.tit { font-size: 14px; font-weight: bold; }
+        }
+      }
+
+    }
+  }
+
   .tv_list {
     .tv { 
       float: left;
