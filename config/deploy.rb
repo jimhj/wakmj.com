@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 
 # If you have custom Sidekiq configuration options put them in config/sidekiq.yml
-# require "sidekiq/capistrano"
+require "sidekiq/capistrano"
 
 require "rvm/capistrano"
 set :rvm_ruby_string, '1.9.3'
@@ -50,6 +50,10 @@ end
 task :compile_assets, :roles => :web do
   run "cd #{deploy_to}/current/; RAILS_ENV=production bundle exec rake assets:precompile"
 end
+
+# task :start_sidekiq, :roles => :web do
+#   run "cd #{deploy_to}/current/; RAILS_ENV=production bundle exec sidekiq -C sidekiq.yml ... >> log/sidekiq.log 2>&1"
+# end
 
 
 

@@ -6,7 +6,7 @@
         %span.unread 新
       %a{ :href => user_path(notification.reply.user_login) }= notification.reply.user_login
       %span 回复了你的主题 
-      %a{ :href => '#' }= notification.reply.topic_title
+      %a{ :href => topic_path(notification.reply.topic_id) }= notification.reply.topic_title
     .right_side
       %a{ :href => '#' } 删除
   .below
