@@ -1,0 +1,30 @@
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th ID
+      %th 邮箱
+      %th 昵称
+      %th 帖子数
+      %th 回复数
+      %th 资源数
+      %th 注册日期
+      %th 操作
+      %th 操作      
+  %tbody
+    - @users.each do |user|
+      %tr
+        %th= user.id
+        %th= user.email
+        %th
+          = link_to user.login, user_path(user.login)
+        %th= user.topics_count
+        %th= user.replies_count
+        %th= user.download_resources_count
+        %th= user.created_at.strftime('%F %T')
+        %th 
+          = link_to '修改', '#'
+        %th 
+          = link_to '删除', '#'
+
+.pagination_panel
+  = will_paginate(@users, :class => 'digg_pagination')      

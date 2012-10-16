@@ -1,0 +1,19 @@
+= nav_tab_tag([cpanel_statistic_yesterday_path, '昨日用户统计', params[:action] == 'yesterday'], [cpanel_statistic_today_path, '今日用户统计'])
+
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th 指标
+      %th 新增用户数
+      %th 新增剧集数
+      %th 新增帖子数
+      %th 新增回复数
+      %th 新增资源数
+  %tbody
+    %tr
+      %th 统计
+      %th= @users_count
+      %th= @tv_dramas_count
+      %th= @topics_count
+      %th= @replies_count
+      %th= @res_count

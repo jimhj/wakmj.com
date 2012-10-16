@@ -12,6 +12,7 @@ module Mongoid
     #   scope :by_week, where(:created_at.gte => 7.days.ago.utc)
     # end
 
+
     module ClassMethods
       # like ActiveRecord find_by_id
       def find_by_id(id)
@@ -34,6 +35,11 @@ module Mongoid
           break if objects.size < batch_size
           objects = self.limit(batch_size).skip(start)
         end
+      end
+
+      def yesterday_total_count
+        yesterday = Time.now.yesterday
+        self.between(created_at: yesterday.at_beginning_of_day..yesterday.end_of_day).count 
       end
 
     end

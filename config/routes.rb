@@ -27,7 +27,12 @@ Wakmj::Application.routes.draw do
   end
 
   namespace :cpanel do
-    root :to => 'index#index' 
+    root :to => 'index#yesterday'
+    scope 'statistics' do
+      match 'yesterday' => 'index#yesterday', :as => :statistic_yesterday
+      match 'today' => 'index#today', :as => :statistic_today
+    end
+    resources :users
   end
     
   resources :users, :only => [:show], :path => '' do

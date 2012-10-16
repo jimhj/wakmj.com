@@ -12,6 +12,7 @@ class User
   field :avatar, :type => String, :default => ''
   
   field :topics_count, :type => Integer, :default => 0
+  field :replies_count, :type => Integer, :default => 0
   field :download_resources_count, :type => Integer, :default => 0
   field :notifications_count, :type => Integer, :default => 0
 

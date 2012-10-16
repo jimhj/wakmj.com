@@ -15,7 +15,8 @@ class Reply
   belongs_to :user, :inverse_of => :replies
   belongs_to :tv_drama, :inverse_of => :replies
 
-  counter_cache :name => :topic, :inverse_of => :replies  
+  counter_cache :name => :topic, :inverse_of => :replies 
+  counter_cache :name => :user, :inverse_of => :replies  
 
   delegate :login, :to => :user, :prefix => true
 

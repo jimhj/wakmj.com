@@ -24,9 +24,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  rescue_from Exception, :with => :render_500
-  rescue_from Mongoid::Errors::DocumentNotFound,    :with => :render_404
-  rescue_from ActionController::RoutingError,       :with => :render_404
+  if Rails.env.production? 
+    rescue_from Exception, :with => :render_500
+    rescue_from Mongoid::Errors::DocumentNotFound,    :with => :render_404
+    rescue_from ActionController::RoutingError,       :with => :render_404
+  end
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = '没有权限进行此项操作，请先注册或者联系管理员'
