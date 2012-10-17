@@ -1,15 +1,17 @@
 defaults: &defaults
   app_name: "我爱看美剧"
-  weibo_key: "3218958256"
-  weibo_secret: "0b618d9caa3151d4103d605623890268"
+  weibo_key: "146154564"
+  weibo_secret: "6bb9ba83bdbb38ecff074d155a27d6c0"
   admin_user_email: "bzu_2007@126.com"
   xunlei_vod_url: "http://lixian.vip.xunlei.com/lixian_login.html?referfrom=union&ucid=987212&furl="
 
 development:
   <<: *defaults
+  weibo_callback_url: "http://www.wakmj.com:3000/auth/weibo/callback"
 
 test:
   <<: *defaults
 
 production:
   <<: *defaults
+  weibo_callback_url: "http://www.wakmj.com/auth/weibo/callback"

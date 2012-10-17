@@ -93,6 +93,24 @@ class User
       return nil if user.nil?
       user.password == password ? user : nil
     end
+    
+    def create_by_email_and_auth(email, auth)
+      weibo_uid = auth['uid']
+      return nil if weibo_uid.blank?
+      user = User.new
+      user.email = email
+      user.login = auth['name']
+      user.password_confirmation = user.password = SecureRandom.hex(4)
+      user.remote_avatar_url = "#{auth['avatar_url']}/sample.jpg"
+      user.weibo_uid = weibo_uid
+      user.weibo_token = auth['weibo_token']
+      if user.valid?
+        user.save
+        user
+      else
+        nil
+      end
+    end    
 
   end   
 

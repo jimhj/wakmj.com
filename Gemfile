@@ -39,6 +39,11 @@ gem 'chinese_pinyin', '0.4.1'
 gem 'rmmseg-cpp-huacnlee', '0.2.9'
 gem 'redis-search', '0.9.0'
 
+# OAuth
+gem 'omniauth', '~> 1.1.0'
+gem 'omniauth-oauth2', '~> 1.0.2'
+
+
 
 
 group :assets do

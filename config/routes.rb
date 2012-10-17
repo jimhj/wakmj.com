@@ -34,7 +34,10 @@ Wakmj::Application.routes.draw do
     end
     resources :users
   end
-    
+  
+  match 'auth/weibo/callback' => 'auth#weibo_login'
+  match 'auth/new_user' => 'auth#new_user', :as => :auth_new_user, :via => 'POST'
+
   resources :users, :only => [:show], :path => '' do
     member do
       get :notifications

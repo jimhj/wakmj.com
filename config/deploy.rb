@@ -51,6 +51,10 @@ task :compile_assets, :roles => :web do
   run "cd #{deploy_to}/current/; RAILS_ENV=production bundle exec rake assets:precompile"
 end
 
+task :sitemap, :roles => :web do
+  run "cd #{deploy_to}/current/; RAILS_ENV=production rake g:sitemap"
+end
+
 # task :start_sidekiq, :roles => :web do
 #   run "cd #{deploy_to}/current/; RAILS_ENV=production bundle exec sidekiq -C sidekiq.yml ... >> log/sidekiq.log 2>&1"
 # end
@@ -61,4 +65,4 @@ end
 #   run "cd #{deploy_to}/current/log; #{try_sudo} rm -rf production.log"
 # end
 
-after "deploy:finalize_update","deploy:create_symlink", :resprite, :compile_assets
+after "deploy:finalize_update","deploy:create_symlink", :resprite, :compile_assets, :sitemap
