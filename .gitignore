@@ -16,4 +16,6 @@
 /public/system
 /public/uploads
 /public/assets
+/public/sitemap.xml
+/public/sitemap.html
 /.sass-cache
