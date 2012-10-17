@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 
 # If you have custom Sidekiq configuration options put them in config/sidekiq.yml
-require "sidekiq/capistrano"
+# require "sidekiq/capistrano"
 
 require "rvm/capistrano"
 set :rvm_ruby_string, '1.9.3'
