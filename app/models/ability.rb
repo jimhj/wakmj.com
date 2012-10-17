@@ -42,6 +42,8 @@ class Ability
       if user.has_role?('editor')
         can :create, TvDrama
         can :update, TvDrama
+        # Downloads
+        can :create, DownloadResource        
       end   
 
       basic_read_only

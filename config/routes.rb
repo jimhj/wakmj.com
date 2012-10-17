@@ -9,7 +9,9 @@ Wakmj::Application.routes.draw do
   match 'sign_out' => 'index#sign_out', :as => :sign_out
   match 'search' => 'index#search', :as => :search, :via => :get
 
-  resources :tv_dramas
+  resources :tv_dramas do
+    resources :downloads, :only => [:new, :create]
+  end
 
   match 'likes' => 'likes#create', :as => :likes, :via => :post
   match 'likes' => 'likes#destroy', :as => :likes, :via => :delete

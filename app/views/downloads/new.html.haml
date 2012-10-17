@@ -1,0 +1,41 @@
+.new_topic_panel.rectangle_panel.common_form
+  .panel_name
+    增加新资源
+  .form_panel
+    = form_tag tv_drama_downloads_path(@tv_drama) do
+      .blank_li.clearfix
+        %span.lab 剧集:
+        %a.drama_name{ :href => tv_drama_path(@tv_drama) }= @tv_drama.tv_name
+      .blank_li.clearfix
+        %span.lab 第几季:
+        %select{ :name => 'download[season]' }
+          - 1.upto(30).each do |i|
+            %option= "%02d" % i
+      .blank_li.clearfix
+        %span.lab 第几集:
+        %select{ :name => 'download[episode]' }
+          - 1.upto(30).each do |i|
+            %option= "%02d" % i
+      .blank_li.clearfix
+        %span.lab 资源大小:
+        %input.white_text.small{ :type => 'text', :name => 'download[episode_size]' }
+        %p.remark
+          形如：723.8MB
+      .blank_li.clearfix
+        %span.lab 影片格式:
+        %input.white_text.small{ :type => 'text', :name => 'download[episode_format]' }
+        %p.remark
+          形如：RMVB          
+      .blank_li.clearfix
+        %span.lab 资源名称:
+        %input.white_text.small{ :type => 'text', :name => 'download[link_text]' }
+        %p.remark
+          形如：The.Vampire.Diaries.S04E01.720p.HDTV.X264-DIMENSION.mkv
+      .blank_li.clearfix
+        %span.lab 下载链接:
+        %input.white_text.small{ :type => 'text', :name => 'download[download_link]' }
+        %p.remark
+          必须是有效链接                                
+      .blank_li.clearfix
+        %span.lab &nbsp;
+        %a.submit_btn{ :href => '#' } 确定
