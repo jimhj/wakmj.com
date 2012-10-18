@@ -1,7 +1,4 @@
 # coding: utf-8
-require 'open-uri'
-require 'net/http'
-
 class DownloadResource
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -25,17 +22,17 @@ class DownloadResource
 
   validates_presence_of :link_text, :season, :episode, :episode_size, :episode_format, :download_link
 
-  validate :check_download_link
+  # validate :check_download_link
 
-  def check_download_link
-    unless self.download_link.blank?
-      url = URI.parse(self.download_link)
-      p url.host
-      unless Net::HTTP.start(url.host, url.port) { |http| return http.head(url.request_uri).code == '200' }
-        errors[:download_link] << "下载链接是无效的链接，请检查"
-      end
-    end
-  end
+  # def check_download_link
+  #   unless self.download_link.blank?
+  #     url = URI.parse(self.download_link)
+  #     connection = Net::HTTP.start(url.host, url.port)
+  #     unless connection.head(url.request_uri).code == '200'
+  #       errors[:download_link] << "下载链接是无效的链接，请检查"
+  #     end
+  #   end
+  # end
    
 
 end

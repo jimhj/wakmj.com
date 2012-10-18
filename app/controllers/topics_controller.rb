@@ -14,6 +14,8 @@ class TopicsController < ApplicationController
   end
 
   def new
+    p request.query_parameters
+    p url_for
     @tv_drama = TvDrama.find_by(:_id => params[:tv_drama_id])
     set_seo_meta("新建帖子")
   end
