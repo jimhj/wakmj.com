@@ -1,13 +1,13 @@
 .footer.clearfix
   .about_us
     .navs
-      %a 关于我们
-      %a 联系我们
-      %a{ :href => 'http://www.huanarle.com', :target => '_blank' } 我爱看美剧
+      - Misc.where(:category => "pages").each do |misc|
+        %a{ :href => misc_path(misc.slug) }= misc.title
+      %a{ :href => 'http://www.huanarle.com', :target => '_blank', :title => "简易账本" } 花哪儿了
     .copyright
       Copyright © www.wakmj.com
   .weibo_page
-    %a{ :href => '#' }
+    %a{ :href => 'http://weibo.com/huangjin2011', :target => '_blank' }
       %i.icon.icons_weibo_s_16
       在微博关注我们
       

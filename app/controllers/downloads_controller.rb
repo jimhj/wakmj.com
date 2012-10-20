@@ -1,8 +1,7 @@
 # coding: utf-8
 class DownloadsController < ApplicationController
   layout 'tv_drama'
-  before_filter :require_login
-  # load_and_authorize_resource
+  load_and_authorize_resource DownloadResource
 
   def new
     @tv_drama = TvDrama.find_by_id(params[:tv_drama_id])

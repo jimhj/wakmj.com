@@ -68,7 +68,7 @@ class IndexController < ApplicationController
       else
         flash[:error] = '账号或者密码不正确'
       end
-      redirect_back_or_default(root_path)
+      redirect_back_or_default(sign_in_path)
     end
     set_seo_meta('登录')    
   end

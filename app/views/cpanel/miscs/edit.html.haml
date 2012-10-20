@@ -1,0 +1,13 @@
+= form_tag cpanel_misc_path(@misc.id), :method => :put do
+  %p
+    %input.span3{ :type => 'text', :placeholder => "输入名称", :name => "misc[title]", :value => @misc.title }
+  %p
+    %input.span3{ :type => 'text', :placeholder => "输入访问地址", :name => "misc[slug]", :value => @misc.slug }       
+  %p
+    %select.span2{ :name => "misc[category]" }
+      %option{ :value => "" } 选择类别
+      %option{ :value => "pages" } 网站单页
+  %p
+    %textarea{ :style => "width:480px;height:220px;", :name => "misc[content]" }= @misc.content
+  %p
+    %input.btn.btn-primary{ :type => 'submit', :value => "保存" }  

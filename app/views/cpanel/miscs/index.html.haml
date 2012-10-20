@@ -1,0 +1,18 @@
+%p
+  %a.btn.btn-primary{ :href => new_cpanel_misc_path } 添加新项
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th 杂项名称
+      %th 类别
+      %th 操作
+      %th 操作    
+  %tbody
+    - @miscs.each do |misc|
+      %tr
+        %th= misc.title
+        %th= misc.category_name
+        %th 
+          = link_to '修改', edit_cpanel_misc_path(misc.id)
+        %th 
+          = link_to '删除', '#'

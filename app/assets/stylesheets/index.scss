@@ -123,4 +123,18 @@
     }
   }
 }
+
+.pages_panel {
+  width: 90%;
+  margin: 20px auto;
+  color: $green;
+  font-size: 12px;
+  line-height: 22px;
+  min-height: 300px;
+  p.block {
+    font-size: 14px;
+  }
+  a { color: $text-color; text-decoration: underline; }
+  a:hover { color: $green; }
+}
  

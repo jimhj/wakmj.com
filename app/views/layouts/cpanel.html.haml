@@ -11,7 +11,8 @@
   %body
     = render 'layouts/shared/admin_header'
     .main_container.clearfix
-      = render 'shared/flash_notice'
-      .cpanel          
+      .cpanel
+        - if flash[:error] || flash[:success]
+          = render "cpanel/shared/flash_notice"         
         = yield
     = yield :footer_script 

@@ -11,7 +11,7 @@ class TvDrama
   # include Mongoid::CounterCache
 
   field :tv_name, :type => String
-  field :alias_name, :type => String, :default => ''
+  # field :alias_name, :type => String, :default => ''
   field :cover, :type => String
 
   taggable_on :alias_names
