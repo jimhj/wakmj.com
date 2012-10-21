@@ -46,7 +46,8 @@ namespace :parse do
   end
 
   def res_url(page = 1)
-    "http://www.yyets.com/php/resourcelist?page=#{page}&channel=tv&area=%E7%BE%8E%E5%9B%BD&category=&format=&sort="
+    # "http://www.yyets.com/php/resourcelist?channel=tv&area=%E7%BE%8E%E5%9B%BD&category=&format=&sort=pubdate"
+    "http://www.yyets.com/php/resourcelist?page=#{page}&channel=tv&area=%E7%BE%8E%E5%9B%BD&category=&format=&sort=pubdate"
   end
 
   def scrap_drama_res(d_dom)
@@ -70,8 +71,10 @@ namespace :parse do
     tv_drama[:verify] = true
     tv_drama.each_pair { |k, v| v.strip! if v.is_a?(String) }
 
-    new_drama = TvDrama.create!(tv_drama)
-
+    if TvDrama.any_of(:tv_name => /#{tv_drama[:tv_name]}/).blank?
+      new_drama = TvDrama.create!(tv_drama)
+    end
+    
   end
 
 
