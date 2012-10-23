@@ -25,7 +25,7 @@ class Topic
   index :tv_drama_id => 1
 
   validates_length_of :title, :minimum => 2, :maximum => 20
-  validates_length_of :content, :minimum => 2, :maximum => 1000
+  validates_length_of :content, :minimum => 2, :maximum => 10000
   validates_presence_of :user_id, :tv_drama_id
 
   delegate :login, :to => :user, :prefix => true
