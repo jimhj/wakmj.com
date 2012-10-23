@@ -12,6 +12,9 @@ class Ability
     elsif user.has_role?('member')
       # Like
       can :like, :resources
+      # Downloads
+      can :create, DownloadResource
+      
       # Topic
       can :create, Topic
       can :update, Topic do |topic|
@@ -41,9 +44,7 @@ class Ability
 
       if user.has_role?('editor')
         can :create, TvDrama
-        can :update, TvDrama
-        # Downloads
-        can :create, DownloadResource        
+        can :update, TvDrama        
       end   
 
       basic_read_only
