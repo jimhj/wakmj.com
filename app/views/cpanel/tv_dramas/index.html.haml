@@ -1,0 +1,70 @@
+= form_tag search_cpanel_tv_dramas_path, :method => "GET" do
+  .input-append
+    %input.span5#appendedInputButton{ :type => 'text', :placeholder => "搜索剧集...", :name => "q" }
+    %button.btn{ :type => 'submit' } 搜索
+
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th ID
+      %th 剧集名称
+      %th 资源数
+      %th 帖子数
+      %th 排序值
+      %th 创建日期
+      %th 操作
+      %th 操作      
+  %tbody
+    - @tv_dramas.each do |tv|
+      %tr
+        %th= tv.id
+        %th
+          = link_to tv.tv_name, tv_drama_path(tv.id), :target => "_blank"
+        %th= tv.download_resources_count
+        %th= tv.topics_count
+        %th.sort_no
+          %a{ :href => "#this", :'data-tv_drama_id' => tv.id }= tv.sort_no
+        %th= tv.created_at.strftime('%F %T')
+        %th 
+          = link_to '修改', '#'
+        %th 
+          = link_to '删除', '#'
+
+.pagination_panel
+  = will_paginate(@tv_dramas, :class => 'digg_pagination')
+
+- content_for :footer_script do
+  :javascript
+    $(function () {
+      $('th.sort_no a').click(function () {
+        var $this = $(this), orig_no = $this.text();
+        var $input = $('<input type="text" class="span1 tv_drama_sort" />');
+        $input.val(orig_no);
+        $this.hide();
+        $this.after($input);
+        $input.focus().select();
+      });
+
+      $("body").on("blur", "input.tv_drama_sort", function () {
+        var $this = $(this);
+        $this.hide();
+        $this.prev('a').show();
+      }).on("keyup", "input.tv_drama_sort", function (e) {
+        var $this = $(this);
+        var tv_id = $this.prev().data("tv_drama_id");
+
+        if (e.keyCode == 13 && $this.val() != "") {
+          var url = "/cpanel/tv_dramas/" +tv_id+ "/update_sort";
+          var sort_no = $this.val();
+          $.post(url, { sort_no : sort_no }, function (res) {
+            if (res.success) {
+              $this.hide();
+              $this.prev("a").text(sort_no).show();
+            } else {
+              $this.attr("id", "inputError");
+            }
+          }, 'json');
+        }
+      });
+
+    });

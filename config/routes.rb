@@ -36,6 +36,16 @@ Wakmj::Application.routes.draw do
     end
     resources :users
     resources :miscs
+    resources :tv_dramas, :only => :index do
+      collection do
+        get :search
+      end
+
+      member do
+        post :update_sort
+      end
+
+    end
   end
   
   match 'auth/weibo/callback' => 'auth#weibo_login'
