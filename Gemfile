@@ -45,7 +45,6 @@ gem 'omniauth-oauth2', '~> 1.0.2'
 
 
 
-
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -54,19 +53,21 @@ end
 
 gem 'jquery-rails'
 
-# Deploy with Capistrano
-gem 'capistrano', :require => false
-
 
 # HTTP Client
 gem 'faraday', '~> 0.8.0'
 
 gem 'multi_json'
 
-# Deploy with Capistrano
-gem 'capistrano'
-
 gem "sprite-factory", "1.4.1", :require => false
 gem 'chunky_png', "1.2.5", :require => false
+
+group :development, :test do
+  # Deploy with Capistrano
+  gem 'capistrano', :require => false
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem "capybara", :require => false
+end
 
 

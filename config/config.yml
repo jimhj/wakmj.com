@@ -11,6 +11,7 @@ development:
 
 test:
   <<: *defaults
+  weibo_callback_url: "http://www.wakmj.com:3000/auth/weibo/callback"
 
 production:
   <<: *defaults
