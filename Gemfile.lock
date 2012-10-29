@@ -255,7 +255,7 @@ DEPENDENCIES
   rails (= 3.2.8)
   redis-search (= 0.9.0)
   rmmseg-cpp-huacnlee (= 0.2.9)
-  rspec-rails
+  rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   settingslogic (~> 2.0.6)
   sidekiq (~> 2.1.0)

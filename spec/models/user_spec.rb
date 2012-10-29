@@ -19,25 +19,34 @@ describe User do
 
   end
 
-  describe 'like:' do
-    it "can like tv_drama" do
+  describe '#like' do
+    it "can like/unlike tv_drama" do
       user.like(tv_drama)
       tv_drama.reload
-      tv_drama.likes_count.should == 3
+      tv_drama.likes_count.should == 1
       tv_drama.liked_user_ids.should include(user.id)
 
       user2.like(tv_drama)
       tv_drama.reload
       tv_drama.likes_count.should == 2
-      tv_drama.liked_user_ids.should include(user2.id)      
+      tv_drama.liked_user_ids.should include(user2.id) 
+
+      user2.unlike(tv_drama)
+      tv_drama.reload
+      tv_drama.likes_count.should eq(1)
+      tv_drama.liked_user_ids.should include(user.id)
+      tv_drama.liked_user_ids.should_not include(user2.id)
+
     end
 
-    # it "can unlike tv_drama" do
-    #   user2.unlike(tv_drama)
-    #   tv_drama.likes_count.should eq(1)
-    #   tv_drama.liked_user_ids.should include(user.id)
-    #   tv_drama.liked_user_ids.should_not include(user2.id)
-    # end
+    it "can tell tv_drama wether or not liked by user " do
+      tv_drama.liked_by_user?(user).should be_true
+    end
+  end
+
+  describe "#read_notifications" do
+    it "set user's unread notifications to readed" do
+    end
   end
 
 

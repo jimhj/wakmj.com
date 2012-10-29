@@ -45,7 +45,7 @@ class TvDrama
   embeds_many :download_resources
 
   validates :tv_name, :presence => true, :uniqueness => true
-  # validates_presence_of :cover
+  validates_presence_of :cover
 
   scope :hots, desc(:likes_count)
 
