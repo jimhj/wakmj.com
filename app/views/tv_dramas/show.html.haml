@@ -1,5 +1,11 @@
 - content_for :header_js do
   = javascript_include_tag 'tv_drama'
+- content_for :header_css do
+  :css
+    body{
+      background-image:url("#{@tv_drama.cover_url(:large)}"); 
+      background-size:cover;
+    }
 
 .tv_detail.clearfix
   .above.rectangle_panel
@@ -35,8 +41,10 @@
         .imdb
           %span.title IMDB:
           %span= @tv_drama.imdb
+        = render 'shared/baidu_share'
 
-        .fancy
+
+        .fancy.clearfix
           = fancy_tag(@tv_drama)
 
   .story.rectangle_panel

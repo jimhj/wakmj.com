@@ -1,0 +1,11 @@
+/ Baidu Button BEGIN
+.bd_share_partial
+  #bdshare.bdshare_b{ :style => 'line-height: 12px;' }
+    %img{ :src => 'http://bdimg.share.baidu.com/static/images/type-button-1.jpg?cdnversion=20120831' }
+  %script{ :type => 'text/javascript', :id => 'bdshare_js', :data => 'type=button&amp;uid=739084' }
+  %script{ :type => 'text/javascript', :id => 'bdshell_js' }
+  :javascript
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+
+/ Baidu Button END
+
