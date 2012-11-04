@@ -14,6 +14,7 @@ class Cpanel::TvDramasController < Cpanel::ApplicationController
   def update_sort
     tv_drama = TvDrama.find_by_id(params[:id])
     tv_drama.sort_no = params[:sort_no].to_i
+    expire_fragment('index_tvs')
     render :text => { :success => tv_drama.save }.to_json
   end
 

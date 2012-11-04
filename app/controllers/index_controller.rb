@@ -2,7 +2,7 @@
 class IndexController < ApplicationController
   before_filter :check_signed_in, :only => [:sign_up, :sign_in]
   before_filter :require_login, :only => [:sign_out]
-  caches_page :index, :recents, :hots, :expires_in => 1.hours
+  # caches_page :index, :recents, :hots, :expires_in => 1.hours
 
   def index
     @tv_dramas = TvDrama.desc('sort_no').asc('created_at')
