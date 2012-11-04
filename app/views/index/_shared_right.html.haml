@@ -33,11 +33,12 @@
       / %a{ :href => '#' } 更多
 
     %ul
-      - PreRelease.recent.each do |pre|
-        %li
-          %a{ :href => tv_drama_path(pre.tv_drama_id) }
-            %span.time
-              = pre.release_date.strftime('%F')
-            %span.title
-              = pre.tv_drama.tv_name 
-            %span.version= pre.season_epi
+      - cache('pre_release') do
+        - PreRelease.recent.each do |pre|
+          %li
+            %a{ :href => tv_drama_path(pre.tv_drama_id) }
+              %span.time
+                = pre.release_date.strftime('%F')
+              %span.title
+                = pre.tv_drama.tv_name 
+              %span.version= pre.season_epi
