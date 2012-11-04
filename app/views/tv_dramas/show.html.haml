@@ -2,9 +2,13 @@
   = javascript_include_tag 'tv_drama'
 - content_for :header_css do
   :css
-    body{
+    .tv_left_container {
       background-image:url("#{@tv_drama.cover_url(:large)}"); 
       background-size:cover;
+    }
+
+    .tv_detail {
+      opacity: 0.9;
     }
 
 .tv_detail.clearfix
