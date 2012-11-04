@@ -1,0 +1,34 @@
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th ID
+      %th 昵称
+      %th 申请日期
+      %th 附言
+      %th 状态
+  %tbody
+    - @applies.each do |aply|
+      %tr
+        %th= aply.id
+        %th
+          = link_to aply.user_login, user_path(aply.user_login)
+        %th= aply.created_at.strftime('%F %T')
+        %th
+          = aply.remarks
+        %th
+          - if aply.pass?
+            已通过
+          - else
+            = link_to aply.status_text, '#this', :'data-apply_id' => aply.id, :class => 'applyBtn'
+
+.pagination_panel
+  = will_paginate(@applies, :class => 'digg_pagination')
+
+:javascript
+  $(function(){
+    $('a.applyBtn').click(function(){
+      var id = $(this).data('apply_id');
+      var url = "/cpanel/applies/" +id+ "/pass";
+      $.post(url);
+    });
+  });

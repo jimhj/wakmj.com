@@ -46,12 +46,20 @@ Wakmj::Application.routes.draw do
       end
 
     end
+
+    resources :applies, :only => :index do
+      member do
+        post :pass
+      end
+    end
+
   end
   
   match 'auth/weibo/callback' => 'auth#weibo_login'
   match 'auth/new_user' => 'auth#new_user', :as => :auth_new_user, :via => 'POST'
 
   resources :miscs, :only => :show
+  match 'apply_to_edit' => 'miscs#apply_to_edit', :via => 'POST'
 
   resources :users, :only => [:show], :path => '' do
     member do

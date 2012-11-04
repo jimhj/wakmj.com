@@ -1,0 +1,13 @@
+.notify
+  .above.clearfix
+    .left_side
+      %span •
+      - unless notification.readed?
+        %span.unread 新
+      %a{ :href => '#this' } 我爱看美剧
+      %span 发来的系统消息: 
+
+    .right_side
+      %a{ :href => '#' } 删除
+  .below
+    您已成为 我爱看美剧 的维护者，感谢您的热心帮助，有任何问题请联系我们！

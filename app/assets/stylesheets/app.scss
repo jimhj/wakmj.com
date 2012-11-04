@@ -2,6 +2,7 @@
 *= require 'base'
 *= require 'component'
 *= require 'sprites/icons'
+*= require 'lib/artdialog/skins/simple'
 *= require_self
 */
 @import 'global';
@@ -148,4 +149,20 @@ img { border: none; }
   top: 300px;
   font-size: 12px;
   cursor: pointer;
+}
+
+.popup {
+  font-size: 14px;
+  color: $text-color;
+  a { color: $green; text-decoration: underline; margin: 0px 5px;}
+  .btns { 
+    margin-top: 5px;
+    a.submit_btn { color: #FFF; text-decoration: none; float: right; } 
+  }
+  .remarks { margin-top: 10px; }
+  .remarks textarea {
+    width: 340px;
+    height: 50px;
+    border: 1px solid $grey;
+  }
 }  

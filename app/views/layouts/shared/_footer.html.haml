@@ -11,8 +11,8 @@
       %i.icon.icons_weibo_s_16
       在微博关注我们
       
-- if signed_in? && !current_user.has_role?('editor')
-  .feedback_btn 申请成为维护者
+.feedback_btn.helpus 
+  帮我们维护
 
 - content_for :footer_script do
   = render 'shared/google_analytics'

@@ -9,7 +9,9 @@
     = csrf_meta_tags
     %meta{ :name => 'keywords', :content => @keywords }
     %meta{ :name => 'description', :content => @description }
-
+    :javascript
+      Wakmj.current_user_id = "#{current_user.try(:id)}";
+      
   %body
     = render 'layouts/shared/header'
     .main_container.clearfix
