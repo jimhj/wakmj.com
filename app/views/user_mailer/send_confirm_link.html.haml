@@ -1,0 +1,15 @@
+
+%p{ :style => 'font-size:14px;' } 
+重置密码：
+
+%p{ :style => 'font-size:14px; margin-top: 10px;' }
+  您好！您可以点击下面的链接重置密码，或者粘贴到浏览器地址栏访问 
+  
+%p
+  %a{ :href => @link, :target => '_blank' }= @link  
+  
+
+%p{ :style => 'font-size:12px; margin-top: 100px; border-top: 1px solid #ccc; text-align:center; padding-top: 10px; bottom: 5px;' }
+  你之所以收到这封邮件是因为你曾经注册了
+  &nbsp;&nbsp;
+  %a{ :href => 'http://www.wakmj.com', :target => '_blank' } 我爱看美剧 - 美剧迷社区

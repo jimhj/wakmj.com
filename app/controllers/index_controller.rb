@@ -1,7 +1,7 @@
 # coding: utf-8
 class IndexController < ApplicationController
-  before_filter :check_signed_in, :only => [:sign_up, :sign_in]
-  before_filter :require_login, :only => [:sign_out]
+  before_filter :check_signed_in, :only => [:sign_up, :sign_in, :forgot_password]
+  before_filter :require_login, :only => [:sign_out, :confirm]
   # caches_page :index, :recents, :hots, :expires_in => 1.hours
 
   def index
@@ -31,6 +31,26 @@ class IndexController < ApplicationController
     @tv_dramas = TvDrama.hots.paginate(:page => params[:page], :per_page => 12)
     set_seo_meta('热门')
     render :action => :index
+  end
+
+  def forgot_password
+    if request.post?
+      if User.where(:email => params[:email]).exists?
+        begin
+          EmailConfirmToken.perform_async(:send_confirm_link, params[:email]) 
+          flash[:success] = "修改密码确认邮件已发往你的邮箱，请查收"
+        rescue Exception => e
+          flash[:error] = e.inspect
+        end
+        
+      else
+        flash[:error] = "输入的邮箱不存在，请重新输入"
+      end
+      redirect_to :back
+    end
+  end
+
+  def confirm
   end
 
   def sign_up

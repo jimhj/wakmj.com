@@ -4,17 +4,11 @@
 .left_container
   .sign_in_panel.large_panel  
     .panel_title.sign_in_panel_title
-      注册新用户
+      重置密码
     .form_panel
       = form_tag sign_up_path, :method => 'POST' do
         .blank_li.clearfix
-          %span 邮箱:
-          %input.white_text{ :type => 'text', :name => 'user[email]' }
-        .blank_li.clearfix
-          %span 用户名:
-          %input.white_text{ :type => 'text', :name => 'user[login]' }
-        .blank_li.clearfix
-          %span 密码:
+          %span 新密码:
           %input.white_text{ :type => 'password', :name => 'user[password]' }
         .blank_li.clearfix
           %span 确认密码:

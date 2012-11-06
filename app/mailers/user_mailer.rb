@@ -7,4 +7,10 @@ class UserMailer < ActionMailer::Base
     mail(:to => @user.email, :subject => "欢迎您注册 - #{SITE_NAME}")
   end
 
+  def send_confirm_link(email, link)
+    @email = email
+    @link = link
+    mail(:to => @email, :subject => "密码重置邮件 - #{SITE_NAME}")
+  end
+
 end
