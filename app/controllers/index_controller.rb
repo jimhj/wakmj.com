@@ -137,7 +137,7 @@ class IndexController < ApplicationController
   end
 
   def init_email_token
-    @confirm_token = EmailConfirmToken.find_by(:email => params[:email], :token => params[:token])
+    @confirm_token = EmailConfirmToken.where(:email => params[:email], :token => params[:token]).first
   end
 
 end
