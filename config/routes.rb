@@ -8,8 +8,9 @@ Wakmj::Application.routes.draw do
   match 'sign_up' => 'index#sign_up', :as => :sign_up, :via => [:get, :post]
   match 'sign_out' => 'index#sign_out', :as => :sign_out
   match 'forgot_password' => 'index#forgot_password', :as => :forgot_password, :via => [:get, :post]
+  match 'reset_password' => 'index#reset_password', :as => :reset_password, :via => :post
   match 'search' => 'index#search', :as => :search, :via => :get
-  match 'confirm' => 'index#confirm', :as => :confirm, :via => [:get, :post]
+  match 'confirm' => 'index#confirm', :as => :confirm
 
   resources :tv_dramas do
     resources :downloads, :only => [:new, :create]

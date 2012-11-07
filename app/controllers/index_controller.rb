@@ -1,7 +1,8 @@
 # coding: utf-8
 class IndexController < ApplicationController
-  before_filter :check_signed_in, :only => [:sign_up, :sign_in, :forgot_password]
-  before_filter :require_login, :only => [:sign_out, :confirm]
+  before_filter :check_signed_in, :only => [:sign_up, :sign_in, :forgot_password, :confirm, :reset_password]
+  before_filter :require_login, :only => [:sign_out]
+  before_filter :init_email_token, :only => [:confirm, :reset_password]
   # caches_page :index, :recents, :hots, :expires_in => 1.hours
 
   def index
@@ -51,7 +52,35 @@ class IndexController < ApplicationController
   end
 
   def confirm
+    if @confirm_token && @confirm_token.unexpired?
+      render 
+    else
+      flash[:error] = "重置密码链接是无效的或已经过期，请重新发送邮件到注册邮箱"
+      render :action => :forgot_password
+    end
   end
+  
+  def reset_password
+    return if @confirm_token.nil? || !@confirm_token.unexpired?
+    user = User.find_by(:email => params[:email])
+    return if user.nil?
+    user.password = params[:password]
+    user.password_confirmation = params[:password_confirmation]
+    if params[:password].length < 6
+      flash[:error] = "密码不能少于6位"
+      render :action => :confirm      
+    else
+      if user.save
+        @confirm_token.update_attribute(:status, 1)
+        flash[:success] = "重置密码成功，请重新登录"
+        redirect_to sign_in_path
+      else
+        flash[:error] = user.errors.full_messages
+        render :action => :confirm
+      end
+    end    
+  end
+
 
   def sign_up
     if request.post?
@@ -105,6 +134,10 @@ class IndexController < ApplicationController
   def check_signed_in
     redirect_to :root if signed_in?
     return
+  end
+
+  def init_email_token
+    @confirm_token = EmailConfirmToken.find_by(:email => params[:email], :token => params[:token])
   end
 
 end

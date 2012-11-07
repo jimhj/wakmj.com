@@ -6,13 +6,15 @@
     .panel_title.sign_in_panel_title
       重置密码
     .form_panel
-      = form_tag sign_up_path, :method => 'POST' do
+      = form_tag reset_password_path, :method => 'POST' do
         .blank_li.clearfix
           %span 新密码:
-          %input.white_text{ :type => 'password', :name => 'user[password]' }
+          %input.white_text{ :type => 'password', :name => 'password' }
+          = hidden_field_tag 'email', @confirm_token.email
+          = hidden_field_tag 'token', @confirm_token.token
         .blank_li.clearfix
           %span 确认密码:
-          %input.white_text{ :type => 'password', :name => 'user[password_confirmation]' }
+          %input.white_text{ :type => 'password', :name => 'password_confirmation' }
         .blank_li.clearfix
           %span &nbsp;
           %a.submit_btn.ml10{ :href => 'javascript:;' } 提交注册

@@ -12,6 +12,8 @@ class EmailConfirmToken
   # unconfirm 0, confirmed 1
   field :status, :type => Integer, :default => 0
 
+  validates_uniqueness_of :email, :scope => :token
+
 
   def self.create_confirm_link(email)
     return unless User.where(:email => email).exists?
@@ -32,6 +34,10 @@ class EmailConfirmToken
     rescue Exception => e
       Logger.new("#{Rails.root}/log/mail.error.log").info(e.backtrace.join("\n"))
     end    
+  end
+
+  def unexpired?
+    (Time.now - self.created_at) < 3.days && self.status == 0
   end
 
 

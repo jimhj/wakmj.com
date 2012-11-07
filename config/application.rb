@@ -56,7 +56,7 @@ module Wakmj
 
     # Email SMTP Settings
     config.action_mailer.delivery_method = :smtp
-    config.action_mailer.default_url_options = { :host => "wakmj.com" }    
+    config.action_mailer.default_url_options = { :host => "www.wakmj.com" }    
     config.action_mailer.smtp_settings = {
         :address => "smtp.exmail.qq.com",
         :port => "25",
