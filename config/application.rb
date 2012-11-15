@@ -62,8 +62,8 @@ module Wakmj
         :port => "25",
         :domain => "wakmj.com",
         :authentication => "login",
-        :user_name => "webmaster@wakmj.com",
-        :password => "huangjin0819",
+        :user_name => Setting.qq_exmail_user_name,
+        :password => Setting.qq_exmail_password,
         :enable_starttls_auto => true
      }      
   end
