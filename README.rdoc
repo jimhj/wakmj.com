@@ -1,2 +1,19 @@
-========== www.wakmj.com
+== www.wakmj.com
 wakmj.com 是一个轻型的美剧迷社区。
+
+== Requirements
+* Redis 2.4.15
+* MongoDB 2.0.6 
+* Rails 3.2.8
+* Ruby 1.9.3
+
+== Installation
+1. 安装需要的 gems 
+  bundle install
+2. 抓取资源
+  rake parse:yyets
+3. 启动 sidekiq 队列
+  nohup bundle exec sidekiq -C config/sidekiq.yml
+3. 启动 Rails
+  rails s
+
