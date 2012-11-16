@@ -53,6 +53,8 @@ module Wakmj
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    setting_config = YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]
 
     # Email SMTP Settings
     config.action_mailer.delivery_method = :smtp
@@ -62,8 +64,8 @@ module Wakmj
         :port => "25",
         :domain => "wakmj.com",
         :authentication => "login",
-        :user_name => Setting.qq_exmail_user_name,
-        :password => Setting.qq_exmail_password,
+        :user_name => setting_config["qq_exmail_user_name"],
+        :password => setting_config["qq_exmail_password"],
         :enable_starttls_auto => true
      }      
   end

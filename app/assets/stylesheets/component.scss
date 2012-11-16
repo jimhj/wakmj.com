@@ -88,7 +88,7 @@ input.white_text.small {
 }
 
 /* buttons */
-a.submit_btn, a.btn {
+a.submit_btn, a.w_btn {
   @include bg($green);
   color: $white;
   padding: 10px 20px;

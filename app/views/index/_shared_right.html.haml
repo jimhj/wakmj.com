@@ -22,10 +22,11 @@
       %a.title{ :href => '#' } 最新帖子
       / %a{ :href => '#' } 更多
     %ul
-      - cache('recent_topics') do
-        - Topic.recent.each do |topic|
-          %li 
-            %a{ :href => topic_path(topic.id) }= topic.title
+      - Topic.recent.each do |topic|
+        %li
+          %a{ :href => topic_path(topic.id) }
+            = image_tag topic.user.avatar_url(:small), :size => "15x15" 
+            = topic.title
          
   .newest_tv
     .title_bar

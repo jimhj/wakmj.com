@@ -24,6 +24,8 @@
       %li
         %a{ :href => user_path(current_user.login), :class => url_for == user_path(current_user.login) ? 'active' : nil }= current_user.login
       %li
-        %a{ :href => account_setting_path, :class => url_for == account_setting_path ? 'active' : nil } 设置          
+        %a{ :href => account_setting_path, :class => url_for == account_setting_path ? 'active' : nil } 设置
+      %li
+        %a{ :href => root_path } 返回网站首页                  
       %li
         %a{ :href => sign_out_path } 退出          
