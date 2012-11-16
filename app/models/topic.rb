@@ -29,10 +29,14 @@ class Topic
   validates_presence_of :user_id, :tv_drama_id
 
   delegate :login, :to => :user, :prefix => true
-  scope :recent, desc('created_at').limit(10)
+  # scope :recent, desc('created_at').limit(10)
 
   def last_replier
     User.find_by_id(self.last_replied_user_id)
+  end
+
+  def self.recent
+    self.includes(:user).desc('created_at').limit(10)
   end
 
   # def self.recent

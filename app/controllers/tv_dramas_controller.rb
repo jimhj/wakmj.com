@@ -5,7 +5,7 @@ class TvDramasController < ApplicationController
   before_filter :require_login, :except => [:show]
   before_filter :init_tv_drama, :except => [:create, :new]
 
-  load_and_authorize_resource :only => [:edit, :update, :create, :new]
+  load_and_authorize_resource :only => [:edit, :update, :create]
 
   def show
     @topics = @tv_drama.topics.desc('created_at').includes(:user).paginate(:page => params[:page])
@@ -44,6 +44,19 @@ class TvDramasController < ApplicationController
   end
 
   def new
+    can_create = begin
+      authorize!(:create, TvDrama)
+        nil 
+      rescue Exception => e
+        "没有权限新建剧集，请点击左侧‘帮我们维护按钮’，谢谢"
+    end
+    
+    if can_create.nil?
+      render
+    else
+      flash[:error] = can_create
+      redirect_to user_path(current_user.login)
+    end
   end
 
   private
