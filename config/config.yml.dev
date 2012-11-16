@@ -1,8 +1,8 @@
 defaults: &defaults
   app_name: "我爱看美剧"
-  weibo_key: "xxxxxxxxx"
-  weibo_secret: "xxxxxxxxxxxxxxxxxxxx"
-  admin_user_email: "xxxxxx@xxxxx.com"
+  weibo_key: "146154564"
+  weibo_secret: "6bb9ba83bdbb38ecff074d155a27d6c0"
+  admin_user_email: "bzu_2007@126.com"
   xunlei_vod_url: "http://lixian.vip.xunlei.com/lixian_login.html?referfrom=union&ucid=987212&furl="
 
 
@@ -10,19 +10,19 @@ development:
   <<: *defaults
   site_url: "http://127.0.0.1:3000/"
   weibo_callback_url: "http://www.wakmj.com:3000/auth/weibo/callback"
-  qq_exmail_user_name: "xxxxxxxx"
-  qq_exmail_password: "xxxxxxxx"
+  qq_exmail_user_name: "webmaster@wakmk.com"
+  qq_exmail_password: "huangjin0819"
 
 test:
   <<: *defaults
 
   weibo_callback_url: "http://www.wakmj.com:3000/auth/weibo/callback"
-  qq_exmail_user_name: "xxxxxxxx"
-  qq_exmail_password: "xxxxxxxx"
+  qq_exmail_user_name: "webmaster@wakmk.com"
+  qq_exmail_password: "huangjin0819"
 
 production:
   <<: *defaults
   site_url: "http://www.wakmj.com/"
   weibo_callback_url: "http://www.wakmj.com/auth/weibo/callback"
-  qq_exmail_user_name: "xxxxxxxx"
-  qq_exmail_password: "xxxxxxxx"
+  qq_exmail_user_name: "webmaster@wakmk.com"
+  qq_exmail_password: "huangjin0819"

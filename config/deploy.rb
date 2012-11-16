@@ -43,6 +43,10 @@ task :mongoid_create_indexes, :roles => :web do
   run "cd #{deploy_to}/current/; RAILS_ENV=production bundle exec rake db:mongoid:create_indexes"
 end
 
+task :set_config_file, :roles => :web do
+  run "cd #{deploy_to}/current/; cp config/config.yml.dev config/config.yml"  
+end
+
 task :resprite, :roles => :web do
   run "cd #{deploy_to}/current/; RAILS_ENV=production bundle exec rake assets:resprite"
 end
@@ -65,4 +69,4 @@ end
 #   run "cd #{deploy_to}/current/log; #{try_sudo} rm -rf production.log"
 # end
 
-after "deploy:finalize_update","deploy:create_symlink", :resprite, :compile_assets, :sitemap
+after "deploy:finalize_update","deploy:create_symlink", :set_config_file, :resprite, :compile_assets, :sitemap
