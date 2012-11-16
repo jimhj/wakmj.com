@@ -26,7 +26,7 @@ class TopicsController < ApplicationController
     )
 
     if topic.save
-      expire_fragment('recent_topics')
+      # expire_fragment('recent_topics')
       topic.tv_drama.update_attribute(:last_topic_id, topic.id)
       redirect_to topic_path(topic)
     else

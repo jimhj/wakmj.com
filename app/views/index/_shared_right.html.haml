@@ -3,10 +3,9 @@
     %ul
       %li{ :class => params[:cate].blank? ? 'active' : nil }
         %a{ :href => url_for(:year => request.query_parameters[:year]) } 全部
-      - cache('tv_categories') do
-        - TvCategory.all.each_with_index do |cate, index|
-          %li{ :class => params[:cate] == cate.name ? 'active' : nil }
-            %a{ :href => url_for(:cate => cate.name, :year => request.query_parameters[:year]) }= cate.name
+      - TvCategory.all.each_with_index do |cate, index|
+        %li{ :class => params[:cate] == cate.name ? 'active' : nil }
+          %a{ :href => url_for(:cate => cate.name, :year => request.query_parameters[:year]) }= cate.name
 
   .years.dotted_bottom.clearfix
     %ul
