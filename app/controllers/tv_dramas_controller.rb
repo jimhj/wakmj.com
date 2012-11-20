@@ -9,7 +9,11 @@ class TvDramasController < ApplicationController
 
   def show
     @topics = @tv_drama.topics.desc('created_at').includes(:user).paginate(:page => params[:page])
-    @resources = @tv_drama.download_resources.desc('season').paginate(:page => params[:page])
+    @resources = @tv_drama.download_resources
+    @resources = @resources.where(:season => params[:season]) unless params[:season].blank?
+    @resources = @resources.desc('season').paginate(:page => params[:page])
+    @seasons = @tv_drama.download_resources.distinct(:season)
+
     set_seo_meta(@tv_drama.tv_name, @tv_drama.category_list, @tv_drama.summary)
 
     respond_to do |format|

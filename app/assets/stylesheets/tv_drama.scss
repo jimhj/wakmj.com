@@ -69,6 +69,13 @@
       // download panel
       .downloads_panel {
         display: none;
+        .res_seasons {
+          border-bottom: 1px solid $w_grey;
+          padding: 14px 10px;
+          a { color: $green; margin-right: 10px; padding: 5px 5px; }
+          a.active { @include bg($green); color: $white; }           
+        }
+
         .res_summary {
           border-bottom: 1px solid $w_grey;
           padding: 14px 10px;          

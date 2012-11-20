@@ -1,7 +1,11 @@
 - if @resources.blank?
   .blank_notice
     暂时没有下载资源...
-- else      
+- else 
+  .res_seasons
+    %a{ :href => url_for(:page => 1), :class => params[:season].blank? ? 'active' : nil } ALL
+    - @seasons.each do |s|
+      %a{ :href => url_for(:season => s), :class => params[:season] == s ? 'active' : nil  }= s     
   - @resources.each do |res| 
     .res_summary
       %span.season= res.season.to_s << res.episode.to_s 

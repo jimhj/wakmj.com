@@ -22,8 +22,12 @@ Wakmj.TvDrama =
   __setPaginateToAjax : ->
     $('.digg_pagination a').attr('data-remote', true)
 
-    $('body').on 'click', '.digg_pagination a',  -> 
+    $('body').on 'click', '.digg_pagination a, .res_seasons a',  -> 
       $this = $(this)
+
+      # if $this.closest('.res_seasons').length > 0
+      #   $this.addClass('active')
+      #   $this.closest('.res_seasons').find('a').not($this).removeClass('active')
       $list_panel = $this.parents('.list_container')
       if $list_panel.is('.downloads_panel')
         params = { to : 'downloads' }
@@ -36,7 +40,8 @@ Wakmj.TvDrama =
 
       $list_panel.empty().append($save, $loading)
 
-      _url = $this.attr('href').split('&')[0]
+      # _url = $this.attr('href').split('&')[0]
+      _url = $this.attr('href')
       $.get _url, params, (res) ->
         $list_panel.empty().append $save, $(res)
       , 'json'
