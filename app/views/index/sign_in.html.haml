@@ -13,9 +13,14 @@
         .blank_li.clearfix
           %span 密码:
           %input.white_text{ :type => 'password', :name => 'password' }
+        .blank_li.clearfix{ :style => 'margin:0px; font-size:12px;' }
+          %span &nbsp;
+          %input{ :type => 'checkbox', :name => 'remember_me', :checked => true }
+          %label &nbsp; &nbsp; 保持登录状态
         .blank_li.clearfix
           %span &nbsp;
           %a.submit_btn.ml10{ :href => 'javascript:;' } 登录
+
 
 .right_container
   .notices

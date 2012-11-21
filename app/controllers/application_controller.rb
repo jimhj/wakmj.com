@@ -81,7 +81,21 @@ class ApplicationController < ActionController::Base
   end
 
   def login_from_cookie
-    nil
+    if session[:user_id].blank? && cookies.signed[:remember_me].present?
+      session[:user_id] = cookies.signed[:remember_me].split('--')[1]
+      self.current_user = User.where(:_id => session[:user_id]).first
+    end
+  end
+
+  def set_sign_in_cookie
+    cookies.signed[:remember_me] = {
+      :value => "#{Time.now.to_i}--#{current_user.id}",
+      :expires => 1.week.from_now
+    }
+  end
+
+  def clear_sign_in_cookie
+    cookies.delete(:remember_me)
   end
 
   def clear_login_state

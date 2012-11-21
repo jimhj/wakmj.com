@@ -116,6 +116,7 @@ class IndexController < ApplicationController
       if user.present?
         user.update_attribute(:last_signed_in_at, Time.now)
         self.current_user = user
+        params[:remember_me].blank? ? clear_sign_in_cookie : set_sign_in_cookie
       else
         flash[:error] = '账号或者密码不正确'
       end
@@ -126,6 +127,7 @@ class IndexController < ApplicationController
 
   def sign_out
     clear_login_state
+    clear_sign_in_cookie
     redirect_to root_path    
   end
 
