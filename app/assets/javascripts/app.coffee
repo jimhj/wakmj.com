@@ -24,7 +24,7 @@ Wakmj.CommonEvents =
       $form = $(this).parents('form')
       $form[0].submit() if $form.length > 0
       
-    $('.form_panel input[type=password]:last, .form_panel input[type=text]:last').keyup (e) ->
+    $('.form_panel input:last').keyup (e) ->
       $form = $(this).parents('form')
       if e.keyCode == 13 && $form.length > 0 
         # if $form.is('.search_panel')
