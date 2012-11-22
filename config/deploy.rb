@@ -69,4 +69,4 @@ end
 #   run "cd #{deploy_to}/current/log; #{try_sudo} rm -rf production.log"
 # end
 
-after "deploy:finalize_update","deploy:create_symlink", :set_config_file, :resprite, :compile_assets, :sitemap
+after "deploy:finalize_update","deploy:create_symlink", :resprite, :compile_assets, :sitemap
