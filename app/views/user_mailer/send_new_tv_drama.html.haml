@@ -1,0 +1,23 @@
+
+%p{ :style => 'font-size:14px;' } 
+  Dear
+  %span{ :style => 'font-weight: bold;' }= "#{@user.login}："
+
+%p{ :style => 'font-size:14px; margin-top: 10px;' }
+  很高兴的通知您有新美剧可以看啦！  
+%div
+
+  %p 
+    %span 剧名：
+    = link_to @tv_drama.tv_name, tv_drama_url(@tv_drama)
+  %p
+    = image_tag @tv_drama.cover_url(:normal)
+  .desc
+    = simple_format(@tv_drama.summary)
+
+
+
+%p{ :style => 'font-size:12px; margin-top: 100px; border-top: 1px solid #ccc; text-align:center; padding-top: 10px; bottom: 5px;' }
+  你之所以收到这封邮件是因为你曾经注册了
+  &nbsp;&nbsp;
+  %a{ :href => 'http://www.wakmj.com', :target => '_blank' } 我爱看美剧 - 美剧迷社区

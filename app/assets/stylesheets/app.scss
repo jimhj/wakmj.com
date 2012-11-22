@@ -125,6 +125,12 @@ img { border: none; }
   .notice_ment { width: 100%; text-align: center; color: #FF0000; padding: 5px; opacity: 0.5; }
   .notice_ment a { text-decoration: underline; }
 
+  // really bad to place a tv_drama css class here.
+  .new_drama_panel {
+    width: 70%;
+    margin: 0 auto;    
+  }
+
   #error_page {
     text-align: center;
     color: $green;

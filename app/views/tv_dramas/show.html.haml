@@ -41,7 +41,7 @@
           %span= @tv_drama.directors.join(' / ')
         .release_date
           %span.title 上映日期:
-          %span= @tv_drama.release_date.strftime('%Y-%m-%d')  
+          %span= @tv_drama.release_date ? @tv_drama.release_date.strftime('%Y-%m-%d') : ''
         .imdb
           %span.title IMDB:
           %span= @tv_drama.imdb

@@ -45,6 +45,13 @@ class TvDramasController < ApplicationController
   end
 
   def create
+    tv_drama = TvDrama.new(params[:drama])
+    if tv_drama.save
+      redirect_to tv_drama_path(tv_drama)
+    else
+      flash[:error] = tv_drama.errors.full_messages
+      redirect_to :back      
+    end
   end
 
   def new
@@ -56,7 +63,8 @@ class TvDramasController < ApplicationController
     end
     
     if can_create.nil?
-      render
+      @tv_drama = TvDrama.first
+      render :layout => 'application'
     else
       flash[:error] = can_create
       redirect_to user_path(current_user.login)

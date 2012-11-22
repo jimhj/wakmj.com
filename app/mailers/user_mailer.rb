@@ -13,4 +13,10 @@ class UserMailer < ActionMailer::Base
     mail(:to => @email, :subject => "密码重置邮件 - #{SITE_NAME}")
   end
 
+  def send_new_tv_drama(user, tv_drama)
+    @user = user
+    @tv_drama = tv_drama
+    mail(:to => @user.email, :subject => "有新美剧啦！ - #{SITE_NAME}")
+  end
+
 end

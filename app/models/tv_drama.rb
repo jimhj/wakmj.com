@@ -6,6 +6,7 @@ class TvDrama
   include Mongoid::BaseModel
   include Mongoid::TaggableOn
   include Mongoid::Likeable
+  include Mongoid::DelayedDocument
   include Redis::Search
 
   # include Mongoid::CounterCache
@@ -64,6 +65,27 @@ class TvDrama
                      :condition_fields => [:verify],
                      :ext_fields => [:alias_names, :categories, :release_date, :topics_count, :likes_count])  
 
+  after_create do |tv_drama|
+    TvDrama.perform_async(:send_new_tv_drama, tv_drama.id)
+  end
+
+  def self.send_new_tv_drama(tv_drama_id)
+    tv_drama = self.find_by_id(tv_drama_id)
+    user_arys = User.all.in_groups_of(10)
+    user_arys.each do |users| 
+      users.each do |user|
+        next if user.nil? 
+        begin
+          puts "begin============#{tv_drama}==========="
+          UserMailer.send_new_tv_drama(user, tv_drama).deliver
+        rescue Exception => e
+          puts "error============#{e.inspect}==========="
+          Logger.new("#{Rails.root}/log/mail.error.log").info(e.backtrace.join("\n"))
+        end
+      end
+      sleep(5)
+    end
+  end
 
   # def pre_releases
   # end
