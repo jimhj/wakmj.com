@@ -11,7 +11,7 @@
     %span 剧名：
     = link_to @tv_drama.tv_name, tv_drama_url(@tv_drama)
   %p
-    = image_tag @tv_drama.cover_url(:normal)
+    = image_tag "#{@image_host}#{@tv_drama.cover_url(:normal)}"
   .desc
     = simple_format(@tv_drama.summary)
 

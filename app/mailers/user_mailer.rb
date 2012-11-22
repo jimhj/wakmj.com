@@ -16,6 +16,7 @@ class UserMailer < ActionMailer::Base
   def send_new_tv_drama(user, tv_drama)
     @user = user
     @tv_drama = tv_drama
+    @image_host = Setting.site_url.sub(/\/$/, '')
     mail(:to => @user.email, :subject => "有新美剧啦！ - #{SITE_NAME}")
   end
 
