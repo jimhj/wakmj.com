@@ -23,7 +23,7 @@
           %input.white_text.small{ :type => 'text', :value => @tv_drama.director_list, :name => 'drama[director_list]' }  
         .blank_li.clearfix
           %span 上映日期:
-          %input.white_text.small{ :type => 'text', :value => @tv_drama.release_date.strftime('%F'), :name => 'drama[release_date]' }
+          %input.white_text.small{ :type => 'text', :value => @tv_drama.release_time, :name => 'drama[release_date]' }
         .blank_li.clearfix
           %span IMDB 评分:
           %input.white_text.small{ :type => 'text', :value => @tv_drama.imdb, :name => 'drama[imdb]' }

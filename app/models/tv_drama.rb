@@ -71,20 +71,29 @@ class TvDrama
 
   def self.send_new_tv_drama(tv_drama_id)
     tv_drama = self.find_by_id(tv_drama_id)
-    user_arys = User.all.in_groups_of(10)
+    user_arys = User.all.to_a.in_groups_of(5, false)
+    logger = Logger.new("#{Rails.root}/log/mail.error.log")
     user_arys.each do |users| 
       users.each do |user|
-        next if user.nil? 
         begin
-          puts "begin============#{tv_drama}==========="
+          logger.info("begin=====#{Time.now}===========")
           UserMailer.send_new_tv_drama(user, tv_drama).deliver
         rescue Exception => e
-          puts "error============#{e.inspect}==========="
-          Logger.new("#{Rails.root}/log/mail.error.log").info(e.backtrace.join("\n"))
+          logger.info("error=====#{Time.now}===========")
+          logger.info(e.backtrace.join("\n"))
         end
       end
-      sleep(5)
+      sleep(60)
     end
+  end
+
+  def release_time
+    self.release_date ? self.release_date.strftime('%F') : ''
+  end
+
+  def creator
+    return nil if self.created_by.blank?
+    User.find_by_id(self.created_by.to_i)
   end
 
   # def pre_releases

@@ -46,6 +46,7 @@ class TvDramasController < ApplicationController
 
   def create
     tv_drama = TvDrama.new(params[:drama])
+    tv_drama.created_by = current_user.id.to_s
     if tv_drama.save
       redirect_to tv_drama_path(tv_drama)
     else

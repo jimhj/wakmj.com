@@ -17,6 +17,13 @@
       %span.origin
         = @tv_drama.tv_name
       .opts
+        - if @tv_drama.creator.present?
+          %span Created by:
+          &nbsp;&nbsp;
+          %a{ :href => user_path(@tv_drama.creator.login) }
+            = image_tag @tv_drama.creator.avatar_url(:small), :size => '15x15'
+            = @tv_drama.creator.login
+          |&nbsp;
         - if can?(:update, @tv_drama)
           %a{ :href => edit_tv_drama_path(@tv_drama) } 编辑
     .intro.clearfix
@@ -41,7 +48,7 @@
           %span= @tv_drama.directors.join(' / ')
         .release_date
           %span.title 上映日期:
-          %span= @tv_drama.release_date ? @tv_drama.release_date.strftime('%Y-%m-%d') : ''
+          %span= @tv_drama.release_time
         .imdb
           %span.title IMDB:
           %span= @tv_drama.imdb
