@@ -3,6 +3,8 @@
 # = require lib/jquery.timeago
 # = require lib/jquery.timeago.zh-CN
 # = require lib/artdialog/jquery.artDialog
+# = require lib/jquery.atwho
+# = require lib/jquery.caret
 # = require_self
 
 Wakmj = window.Wakmj = {}
