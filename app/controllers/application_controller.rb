@@ -105,7 +105,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_seo_meta(title = nil, meta_keywords = nil, meta_description = nil)
-    default_keywords = "美剧，美剧迷，美剧社区，最新美剧，迷失，生活大爆炸，老友记，美剧预告"
+    default_keywords = "美剧，美剧迷，美剧社区，最新美剧，行尸走肉第三季，吸血鬼日记，迷失，生活大爆炸，老友记，美剧预告"
     default_description = %Q(我爱看美剧是一个小型美剧迷社区，专为美剧迷而生，找最新美剧，看剧评，找朋友就上我爱看美剧)
     @page_title = "#{title}" if title.present?      
     @keywords = meta_keywords || default_keywords

@@ -1,6 +1,7 @@
 Wakmj.Topic =
   init : ->
     this.__bindPostReplyBtnClickedEvent()
+    this.__bindAtWho()
 
   __bindPostReplyBtnClickedEvent : ->
 
@@ -27,6 +28,16 @@ Wakmj.Topic =
           $reply_panel.append(res)
           $textarea.val('')
         , 'html'
+
+  __bindAtWho: ->
+    user_names = $('.reply a.user_name').map ->
+      $(this).text()
+    .get()
+
+    $('textarea.reply_content').atWho("@", {
+      data: user_names  
+    })
+
 
 $(document).ready ->
   Wakmj.Topic.init()    
