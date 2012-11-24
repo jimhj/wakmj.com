@@ -12,7 +12,8 @@
 }
 
 #at-view .cur {
-    background: #3366FF;
+    /*background: #3366FF;*/
+    background-color: green;
     color: white;
 }
 #at-view .cur small {
