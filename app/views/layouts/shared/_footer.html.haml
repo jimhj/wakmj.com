@@ -1,4 +1,7 @@
 .footer.clearfix
+  .thanks
+    %a{ :href => 'http://www.ruby-china.org', :title => "部分代码来自 Ruby China 社区" }
+      = image_tag "ruby_china.png", :width => '48'
   .about_us
     .navs
       - Misc.where(:category => "pages").each do |misc|
@@ -11,9 +14,7 @@
     %a{ :href => 'http://weibo.com/huangjin2011', :target => '_blank' }
       %i.icon.icons_weibo_s_16
       在微博关注我们
-  .thanks
-    %a{ :href => 'http://www.ruby-china.org', :title => "部分代码来自 Ruby China 社区" }
-      = image_tag "ruby_china.png", :width => '48'   
+   
 
       
 .feedback_btn.helpus 
