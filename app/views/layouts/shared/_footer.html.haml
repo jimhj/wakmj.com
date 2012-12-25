@@ -4,6 +4,7 @@
       - Misc.where(:category => "pages").each do |misc|
         %a{ :href => misc_path(misc.slug) }= misc.title
       %a{ :href => 'http://www.huanarle.com', :target => '_blank', :title => "简易账本" } 花哪儿了
+      %a{ :href => 'http://www.kaixinchanglang.com', :target => '_blank', :title => "开心长廊" } 开心长廊
     .copyright
       Copyright © www.wakmj.com
   .weibo_page
@@ -16,4 +17,3 @@
 
 - content_for :footer_script do
   = render 'shared/google_analytics'
-
