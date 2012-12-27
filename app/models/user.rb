@@ -41,8 +41,17 @@ class User
   mount_uploader :avatar, AvatarUploader
 
   def has_role?(role)
-    self.roles.include?(role)
+    return true if self.roles.include?('superadmin')
+    case role
+    when 'admin' then admin?
+    else      
+      self.roles.include?(role)
+    end
   end
+
+  def admin?
+    Setting.admin_user_emails.include?(self.email)
+  end  
 
   def like(likeable)
     return false if likeable.blank?

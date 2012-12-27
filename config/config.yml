@@ -2,7 +2,9 @@ defaults: &defaults
   app_name: "我爱看美剧"
   weibo_key: "146154564"
   weibo_secret: "6bb9ba83bdbb38ecff074d155a27d6c0"
-  admin_user_email: "bzu_2007@126.com"
+  admin_user_emails: 
+    - "bzu_2007@126.com"
+    - "admin@remen.tv"
   xunlei_vod_url: "http://lixian.vip.xunlei.com/lixian_login.html?referfrom=union&ucid=987212&furl="
 
 
