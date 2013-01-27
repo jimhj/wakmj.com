@@ -15,7 +15,7 @@ class PreRelease
   index :tv_drama_id => 1
 
   validates_presence_of :season, :episode, :release_date
-  validates_uniqueness_of :episode, :scope => :season
+  # validates_uniqueness_of :season, :scope => :tv_drama_id
   attr_accessible :season, :episode, :release_date
 
   def season_epi
