@@ -40,7 +40,7 @@ class PreRelease
   end
 
   def self.recent
-    uniq_ids = PreRelease.desc('created_at').distinct(:tv_drama_id)[0..11]
+    uniq_ids = PreRelease.asc('release_date').distinct(:tv_drama_id)[0..11]
     self.where(:tv_drama_id.in => uniq_ids).includes(:tv_drama).limit(12)
   end
 
