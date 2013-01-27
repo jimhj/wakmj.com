@@ -13,7 +13,9 @@
       %th 排序值
       %th 创建日期
       %th 操作
-      %th 操作      
+      %th 操作
+      %th 操作
+
   %tbody
     - @tv_dramas.each do |tv|
       %tr
@@ -29,6 +31,10 @@
           = link_to '修改', '#'
         %th 
           = link_to '删除', '#'
+        %th
+          = link_to '新剧预告', cpanel_pre_releases_path(:tv_drama_id => tv.id)
+          &nbsp;
+          = link_to '新增', new_cpanel_pre_release_path(:tv_drama_id => tv.id)
 
 .pagination_panel
   = will_paginate(@tv_dramas, :class => 'digg_pagination')

@@ -1,0 +1,28 @@
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th ID
+      %th 剧集名称
+      %th 播出时间
+      %th 第几季
+      %th 第几集
+      %th 操作
+      %th 操作
+
+  %tbody
+    - @pre_releases.each do |pre|
+      %tr
+        %th= pre.id
+        %th
+          = link_to pre.tv_drama.tv_name, tv_drama_path(pre.tv_drama_id), :target => "_blank"
+        %th= pre.release_date.strftime('%F')
+        %th= pre.season
+        %th= pre.episode
+
+        %th 
+          = link_to '修改', '#'
+        %th 
+          = link_to '删除', '#'
+
+.pagination_panel
+  = will_paginate(@pre_releases, :class => 'digg_pagination')

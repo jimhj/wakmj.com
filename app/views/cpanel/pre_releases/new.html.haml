@@ -1,0 +1,19 @@
+= form_tag cpanel_pre_releases_path do
+  %p
+    %input.span3{ :type => 'text', :name => "", :value => @tv_drama.tv_name, :disabled => true }      
+  %p
+    %select.span2{ :name => "pre_release[season]" }
+      %option{ :value => "" } 选择第几季
+      - 1.upto(30).each do |i|
+        %option= "S" + ("%02d" % i)
+  %p
+    %select.span2{ :name => "pre_release[episode]" }
+      %option{ :value => "" } 选择第几集
+      - 1.upto(30).each do |i|
+        %option= "E" + ("%02d" % i)
+  %p
+    %input.span3{ :type => 'text', :placeholder => "填写播出时间, 如: 2012-10-10", :name => "pre_release[release_date]" }
+    %input{ :type => 'hidden', :name => "pre_release[tv_drama_id]", :value => @tv_drama.id }
+
+  %p
+    %input.btn.btn-primary{ :type => 'submit', :value => "保存" }  

@@ -50,6 +50,8 @@ Wakmj::Application.routes.draw do
 
     end
 
+    resources :pre_releases
+
     resources :applies, :only => :index do
       member do
         post :pass
