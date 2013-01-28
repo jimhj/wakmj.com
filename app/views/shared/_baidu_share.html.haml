@@ -7,7 +7,7 @@
   %script{ :type => 'text/javascript', :id => 'bdshell_js' }
   :javascript
     var bds_config = {
-      'bdText': "#{simple_format(@tv_drama.summary)}",
+      'bdText': "#{@tv_drama.summary}",
       'bdPic': "#{Setting.site_url + @tv_drama.cover_url(:large)}",
       'snsKey':{ 'tsina': "#{Setting.weibo_key}" }
     };
