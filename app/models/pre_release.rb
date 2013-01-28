@@ -35,6 +35,9 @@ class PreRelease
     end
   end
 
+  def released?
+  end
+
   def new_release?
     
   end

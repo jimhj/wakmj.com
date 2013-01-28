@@ -15,6 +15,8 @@
   .search_panel
     = form_tag search_path, :method => 'GET' do
       %input.white_text{ :type => 'text', :value => '搜索剧集...', :name => 'q', :default_text => '搜索剧集...' }
+      
+  = render "shared/weibo_share_button"
 
   .user_setting
     %ul
