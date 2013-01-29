@@ -14,6 +14,7 @@ development:
   weibo_callback_url: "http://www.wakmj.com:3000/auth/weibo/callback"
   qq_exmail_user_name: "webmaster@wakmj.com"
   qq_exmail_password: "huangjin0819"
+  pic_loc: "/Users/huangjin/wakmj/public"
 
 test:
   <<: *defaults
@@ -28,3 +29,4 @@ production:
   weibo_callback_url: "http://www.wakmj.com/auth/weibo/callback"
   qq_exmail_user_name: "webmaster@wakmj.com"
   qq_exmail_password: "huangjin0819"
+  pic_loc: "/home/deploy/www/wakmj/current/public"

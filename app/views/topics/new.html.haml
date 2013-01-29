@@ -19,6 +19,11 @@
         %span.lab 正文:
         %span{ :style => 'float:left;width:16px;' }
         %textarea.editor{ :name => 'content' }
+      - if current_user.weibo_uid.present?
+        .blank_li.clearfix
+          %span.lab 同步到微博:
+          %input{ :type => "checkbox", :checked => true, :name => "sync_to_weibo" }
+
       .blank_li.clearfix
         %span.lab &nbsp;
         %a.submit_btn{ :href => '#' } 确定

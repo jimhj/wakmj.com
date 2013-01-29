@@ -13,6 +13,7 @@ class Topic
 
   field :last_replied_user_id
   field :last_replied_at, :type => Time
+  field :sync_to_weibo, :type => Boolean, :default => false
 
   belongs_to :user, :inverse_of => :topics
   belongs_to :tv_drama, :inverse_of => :topics
@@ -39,8 +40,30 @@ class Topic
     self.includes(:user).desc('created_at').limit(10)
   end
 
-  # def self.recent
-  #   Topic.desc('created_at').limit(10)
-  # end
+  after_create do
+    if self.sync_to_weibo? && self.user.weibo_token.present?
+      # Topic.sync_to_weibo(self)
+       Reply.perform_async(:sync_to_weibo, self)
+    end
+  end
+
+  def self.sync_to_weibo(topic)
+    pic_path = File.join(Setting.pic_loc, topic.tv_drama.cover_url(:large))
+    topic_url = "#{Setting.site_url}/topics/#{topic.id}"
+    status = %Q(我在美剧 #{topic.tv_drama.tv_name} 中发表了主题 《#{topic.title}》#{topic_url} @我爱看美剧网)
+
+    conn = Faraday.new(:url => 'https://upload.api.weibo.com') do |faraday|
+      faraday.request :multipart
+      faraday.adapter :net_http
+    end
+
+    conn.post "/2/statuses/upload.json", {
+      :access_token => topic.user.weibo_token,
+      :status => URI.encode(status),
+      :pic => Faraday::UploadIO.new(pic_path, 'image/jpeg')
+    }
+    
+  end  
+
 
 end

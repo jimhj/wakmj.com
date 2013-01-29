@@ -22,8 +22,10 @@ class TopicsController < ApplicationController
     topic = current_user.topics.build(
       :tv_drama_id => params[:tv_drama_id],
       :title => params[:title],
-      :content => params[:content]
+      :content => params[:content],
     )
+
+    topic.sync_to_weibo = true if params[:sync_to_weibo]
 
     if topic.save
       # expire_fragment('recent_topics')
