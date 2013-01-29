@@ -43,7 +43,7 @@ class Topic
   after_create do
     if self.sync_to_weibo? && self.user.weibo_token.present?
       # Topic.sync_to_weibo(self)
-       Reply.perform_async(:sync_to_weibo, self)
+       Topic.perform_async(:sync_to_weibo, self)
     end
   end
 
