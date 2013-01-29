@@ -6,6 +6,7 @@ class Topic
   include Mongoid::BaseModel
   include Mongoid::CounterCache
   include Mongoid::Likeable
+  include Mongoid::DelayedDocument
   
   field :title, :type => String
   field :content
@@ -42,27 +43,31 @@ class Topic
 
   after_create do
     if self.sync_to_weibo? && self.user.weibo_token.present?
-      # Topic.sync_to_weibo(self)
-       Topic.perform_async(:sync_to_weibo, self)
+       Topic.perform_async(:sync_to_weibo, self._id)
     end
   end
 
-  def self.sync_to_weibo(topic)
-    pic_path = File.join(Setting.pic_loc, topic.tv_drama.cover_url(:large))
-    topic_url = "#{Setting.site_url}/topics/#{topic.id}"
-    status = %Q(我在美剧 #{topic.tv_drama.tv_name} 中发表了主题 《#{topic.title}》#{topic_url} @我爱看美剧网)
+  def self.sync_to_weibo(topic_id)
+    begin
+      topic = Topic.find_by_id(topic_id)
+      pic_path = File.join(Setting.pic_loc, topic.tv_drama.cover_url(:large))
+      topic_url = "#{Setting.site_url}/topics/#{topic.id}"
+      status = %Q(我在美剧 #{topic.tv_drama.tv_name} 中发表了主题 《#{topic.title}》#{topic_url} @我爱看美剧网)
 
-    conn = Faraday.new(:url => 'https://upload.api.weibo.com') do |faraday|
-      faraday.request :multipart
-      faraday.adapter :net_http
+      conn = Faraday.new(:url => 'https://upload.api.weibo.com') do |faraday|
+        faraday.request :multipart
+        faraday.adapter :net_http
+      end
+
+      conn.post "/2/statuses/upload.json", {
+        :access_token => topic.user.weibo_token,
+        :status => URI.encode(status),
+        :pic => Faraday::UploadIO.new(pic_path, 'image/jpeg')
+      }
+    rescue => e
+      logger.error "===============同步到新浪微博失败========"
+      logger.error e.backtrace.join("\n")
     end
-
-    conn.post "/2/statuses/upload.json", {
-      :access_token => topic.user.weibo_token,
-      :status => URI.encode(status),
-      :pic => Faraday::UploadIO.new(pic_path, 'image/jpeg')
-    }
-    
   end  
 
 
