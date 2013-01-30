@@ -104,7 +104,7 @@ class IndexController < ApplicationController
   end
 
   def search
-    ids = Redis::Search.query('TvDrama', params[:q], :conditions => { :verify => true }).collect{ |h| h['id'] }
+    ids = Redis::Search.query('TvDrama', params[:q], :conditions => { :verify => true }, :limit => 100).collect{ |h| h['id'] }
     @tv_dramas = TvDrama.where(:_id.in => ids).paginate(:page => params[:page], :per_page => 12)
     # @tv_dramas = TvDrama.all.paginate(:page => params[:page], :per_page => 12)
     set_seo_meta('搜索剧集')
