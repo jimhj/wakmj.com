@@ -51,8 +51,8 @@ class Topic
     begin
       topic = Topic.find_by_id(topic_id)
       pic_path = File.join(Setting.pic_loc, topic.tv_drama.cover_url(:large))
-      topic_url = "#{Setting.site_url}/topics/#{topic.id}"
-      status = %Q(我在美剧 #{topic.tv_drama.tv_name} 中发表了主题 《#{topic.title}》#{topic_url} @我爱看美剧网)
+      topic_url = "#{Setting.site_url}topics/#{topic.id}"
+      status = %Q(我在美剧 #{topic.tv_drama.tv_name} 中发表了主题 《#{topic.title}》#{topic_url} @我爱看美剧网 @美剧微吧)
 
       conn = Faraday.new(:url => 'https://upload.api.weibo.com') do |faraday|
         faraday.request :multipart
