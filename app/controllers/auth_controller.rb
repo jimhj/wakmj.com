@@ -12,6 +12,7 @@ class AuthController < ApplicationController
     }
     user = User.where(:weibo_uid => @auth_hash['uid']).first
     if user.present?
+      user.update_attribute(:weibo_token, @auth_hash['weibo_token'])
       self.current_user = user
       redirect_to root_path
     end  
