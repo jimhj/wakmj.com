@@ -5,7 +5,7 @@ class TvDramasController < ApplicationController
   before_filter :require_login, :except => [:show]
   before_filter :init_tv_drama, :except => [:create, :new]
 
-  load_and_authorize_resource :only => [:edit, :update, :create]
+  # load_and_authorize_resource :only => [:edit, :update, :create]
 
   def show
     @topics = @tv_drama.topics.desc('created_at').includes(:user).paginate(:page => params[:page])
