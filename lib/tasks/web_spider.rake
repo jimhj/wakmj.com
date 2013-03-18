@@ -94,7 +94,10 @@ namespace :parse do
 
           link = li.at('span.r a').xpath("//a[@thunderrestitle='#{resource[:link_text]}']").first
           resource[:download_link] = link.attribute_nodes.last.value  if link
-          drama.download_resources.create!(resource)
+          # drama.download_resources.create!(resource)
+          if drama.download_resources.where(:season => resource[:season], :episode => resource[:episode], :episode_format => resource[:episode_format]).blank?
+            drama.download_resources.create!(resource)
+          end
         end
       end
     rescue Exception => e
