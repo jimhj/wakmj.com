@@ -42,7 +42,6 @@ class ApplyToEdit
 
   after_update do
     if self.pass?
-      p 1111111111111111111111
       ApplyToEdit.perform_async(:send_apply_notification, self.user_id)
     end       
   end

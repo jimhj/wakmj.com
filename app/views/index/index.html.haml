@@ -29,8 +29,7 @@
                   %span 资源
                   %em= tv_drama.download_resources_count
               .update_to
-                %a.finished{ :href => tv_drama_path(tv_drama.id) }
-                  %span 已完结
+                = tv_status(tv_drama)
 
           .last_topic
             - if tv_drama.last_topic_id.present?

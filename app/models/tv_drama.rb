@@ -97,7 +97,4 @@ class TvDrama
     User.find_by_id(self.created_by.to_i)
   end
 
-  # def pre_releases
-  # end
-
 end

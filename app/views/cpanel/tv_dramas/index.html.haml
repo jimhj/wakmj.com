@@ -28,7 +28,7 @@
           %a{ :href => "#this", :'data-tv_drama_id' => tv.id }= tv.sort_no
         %th= tv.created_at.strftime('%F %T')
         %th 
-          = link_to '修改', '#'
+          = link_to '修改', edit_cpanel_tv_drama_path(tv)
         %th 
           = link_to '删除', '#'
         %th

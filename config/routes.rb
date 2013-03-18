@@ -39,7 +39,7 @@ Wakmj::Application.routes.draw do
     end
     resources :users
     resources :miscs
-    resources :tv_dramas, :only => :index do
+    resources :tv_dramas do
       collection do
         get :search
       end

@@ -6,6 +6,7 @@ class TvDramasController < ApplicationController
   before_filter :init_tv_drama, :except => [:create, :new]
 
   # load_and_authorize_resource :only => [:edit, :update, :create]
+  load_and_authorize_resource
 
   def show
     @topics = @tv_drama.topics.desc('created_at').includes(:user).paginate(:page => params[:page])
@@ -13,6 +14,7 @@ class TvDramasController < ApplicationController
     @resources = @resources.where(:season => params[:season]) unless params[:season].blank?
     @resources = @resources.desc('season').paginate(:page => params[:page])
     @seasons = @tv_drama.download_resources.distinct(:season)
+    @pre_releases = @tv_drama.pre_releases
 
     set_seo_meta(@tv_drama.tv_name, @tv_drama.category_list, @tv_drama.summary)
 

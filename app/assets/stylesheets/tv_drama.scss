@@ -85,6 +85,19 @@
         .res_summary a.vod { @include bg($grey); margin-left: 10px; }
         .res_summary a.vod i { vertical-align: middle; }
 
+        .content a:hover { color: $green; }
+
+      }
+
+      .comming_soon_panel { 
+        display: none; 
+        .pre_releases_list {
+          border-bottom: 1px solid $w_grey;
+          padding: 14px 10px;           
+        }
+
+        .pre_releases_list span { color: $green; margin-right: 10px; padding: 5px 5px; }
+        .pre_releases_list span.season { @include bg($green); color: $white; }
       }
 
       .related_dramas_panel {

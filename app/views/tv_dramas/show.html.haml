@@ -18,8 +18,6 @@
         = @tv_drama.tv_name
       .opts
         - if @tv_drama.creator.present?
-          %span Created by:
-          &nbsp;&nbsp;
           %a{ :href => user_path(@tv_drama.creator.login) }
             = image_tag @tv_drama.creator.avatar_url(:small), :size => '15x15'
             = @tv_drama.creator.login
@@ -82,9 +80,11 @@
         .notice_ment
           .tool_bar
           .content
-            下载资源目前只有 720P 迅雷下载，
-            %a{ :href => new_tv_drama_download_path(@tv_drama) } 欢迎添加资源.
+            %a{ :href => new_tv_drama_download_path(@tv_drama) } 点击此处添加下载资源.
         = render 'resources'
+
+      .comming_soon_panel
+        = render 'pre_releases'
 
       .related_dramas_panel
         %ul.dramas.clearfix

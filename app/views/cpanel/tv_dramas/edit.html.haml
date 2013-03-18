@@ -1,0 +1,47 @@
+= form_tag cpanel_tv_drama_path(@tv_drama.id), :method => 'PUT', :multipart => true, :class => 'form-horizontal' do
+  .control-group
+    %label.control-label 剧名:
+    .controls
+      %input{ :type => "text", :value => @tv_drama.tv_name, :name => 'drama[tv_name]' }
+  .control-group
+    %label.control-label 又名:
+    .controls
+      %input{ :type => "text", :value => @tv_drama.alias_name_list, :name => 'drama[alias_name_list]' }
+  .control-group
+    %label.control-label 电视台:
+    .controls
+      %input{ :type => "text", :value => @tv_drama.tv_station, :name => 'drama[tv_station]' }
+  .control-group
+    %label.control-label 主演:
+    .controls
+      %input{ :type => "text", :value => @tv_drama.actor_list, :name => 'drama[actor_list]' }            
+  .control-group
+    %label.control-label 导演:
+    .controls
+      %input{ :type => "text", :value => @tv_drama.director_list, :name => 'drama[director_list]' } 
+  .control-group
+    %label.control-label 上映日期:
+    .controls
+      %input{ :type => "text", :value => @tv_drama.release_time, :name => 'drama[release_time]' } 
+  .control-group
+    %label.control-label IMDB 评分:
+    .controls
+      %input{ :type => "text", :value => @tv_drama.imdb, :name => 'drama[imdb]' }             
+  .control-group
+    %label.control-label 封面海报:
+    .controls
+      %input{ :type => "file", :name => 'drama[cover]' }
+  .control-group
+    .controls
+      = image_tag @tv_drama.cover_url(:small)    
+  .control-group
+    %label.control-label 简介:
+    .controls
+      %textarea{ :name => 'drama[summary]', :style => "height: 160px; width:420px;" }= @tv_drama.summary 
+
+  .control-group
+    .controls
+      %label.checkbox
+        %input{ :type => "checkbox", :name => 'drama[finished]', :checked => @tv_drama.finished } 是否完结
+      
+      %input.btn.btn-primary{ :type => "submit", :value => "确定" }

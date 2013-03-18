@@ -1,0 +1,10 @@
+- if @pre_releases.blank?
+  .blank_notice
+    暂无预告...
+- else 
+  - @pre_releases.each do |pre| 
+    .pre_releases_list
+      %span.season= pre.season.to_s << pre.episode.to_s 
+      %span.time= pre.release_date.strftime("%F") 
+      %span.week= pre.release_day_of_week
+

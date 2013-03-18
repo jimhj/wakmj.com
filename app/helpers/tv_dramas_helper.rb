@@ -16,4 +16,19 @@ module TvDramasHelper
     link_to res.link_text, download_url, :class => 'download_link', :title => title
   end
 
+  def tv_status(tv_drama)
+    if tv_drama.finished?
+      link_to tv_drama_path(tv_drama.id), :class => 'finished', :title => "已完结" do
+        raw(%(<span>已完结</span>))
+      end   
+    else
+      resource = tv_drama.download_resources.desc('created_at').first
+      if resource && (Time.now - resource.created_at < 1.week)
+        link_to tv_drama_path(tv_drama.id), :class => 'newest_update', :title => "更新至" do
+          raw(%(<span>更新#{resource.season}#{resource.episode}</span>))
+        end         
+      end
+    end
+  end
+
 end

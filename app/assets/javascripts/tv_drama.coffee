@@ -9,15 +9,22 @@ Wakmj.TvDrama =
       $this.addClass('active')
       $this.parents('.nav_tabs').find('.tab').not($this).removeClass('active')
 
-      if $this.is('.topics')
-        $('.topics_panel').show()
-        $('.downloads_panel, .related_dramas_panel').hide()
-      else if $this.is('.downloads')
-        $('.downloads_panel').show()
-        $('.topics_panel, .related_dramas_panel').hide()
-      else if $this.is('.related_dramas')
-        $('.related_dramas_panel').show()
-        $('.topics_panel, .downloads_panel').hide()
+      # if $this.is('.topics')
+      #   $('.topics_panel').show()
+      #   $('.downloads_panel, .related_dramas_panel').hide()
+      # else if $this.is('.downloads')
+      #   $('.downloads_panel').show()
+      #   $('.topics_panel, .related_dramas_panel').hide()
+      # else if $this.is('.related_dramas')
+      #   $('.related_dramas_panel').show()
+      #   $('.topics_panel, .downloads_panel').hide()
+      # else if $this.is('.comming_soon')
+      #   $('.comming_soon_panel').show()
+      #   $('.topics_panel, .downloads_panel').hide()
+      
+      klass = $this.attr('class').split(' ')[0]
+      $(".#{klass}_panel").show()
+      $('.resource_content').children().not($(".#{klass}_panel")).hide()
 
   __setPaginateToAjax : ->
     $('.digg_pagination a').attr('data-remote', true)
