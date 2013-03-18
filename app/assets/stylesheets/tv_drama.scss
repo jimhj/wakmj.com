@@ -82,7 +82,7 @@
         }
         .res_summary span { color: $green; margin-right: 10px; padding: 5px 5px; }
         .res_summary span.season { @include bg($green); color: $white; }
-        .res_summary a.vod { @include bg($grey); margin-left: 10px; }
+        .res_summary a.vod { margin-left: 10px; }
         .res_summary a.vod i { vertical-align: middle; }
 
         .content a:hover { color: $green; }

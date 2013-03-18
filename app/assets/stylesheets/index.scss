@@ -65,7 +65,7 @@
             padding: 5px 5px; font-size: 12px; 
             color: $white; font-weight: bold;
           }
-          a.newest_update { @include bg(#b94a48);  }
+          a.newest_update { @include bg(#f89406); }
           a.finished { @include bg(#999999); }
         }
       }
