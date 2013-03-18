@@ -82,7 +82,8 @@ namespace :parse do
     begin
       p "start scraping download resources..."
       resource = {}
-      download_dom = from_dom.css('ul.resod_list li').xpath('//li[@format="720P"]').collect do |li|
+        download_dom = from_dom.css('ul.resod_list li').xpath('//li').collect do |li|
+      # download_dom = from_dom.css('ul.resod_list li').xpath('//li[@format="720P"]').collect do |li|
         info = li.at('span.l a')
 
         if info
@@ -92,7 +93,7 @@ namespace :parse do
           resource[:season] = resource[:link_text].scan(/S\d{2,2}/).first || 'S01'
           resource[:episode] = resource[:link_text].scan(/E\d{2,2}/).first || 'E01'
 
-          link = li.at('span.r a').xpath("//a[@thunderrestitle='#{resource[:link_text]}']").first
+          link = li.at('span.r a').xpath(%Q(//a[@thunderrestitle="#{resource[:link_text]}"])).first
           resource[:download_link] = link.attribute_nodes.last.value  if link
           # drama.download_resources.create!(resource)
           if drama.download_resources.where(:season => resource[:season], :episode => resource[:episode], :episode_format => resource[:episode_format]).blank?
