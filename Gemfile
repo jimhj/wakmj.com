@@ -64,7 +64,7 @@ gem 'chunky_png', "1.2.5", :require => false
 
 group :development, :test do
   # Deploy with Capistrano
-  gem 'capistrano', :require => false
+  gem 'capistrano', "2.14.1"
   gem 'rspec-rails', "~> 2.0"
   gem 'factory_girl_rails'
   gem "capybara", :require => false

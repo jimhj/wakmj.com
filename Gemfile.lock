@@ -38,7 +38,7 @@ GEM
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
     cancan (1.6.9)
-    capistrano (2.14.2)
+    capistrano (2.14.1)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -236,7 +236,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   cancan (~> 1.6.8)
-  capistrano
+  capistrano (= 2.14.1)
   capybara
   carrierwave (= 0.6.2)
   carrierwave-mongoid
