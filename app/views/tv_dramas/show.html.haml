@@ -1,15 +1,15 @@
 - content_for :header_js do
   = javascript_include_tag 'tv_drama'
-- content_for :header_css do
-  :css
-    .tv_left_container {
-      background-image:url("#{@tv_drama.cover_url(:large)}"); 
-      background-size:cover;
-    }
+/ - content_for :header_css do
+/   :css
+/     .tv_left_container {
+/       background-image:url("#{@tv_drama.cover_url(:large)}"); 
+/       background-size:cover;
+/     }
 
-    .tv_detail {
-      opacity: 0.9;
-    }
+/     .tv_detail {
+/       opacity: 0.9;
+/     }
 
 .tv_detail.clearfix
   .above.rectangle_panel
@@ -69,6 +69,8 @@
         %a{ :href => 'javascript:;' }= "讨论帖子(#{@tv_drama.topics_count})"
       .downloads.tab
         %a{ :href => 'javascript:;' }= "下载资源(#{@tv_drama.download_resources_count})"
+      .comming_soon.tab
+        %a{ :href => 'javascript:;' } 播出预告        
       .related_dramas.tab
         %a{ :href => 'javascript:;' } 相关剧集
 

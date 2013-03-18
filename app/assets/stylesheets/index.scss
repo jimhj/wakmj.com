@@ -49,6 +49,7 @@
         font-size: 12px;
 
         a { color: $text-color; }
+        a em { color: $green; font-weight: bold; padding-left: 5px; }
         .cover { float: left; width: 100px; height: 150px; }
         .tools {
           float: left;
@@ -58,7 +59,14 @@
             padding: 5px 5px; font-size: 12px;  
             @include bg($green); color: $white; opacity: 0.6; 
           }
-          a em { color: $green; font-weight: bold; padding-left: 5px; }
+        }
+        .update_to {
+          a {
+            padding: 5px 5px; font-size: 12px; 
+            color: $white; font-weight: bold;
+          }
+          a.newest_update { @include bg(#b94a48);  }
+          a.finished { @include bg(#999999); }
         }
       }
 

@@ -30,8 +30,9 @@ class TvDrama
   field :created_by, :type => String, :default => ''
   field :last_edit_by, :type => String, :default => ''
   field :last_topic_id
-
   field :sort_no, :type => Integer, :default => 0
+  
+  field :finished, :type => Boolean, :default => false
 
   index :sort_no => -1
   index :verify => 1
