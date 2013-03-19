@@ -78,9 +78,10 @@ namespace :parse do
     if tv_dramas.blank?
       new_drama = TvDrama.create!(tv_drama)
     else
-      exist_drama = tv_dramas.first
-      exist_drama.remote_cover_url = tv_drama[:remote_cover_url]
-      exist_drama.save!
+      new_drama = tv_dramas.first
+      new_drama.remote_cover_url = tv_drama[:remote_cover_url]
+      new_drama.save!
+      new_drama
     end
     
   end
