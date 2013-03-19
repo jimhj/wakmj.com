@@ -5,10 +5,10 @@
   .res_seasons
     %a{ :href => url_for(:page => 1), :class => params[:season].blank? ? 'active' : nil } ALL
     - @seasons.each do |s|
-      %a{ :href => url_for(:season => s), :class => params[:season] == s ? 'active' : nil  }= s     
+      %a{ :href => url_for(:season => s), :class => params[:season] == s ? 'active' : nil  }= "S#{s}"     
   - @resources.each do |res| 
     .res_summary
-      %span.season= res.season.to_s << res.episode.to_s 
+      %span.season= "S#{res.season.to_s} E#{res.episode.to_s}" 
       %span.size= res.episode_size
       %span.ext= res.episode_format
       = download_link_tag(res)

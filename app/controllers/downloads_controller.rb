@@ -10,8 +10,8 @@ class DownloadsController < ApplicationController
 
   def create
     @tv_drama = TvDrama.find_by_id(params[:tv_drama_id])
-    params[:download][:season] = "S" << params[:download][:season]
-    params[:download][:episode] = "E" << params[:download][:episode]
+    params[:download][:season] = params[:download][:season]
+    params[:download][:episode] = params[:download][:episode]
     download = @tv_drama.download_resources.build(params[:download])
     if download.save
       flash[:success] = "新增资源成功" 

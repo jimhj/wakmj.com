@@ -3,10 +3,11 @@ module TvDramasHelper
 
   def play_tag(download)
     return '' if download.nil?
-    title = signed_in? ? "迅雷点播，需要有迅雷会员" : '请先登录'
+    # title = signed_in? ? "迅雷点播，需要有迅雷会员" : '请先登录'
     # vod_url = signed_in? ? "#{Setting.xunlei_vod_url}#{download_link}" : 'javascript:;'
-    vod_url = signed_in? ? play_tv_drama_path(download.tv_drama, :download_id => download._id) : 'javascript:;'
-    link_to vod_url, :class => 'vod', :title => title, :target => '_blank' do
+    # vod_url = signed_in? ? play_tv_drama_path(download.tv_drama, :download_id => download._id) : 'javascript:;'
+    vod_url = play_tv_drama_path(download.tv_drama, :download_id => download._id)
+    link_to vod_url, :class => 'vod', :target => '_blank' do
       raw(%(<i class="icon icons_play"></i>))
     end
   end
@@ -23,10 +24,10 @@ module TvDramasHelper
         raw(%(<span>已完结</span>))
       end   
     else
-      resource = tv_drama.download_resources.desc('created_at').first
+      resource = tv_drama.download_resources.desc('season').desc('episode').first
       if resource && (Time.now - resource.created_at < 1.week)
-        link_to tv_drama_path(tv_drama.id), :class => 'newest_update', :title => "更新至" do
-          raw(%(<span>更新#{resource.season}#{resource.episode}</span>))
+        link_to tv_drama_path(tv_drama.id), :class => 'newest_update', :title => "" do
+          raw(%(<span>更新 S#{resource.season}E#{resource.episode}</span>))
         end         
       end
     end

@@ -21,8 +21,8 @@ namespace :parse do
             if link.present?
               tv_name = link.css('.fa1').first.content
               pre_v = link.css('.fa1').last.content
-              opts[:season] = pre_v.scan(/S\d{2,2}/).first || 'S01'
-              opts[:episode] = pre_v.scan(/E\d{2,2}/).first || 'E01'
+              opts[:season] = pre_v.scan(/S(\d{2,2})/).first || 'S01'
+              opts[:episode] = pre_v.scan(/E(\d{2,2)}/).first || 'E01'
               opts[:release_date] = datetime.to_datetime
               tv_drama = TvDrama.any_of(:tv_name => /#{tv_name}/).first
               if tv_drama.present?

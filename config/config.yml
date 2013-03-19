@@ -4,6 +4,7 @@ defaults: &defaults
   weibo_secret: "6bb9ba83bdbb38ecff074d155a27d6c0"
   admin_user_emails: 
     - "bzu_2007@126.com"
+    - "wahaha@sina.com.cn"
   xunlei_vod_url: "http://lixian.vip.xunlei.com/lixian_login.html?referfrom=union&ucid=987212&furl="
 
 

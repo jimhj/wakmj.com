@@ -12,8 +12,8 @@ class TvDramasController < ApplicationController
     @topics = @tv_drama.topics.desc('created_at').includes(:user).paginate(:page => params[:page])
     @resources = @tv_drama.download_resources
     @resources = @resources.where(:season => params[:season]) unless params[:season].blank?
-    @resources = @resources.desc('season').paginate(:page => params[:page])
-    @seasons = @tv_drama.download_resources.distinct(:season)
+    @resources = @resources.asc('season episode').paginate(:page => params[:page])
+    @seasons = @tv_drama.download_resources.distinct(:season).sort
     @pre_releases = @tv_drama.pre_releases
     @related_tvs = TvDrama.where(:categories => /#{@tv_drama.categories.join('|')}/)
 
