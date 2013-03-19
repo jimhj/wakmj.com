@@ -8,11 +8,16 @@ namespace :wakmj do
 
       TvDrama.all.each do |tv|
         tv.download_resources.each do |dr|
-          dr.season = dr.season.delete("S")
-          dr.episode = dr.episode.delete("E")
-          dr.save!
-          p "reset #{i}"
-          i += 1 
+          begin
+            dr.season = dr.season.delete("S")
+            dr.episode = dr.episode.delete("E")
+            dr.save!
+            p "reset #{i}"
+            i += 1
+          rescue => e
+            p e.inspect
+            next
+          end  
         end
       end
 

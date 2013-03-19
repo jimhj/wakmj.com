@@ -24,7 +24,8 @@ module TvDramasHelper
         raw(%(<span>已完结</span>))
       end   
     else
-      resource = tv_drama.download_resources.desc('season').desc('episode').first
+      lastest_season = tv_drama.download_resources.max(:season)
+      resource = tv_drama.download_resources.where(:season => lastest_season).desc("episode").first
       if resource && (Time.now - resource.created_at < 1.week)
         link_to tv_drama_path(tv_drama.id), :class => 'newest_update', :title => "" do
           raw(%(<span>更新 S#{resource.season}E#{resource.episode}</span>))
