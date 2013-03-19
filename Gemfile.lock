@@ -236,7 +236,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   cancan (~> 1.6.8)
-  capistrano (= 2.14.1)
+  capistrano
   capybara
   carrierwave (= 0.6.2)
   carrierwave-mongoid
