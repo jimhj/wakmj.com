@@ -88,7 +88,7 @@
 
       .related_dramas_panel
         %ul.dramas.clearfix
-          - TvDrama.limit(10).each do |tv_drama|
+          - @related_tvs.limit(10).each do |tv_drama|
             %li
               .cover
                 %a{ :href => tv_drama_path(tv_drama.id) }

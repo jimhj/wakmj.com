@@ -15,6 +15,7 @@ class TvDramasController < ApplicationController
     @resources = @resources.desc('season').paginate(:page => params[:page])
     @seasons = @tv_drama.download_resources.distinct(:season)
     @pre_releases = @tv_drama.pre_releases
+    @related_tvs = TvDrama.where(:categories => /#{@tv_drama.categories.join('|')}/)
 
     set_seo_meta(@tv_drama.tv_name, @tv_drama.category_list, @tv_drama.summary)
 
