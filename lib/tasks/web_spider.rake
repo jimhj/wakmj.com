@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'nokogiri'
 require 'open-uri'
 
@@ -71,7 +72,9 @@ namespace :parse do
     tv_drama[:verify] = true
     tv_drama.each_pair { |k, v| v.strip! if v.is_a?(String) }
 
-    tv_dramas = TvDrama.any_of(:tv_name => /#{tv_drama[:tv_name]}/)
+    tv_name = tv_drama[:tv_name].scan(/《(.+)》/).flatten.first || ""
+
+    tv_dramas = TvDrama.any_of(:tv_name => /#{tv_name}/)
     if tv_dramas.blank?
       new_drama = TvDrama.create!(tv_drama)
     else

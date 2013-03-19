@@ -30,7 +30,7 @@
         %th 
           = link_to '修改', edit_cpanel_tv_drama_path(tv)
         %th 
-          = link_to '删除', '#'
+          = link_to '删除', cpanel_tv_drama_path(tv), :method => "delete", :confirm => "Sure?" 
         %th
           = link_to '新剧预告', cpanel_pre_releases_path(:tv_drama_id => tv.id)
           &nbsp;
