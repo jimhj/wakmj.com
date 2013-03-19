@@ -6,7 +6,7 @@ class TvDramasController < ApplicationController
   before_filter :init_tv_drama, :except => [:create, :new]
 
   # load_and_authorize_resource :only => [:edit, :update, :create]
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :play
 
   def show
     @topics = @tv_drama.topics.desc('created_at').includes(:user).paginate(:page => params[:page])
@@ -73,6 +73,11 @@ class TvDramasController < ApplicationController
       flash[:error] = can_create
       redirect_to user_path(current_user.login)
     end
+  end
+
+  def play
+    @download = @tv_drama.download_resources.find_by(:_id => params[:download_id])
+    render :layout => 'play'
   end
 
   private

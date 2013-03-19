@@ -12,7 +12,7 @@
       %span.size= res.episode_size
       %span.ext= res.episode_format
       = download_link_tag(res)
-      = play_tag(res.download_link)
+      = play_tag(res)
 .pagination_panel
   = will_paginate(@resources, :class => 'digg_pagination')
 

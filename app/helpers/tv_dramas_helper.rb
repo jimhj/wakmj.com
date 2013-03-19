@@ -1,10 +1,11 @@
 # coding: utf-8
 module TvDramasHelper
 
-  def play_tag(download_link = nil)
-    return '' if download_link.nil?
+  def play_tag(download)
+    return '' if download.nil?
     title = signed_in? ? "迅雷点播，需要有迅雷会员" : '请先登录'
-    vod_url = signed_in? ? "#{Setting.xunlei_vod_url}#{download_link}" : 'javascript:;'
+    # vod_url = signed_in? ? "#{Setting.xunlei_vod_url}#{download_link}" : 'javascript:;'
+    vod_url = signed_in? ? play_tv_drama_path(download.tv_drama, :download_id => download._id) : 'javascript:;'
     link_to vod_url, :class => 'vod', :title => title, :target => '_blank' do
       raw(%(<i class="icon icons_play"></i>))
     end

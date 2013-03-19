@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+%html
+  %head
+    = render_page_title
+    = stylesheet_link_tag 'app', 'play'
+    = yield :header_css
+    = javascript_include_tag 'app'
+    = yield :header_js
+    = csrf_meta_tags
+    %meta{ :charset => 'utf-8' }
+    %meta{ :name => 'keywords', :content => @keywords }
+    %meta{ :name => 'description', :content => @description }
+    :javascript
+      Wakmj.current_user_id = "#{current_user.try(:id)}";
+
+  %body
+    = render 'layouts/shared/header'
+    .main_container.clearfix
+      = yield
+    = render 'layouts/shared/footer'
+    = yield :footer_script 

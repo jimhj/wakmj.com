@@ -14,6 +14,9 @@ Wakmj::Application.routes.draw do
 
   resources :tv_dramas do
     resources :downloads, :only => [:new, :create]
+    member do
+      get :play
+    end
   end
 
   match 'likes' => 'likes#create', :as => :likes, :via => :post
