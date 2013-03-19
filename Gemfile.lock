@@ -188,6 +188,8 @@ GEM
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
     rubyzip (0.9.9)
+    rvm-capistrano (1.2.7)
+      capistrano (>= 2.0.0)
     sass (3.2.7)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -261,6 +263,7 @@ DEPENDENCIES
   redis-search (= 0.9.0)
   rmmseg-cpp-huacnlee (= 0.2.9)
   rspec-rails (~> 2.0)
+  rvm-capistrano
   sass-rails (~> 3.2.3)
   settingslogic (~> 2.0.6)
   sidekiq (~> 2.1.0)
