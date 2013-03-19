@@ -99,8 +99,8 @@ namespace :parse do
           resource[:link_text] = info.attribute_nodes.last.value
           resource[:episode_format] = info.child.content
           resource[:episode_size] = info.children.last.content
-          resource[:season] = resource[:link_text].scan(/S\d{2,2}/).first || 'S01'
-          resource[:episode] = resource[:link_text].scan(/E\d{2,2}/).first || 'E01'
+          resource[:season] = resource[:link_text].scan(/S\d{2,2}/).first || '01'
+          resource[:episode] = resource[:link_text].scan(/E\d{2,2}/).first || '01'
 
           link = li.at('span.r a').xpath(%Q(//a[@thunderrestitle="#{resource[:link_text]}"])).first
           resource[:download_link] = link.attribute_nodes.last.value  if link
