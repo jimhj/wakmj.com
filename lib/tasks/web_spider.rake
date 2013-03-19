@@ -71,8 +71,13 @@ namespace :parse do
     tv_drama[:verify] = true
     tv_drama.each_pair { |k, v| v.strip! if v.is_a?(String) }
 
-    if TvDrama.any_of(:tv_name => /#{tv_drama[:tv_name]}/).blank?
+    tv_dramas = TvDrama.any_of(:tv_name => /#{tv_drama[:tv_name]}/)
+    if tv_dramas.blank?
       new_drama = TvDrama.create!(tv_drama)
+    else
+      exist_drama = tv_dramas.first
+      exist_drama.remote_cover_url = tv_drama[:remote_cover_url]
+      exist_drama.save!
     end
     
   end
