@@ -6,8 +6,8 @@ namespace :parse do
   desc "get tv_dramas pre release resources from  yyets.com"
 
   task :pre_release => :environment do
-    year = 2012
-    months = [10, 11, 12]
+    year = 2013
+    months = [01, 02, 03, 04]
     init_n = 1
     months.each do |month|
       begin
@@ -26,9 +26,11 @@ namespace :parse do
               opts[:release_date] = datetime.to_datetime
               tv_drama = TvDrama.any_of(:tv_name => /#{tv_name}/).first
               if tv_drama.present?
-                tv_drama.pre_releases.create!(opts)
-                init_n += 1
-                p "create #{init_n}"
+                if tv_drama.pre_releases.where(season: opts[:season], episode: opts[:episode]).blank?
+                  tv_drama.pre_releases.create!(opts)
+                  init_n += 1
+                  p "create #{init_n}"
+                end
               end
             end
           end

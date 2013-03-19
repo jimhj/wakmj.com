@@ -9,7 +9,7 @@ namespace :parse do
     begin
       i = 1
       j = 1
-      1.upto(20).each do |page|
+      1.upto(11).each do |page|
         p "start scraping articles on page #{j}..."
         dom = Nokogiri::HTML open(art_url(page))
         dom.at('div.topicList').css('ul li.clearfix').each do |art_dom|

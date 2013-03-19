@@ -22,7 +22,7 @@
         %th 
           = link_to '修改', '#'
         %th 
-          = link_to '删除', '#'
+          = link_to '删除', cpanel_pre_release_path(pre.id), :method => 'delete', :confirm => 'Sure?'
 
 .pagination_panel
   = will_paginate(@pre_releases, :class => 'digg_pagination')

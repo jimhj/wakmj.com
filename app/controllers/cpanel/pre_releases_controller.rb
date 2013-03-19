@@ -27,4 +27,10 @@ class Cpanel::PreReleasesController < Cpanel::ApplicationController
     redirect_to :back    
   end
 
+  def destroy
+    @pre_release = PreRelease.where(:_id => params[:id]).first
+    @pre_release.destroy
+    redirect_to :back
+  end
+
 end

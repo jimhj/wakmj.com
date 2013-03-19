@@ -5,7 +5,7 @@ module TvDramasHelper
     return '' if download_link.nil?
     title = signed_in? ? "迅雷点播，需要有迅雷会员" : '请先登录'
     vod_url = signed_in? ? "#{Setting.xunlei_vod_url}#{download_link}" : 'javascript:;'
-    link_to vod_url, :class => 'vod', :title => title do
+    link_to vod_url, :class => 'vod', :title => title, :target => '_blank' do
       raw(%(<i class="icon icons_play"></i>))
     end
   end

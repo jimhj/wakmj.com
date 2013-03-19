@@ -16,5 +16,6 @@ class Article
 
   attr_accessible :title, :content, :summary, :from
   validates_presence_of :title, :content, :summary, :from
+  validates_uniqueness_of :title
 
 end
