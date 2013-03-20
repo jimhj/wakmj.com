@@ -53,10 +53,11 @@ class User
     Setting.admin_user_emails.include?(self.email)
   end
 
-  def self.sync_to_weibo(user, tv_drama)
+  def self.sync_to_weibo(user_id, tv_drama_id)
     begin
       logger.info "===============开始同步到新浪微博========"
-
+      user = User.where(:_id => user_id).first
+      tv_drama = TvDrama.where(:_id => tv_drama_id).first
       pic_path = File.join(Setting.pic_loc, tv_drama.cover_url(:large))
       tv_drama_url = "#{Setting.site_url}tv_dramas/#{tv_drama.id}"
       status = %Q(我正在追美剧 #{tv_drama.tv_name} 哦，感兴趣就一起追吧 #{tv_drama_url} @我爱看美剧网)
@@ -83,7 +84,10 @@ class User
     likeable.push(:liked_user_ids, self.id)
     likeable.inc(:likes_count, 1)
     likeable.touch
-    User.perform_async(:sync_to_weibo, self, likeable) if self.weibo_token.present?
+    
+    if self.weibo_token.present?
+      User.perform_async(:sync_to_weibo, self.id, likeable.id) 
+    end
   end
 
   def unlike(likeable)

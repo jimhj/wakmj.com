@@ -61,6 +61,7 @@ task :sitemap, :roles => :web do
 end
 
 # task :start_sidekiq, :roles => :web do
+#   nohup bundle exec sidekiq -e production -C config/sidekiq.yml >> log/sidekiq.log 2>&1 &
 #   run "cd #{deploy_to}/current/; RAILS_ENV=production bundle exec sidekiq -C sidekiq.yml ... >> log/sidekiq.log 2>&1"
 # end
 
