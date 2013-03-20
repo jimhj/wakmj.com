@@ -5,6 +5,7 @@
 # = require lib/artdialog/jquery.artDialog
 # = require lib/jquery.atwho
 # = require lib/jquery.caret
+# = require lib/jquery.tipsy
 # = require_self
 
 Wakmj = window.Wakmj = {}
@@ -14,11 +15,17 @@ Wakmj.CommonEvents =
     this.__bindFormSubmitEvent()
     this.__bindLikeStuffEvent()
     this.__bindJqueryTimeago()
+    this.__bindJqueryTipsy()
     this.__searchTvDrama()
     this.__bindApplyToBeEditorClickedEvent()
 
   __bindJqueryTimeago : ->
-    $('span.timeago').timeago()    
+    $('span.timeago').timeago()
+
+  __bindJqueryTipsy : ->
+    $('a[rel=tipsy]').tipsy 
+      fade: false, 
+      gravity: 's'        
 
   __bindFormSubmitEvent : ->
 

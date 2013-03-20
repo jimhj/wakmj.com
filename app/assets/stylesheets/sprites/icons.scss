@@ -2,6 +2,7 @@
 
         Creating a sprite from following images:
         
+        app/assets/images/sprites/icons/add.png (16x16)
         app/assets/images/sprites/icons/download.png (16x16)
         app/assets/images/sprites/icons/fancy.png (16x16)
         app/assets/images/sprites/icons/play.png (16x16)
@@ -12,11 +13,12 @@
           app/assets/stylesheets/sprites/icons.scss
 
         Output size:
-          16x64
+          16x80
 
 
 */
-.icons_download { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px 0px no-repeat; }
-.icons_fancy { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -16px no-repeat; }
-.icons_play { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -32px no-repeat; }
-.icons_weibo_s_16 { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -48px no-repeat; }
+.icons_add { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px 0px no-repeat; }
+.icons_download { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -16px no-repeat; }
+.icons_fancy { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -32px no-repeat; }
+.icons_play { width: 16px; height: 16px; background: url(image-path('sprites/icons.png?widthqw12312312312')) 0px -48px no-repeat; }
+.icons_weibo_s_16 { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -64px no-repeat; }

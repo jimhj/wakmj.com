@@ -75,11 +75,6 @@ class TvDramasController < ApplicationController
     end
   end
 
-  def play
-    @download = @tv_drama.download_resources.find_by(:_id => params[:download_id])
-    render :layout => 'play'
-  end
-
   private
 
   def init_tv_drama

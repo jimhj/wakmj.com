@@ -78,12 +78,15 @@
 
         .res_summary {
           border-bottom: 1px solid $w_grey;
-          padding: 14px 10px;          
+          padding: 14px 10px;
+          &:hover { @include bg(#f9f9f9); }          
         }
         .res_summary span { color: $green; margin-right: 10px; padding: 5px 5px; }
         .res_summary span.season { @include bg($green); color: $white; }
         .res_summary a.vod { margin-left: 10px; }
         .res_summary a.vod i { vertical-align: middle; }
+        .res_summary .pull-right { float: right; }
+
 
         .content a:hover { color: $green; }
 

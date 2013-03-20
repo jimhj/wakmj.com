@@ -1,21 +1,18 @@
 # coding: utf-8
 module TvDramasHelper
 
-  def play_tag(download)
-    return '' if download.nil?
-    # title = signed_in? ? "迅雷点播，需要有迅雷会员" : '请先登录'
-    # vod_url = signed_in? ? "#{Setting.xunlei_vod_url}#{download_link}" : 'javascript:;'
-    # vod_url = signed_in? ? play_tv_drama_path(download.tv_drama, :download_id => download._id) : 'javascript:;'
-    vod_url = play_tv_drama_path(download.tv_drama, :download_id => download._id)
-    link_to vod_url, :class => 'vod', :target => '_blank' do
+  def play_tag(tv, download)
+    vod_url = play_tv_drama_download_path(tv, download)
+    link_to vod_url, :class => 'vod', :target => '_blank', :title => "在线播放", :rel => 'tipsy' do
       raw(%(<i class="icon icons_play"></i>))
     end
   end
 
-  def download_link_tag(res)
-    download_url = signed_in? ? res.download_link : 'javascript:;'
-    title = signed_in? ?  '点击下载' : '登录后可点击下载'
-    link_to res.link_text, download_url, :class => 'download_link', :title => title
+  def lixian_tag(tv, download)
+    return '' if download.nil?
+    link_to lixian_tv_drama_download_path(tv, download), :class => 'vod', :target => '_blank', :title => "迅雷离线", :rel => 'tipsy' do
+      raw(%(<i class="icon icons_download"></i>))
+    end    
   end
 
   def tv_status(tv_drama)

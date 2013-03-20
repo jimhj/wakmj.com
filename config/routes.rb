@@ -13,9 +13,11 @@ Wakmj::Application.routes.draw do
   match 'confirm' => 'index#confirm', :as => :confirm
 
   resources :tv_dramas do
-    resources :downloads, :only => [:new, :create]
-    member do
-      get :play
+    resources :downloads do
+      member do
+        get :play
+        get :lixian
+      end
     end
   end
 

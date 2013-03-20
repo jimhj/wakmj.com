@@ -11,8 +11,10 @@
       %span.season= "S#{res.season.to_s} E#{res.episode.to_s}" 
       %span.size= res.episode_size
       %span.ext= res.episode_format
-      = download_link_tag(res)
-      = play_tag(res)
+      = link_to res.link_text.truncate(50), tv_drama_download_path(@tv_drama, res), :rel => 'tipsy', :title => res.link_text
+      .pull-right
+        = play_tag(@tv_drama, res)
+        = lixian_tag(@tv_drama, res)
 .pagination_panel
   = will_paginate(@resources, :class => 'digg_pagination')
 
