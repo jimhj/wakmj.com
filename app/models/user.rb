@@ -51,7 +51,29 @@ class User
 
   def admin?
     Setting.admin_user_emails.include?(self.email)
-  end  
+  end
+
+  def self.sync_to_weibo(user, tv_drama)
+    begin
+      pic_path = File.join(Setting.pic_loc, tv_drama.cover_url(:large))
+      tv_drama_url = "#{Setting.site_url}tv_dramas/#{tv_drama.id}"
+      status = %Q(我正在追美剧 #{tv_drama.tv_name} 哦，感兴趣就一起追吧 #{tv_drama_url} @我爱看美剧网)
+
+      conn = Faraday.new(:url => 'https://upload.api.weibo.com') do |faraday|
+        faraday.request :multipart
+        faraday.adapter :net_http
+      end
+
+      conn.post "/2/statuses/upload.json", {
+        :access_token => user.weibo_token,
+        :status => URI.encode(status),
+        :pic => Faraday::UploadIO.new(pic_path, 'image/jpeg')
+      }
+    rescue => e
+      logger.error "===============同步到新浪微博失败========"
+      logger.error e.backtrace.join("\n")
+    end
+  end     
 
   def like(likeable)
     return false if likeable.blank?
@@ -59,6 +81,7 @@ class User
     likeable.push(:liked_user_ids, self.id)
     likeable.inc(:likes_count, 1)
     likeable.touch
+    User.perform_async(:sync_to_weibo, self, likeable) if self.weibo_token.present?
   end
 
   def unlike(likeable)
