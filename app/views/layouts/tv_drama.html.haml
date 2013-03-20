@@ -21,24 +21,17 @@
       .tv_right_container
         .new_topic.dotted_bottom
           %a.w_btn{ :href => new_topic_path(:tv_drama_id => @tv_drama.id) } 发表新主题
-        / .comming_soon.dotted_bottom
-        /   .title_bar
-        /     %a.title 播出预告
-
-        /   %ul.notice
-        /     - pres = @tv_drama.pre_releases.asc('release_date')
-        /     - if pres.blank?
-        /       %li
-        /         暂时没有播出信息...
-        /     - else
-        /       - pres.each do |pre|
-        /         %li
-        /           %span.version
-        /             = pre.season_epi            
-        /           %span.time
-        /             = pre.release_date.strftime('%F')
-        /           %span.week
-        /             = pre.release_day_of_week
+        .fans.dotted_bottom.clearfix  
+          .title_bar
+            %a.title 他们也在追
+          %ul
+            - if @tv_drama.liked_user_ids.blank?
+              %li 暂时还没有人哦...
+            - else
+              - User.where(:_id.in => @tv_drama.liked_user_ids).each do |u|
+                %li
+                  = link_to user_path(u), :title => u.login, :rel => 'tipsy' do
+                    = image_tag u.avatar_url(:small), :size => '30x30'
 
         .new_replies.article_list.dotted_bottom
           .title_bar

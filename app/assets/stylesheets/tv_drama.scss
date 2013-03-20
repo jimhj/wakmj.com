@@ -123,7 +123,7 @@
   width: 25%;
   padding-left: 0px;
   color: $text-color;
-  .new_topic { text-align: center; }
+  .new_topic { padding-bottom: 10px; }
   .comming_soon {
     font-size: 12px;
     line-height: 30px;
@@ -132,6 +132,21 @@
       color: $text-color;
       span { margin-right: 20px; }
       span.version { color: $white; @include bg($green); opacity: 0.5; padding: 2px 1px; }
+    }
+  }
+
+  .fans {
+    font-size: 12px;
+    line-height: 30px;    
+    padding-top: 5px;
+    ul li {
+      float: left;
+      padding: 0px 8px 0px 0px;
+    }
+
+    ul li a {
+      display: block; 
+      // width: auto;
     }
   }
 }
