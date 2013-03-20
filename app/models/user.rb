@@ -55,6 +55,8 @@ class User
 
   def self.sync_to_weibo(user, tv_drama)
     begin
+      logger.info "===============开始同步到新浪微博========"
+
       pic_path = File.join(Setting.pic_loc, tv_drama.cover_url(:large))
       tv_drama_url = "#{Setting.site_url}tv_dramas/#{tv_drama.id}"
       status = %Q(我正在追美剧 #{tv_drama.tv_name} 哦，感兴趣就一起追吧 #{tv_drama_url} @我爱看美剧网)
