@@ -6,8 +6,8 @@
     .navs
       - Misc.where(:category => "pages").each do |misc|
         %a{ :href => misc_path(misc.slug) }= misc.title
-      %a{ :href => 'http://www.huanarle.com', :target => '_blank', :title => "简易账本" } 花哪儿了
-      %a{ :href => 'http://www.kaixinchanglang.com', :target => '_blank', :title => "开心长廊" } 开心长廊
+      - Misc.where(:category => "links").each do |misc|
+        %a{ :href => misc.slug, :title => misc.content, :target => '_blank' }= misc.title        
     .copyright
       Copyright © www.wakmj.com
   .weibo_page

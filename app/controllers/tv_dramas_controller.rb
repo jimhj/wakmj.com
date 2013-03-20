@@ -17,7 +17,9 @@ class TvDramasController < ApplicationController
     @pre_releases = @tv_drama.pre_releases
     @related_tvs = TvDrama.where(:categories => /#{@tv_drama.categories.join('|')}/)
 
-    set_seo_meta(@tv_drama.tv_name, @tv_drama.category_list, @tv_drama.summary)
+    seo_title = "#{@tv_drama.tv_name} | 下载，在线播放，讨论"
+    seo_keywords = @tv_drama.category_list << @tv_drama.tv_name
+    set_seo_meta(seo_title, seo_keywords, @tv_drama.summary)
 
     respond_to do |format|
       format.html

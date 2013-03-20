@@ -30,7 +30,8 @@ class DownloadsController < ApplicationController
     redirect_to (Setting.xunlei_url + @download.download_link)
   end
 
-  def play    
+  def play
+     set_seo_meta("#{@tv_drama.tv_name} 在线播放")    
     render :layout => 'play'
   end
 

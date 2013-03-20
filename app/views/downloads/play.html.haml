@@ -1,6 +1,6 @@
 .play_container
   .play_title
     %span 播放：
-    %a.tv{ :href => tv_drama_path(@tv_drama) }= "#{@tv_drama.tv_name} #{@download.season} #{@download.episode}"
+    %a.tv{ :href => tv_drama_path(@tv_drama) }= "#{@tv_drama.tv_name} S#{@download.season} E#{@download.episode}"
   .player_container
     %iframe{ :frameborder => 0, :src => "http://www.x2yun.com/#!u=#{@download.download_link}" }
