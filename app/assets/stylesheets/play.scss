@@ -1,18 +1,54 @@
 @import 'global';
+html {
+  width: 100%;
+  height: 100%;
+  background: none;
+}
 
 .play_container {
-  padding-top: 5px;
-
-  .play_title { 
+  .sidebar {
     color: $text-color;
-    padding-left: 5px;
-    padding-bottom: 10px;
-    a.tv { color: $green; }      
+    font-size: 12px;
+    width: 200px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #e6e6e6;
+    // background: #eee url('retro_bg.png') bottom left repeat;
+    a { color: $green; }
+    .tv_info { margin-top: 10px; margin-left: 20px; margin-right: 5px;}
+    .tv_info .cover { width: 100%;height: 100%; a { display: block; }}
+    .tv_info .li { 
+      margin-top: 10px; 
+      .cates { margin-top: 10px; }
+      span.value { color: $green; } 
+    }
+    .tv_info .followers {
+      ul li { float: left; padding: 0px 4px 2px 0px; } 
+      ul li a { display: block; }
+      margin-top: 10px; 
+    }
+    .tv_info .more {
+    margin-top: 50px;
+      a { color: $white; }
+    }
   }
 
-  .player_container { height: 100%; }
-  .player_container iframe {
-    width: 100%;
-    height: 100%;
+  .expand_btn {
+    position: absolute;
+    width: 24px;
+    height: 200px;
+    left: 188px;
+    top: 35%;
+    padding-left: 6px;
+    background: #DDD;
+    cursor: pointer;
+    border: 1px solid #CCC;
+  }
+
+  .player_container { 
+    padding-left: 200px;
+    iframe { width: 100%; height: 100%; }
   }
 }

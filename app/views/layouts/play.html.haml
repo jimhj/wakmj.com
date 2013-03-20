@@ -12,10 +12,26 @@
     %meta{ :name => 'description', :content => @description }
     :javascript
       Wakmj.current_user_id = "#{current_user.try(:id)}";
+      $(document).ready(function () {
+        $('button.expand_btn').click(function () {
+          var $t = $(this);
+          var $s = $t.prev('.sidebar');
+          var $f = $t.next('.player_container');
+          if ($s.is(":hidden")) {
+            $s.show();
+            $t.css("left", "188px");
+            $f.css("padding-left", "200px");            
+            $t.empty().append($('<i class="icon icons_left"></i>'));
+          } else {
+            $s.hide();
+            $t.css("left", 0);
+            $f.css("padding-left", 0);
+            $t.empty().append($('<i class="icon icons_right"></i>'));            
+          }
+        });
+      });
 
   %body
-    = render 'layouts/shared/header'
-    .main_container.clearfix
+    .play_container.clearfix
       = yield
-    = render 'layouts/shared/footer'
     = yield :footer_script 

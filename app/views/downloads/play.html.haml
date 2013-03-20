@@ -1,6 +1,30 @@
-.play_container
-  .play_title
-    %span 播放：
-    %a.tv{ :href => tv_drama_path(@tv_drama) }= "#{@tv_drama.tv_name} S#{@download.season} E#{@download.episode}"
-  .player_container
-    %iframe{ :frameborder => 0, :src => "http://www.x2yun.com/#!u=#{@download.download_link}" }
+.sidebar
+  .tv_info
+    .tv_cover
+      .cover
+        %a{ :href => tv_drama_path(@tv_drama), :title => @tv_drama.tv_name }
+          = image_tag @tv_drama.cover_url(:normal)
+      / .tv_name
+      /   %a{ :href => tv_drama_path(@tv_drama) }= @tv_drama.tv_name
+    .summary
+      .li
+        %span 播放：
+        %span.value= "S#{@download.season} E#{@download.episode}"
+      .li
+        %span 类型：
+        %span.value= @tv_drama.category_list
+      .li
+        %span 主演：
+        %span.value= @tv_drama.actor_list
+    .followers.clearfix
+      %ul
+        - @followers.each do |u|
+          %li
+            %a{ :href => user_path(u.login), :rel => 'tipsy', :title => u.login }
+              = image_tag u.avatar_url(:small), :size => '30x30'
+    .more
+      %a.w_btn{ :href => tv_drama_path(@tv_drama), :title => '更多播放资源' } 更多播放资源
+%button.expand_btn
+  %i.icon.icons_left
+.player_container
+  %iframe{ :frameborder => 0, :src => "http://www.x2yun.com/#!u=#{@download.download_link}" }

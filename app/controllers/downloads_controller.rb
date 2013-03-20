@@ -31,7 +31,8 @@ class DownloadsController < ApplicationController
   end
 
   def play
-     set_seo_meta("#{@tv_drama.tv_name} 在线播放")    
+    @followers = User.where(:_id.in => @tv_drama.liked_user_ids)
+    set_seo_meta("#{@tv_drama.tv_name} 在线播放")    
     render :layout => 'play'
   end
 
