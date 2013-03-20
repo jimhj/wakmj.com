@@ -2,6 +2,7 @@ Wakmj.TvDrama =
   init : ->
     this.__bindSwitchTabEvent()
     this.__setPaginateToAjax()
+    this.__slideUpSummary()
 
   __bindSwitchTabEvent : ->
     $('.nav_tabs .tab').click ->
@@ -55,6 +56,16 @@ Wakmj.TvDrama =
       return false;
       # if $this.text() == 1
 
+  __slideUpSummary : ->
+    $('.story .opts a').click ->
+      $t = $(this)
+      $content = $t.parents('.title').next('.content')
+      if $content.is(':hidden')
+        $content.show()
+        $t.text('收起')
+      else
+        $content.hide()
+        $t.text('展开')
 
 
 $(document).ready ->

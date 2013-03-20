@@ -52,7 +52,7 @@ Wakmj.CommonEvents =
       else
         $.post '/likes', { likeable_type : likeable_type, likeable_id : likeable_id }, (res) ->
           if res.success
-            $this.data('liked', 'true').html("已喜欢<span>(#{res.likes_count})</span>")
+            $this.data('liked', 'true').html("已追<span>(#{res.likes_count})</span>")
         , 'json'
 
   __searchTvDrama : ->

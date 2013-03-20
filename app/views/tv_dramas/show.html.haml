@@ -59,6 +59,8 @@
   .story.rectangle_panel
     .title.panel_name
       简介
+      .opts
+        %a{ :href => "javascript:;" } 收起
     .content
       = simple_format @tv_drama.summary
   .tv_relateds
