@@ -18,7 +18,7 @@
                 %a{ :href => tv_drama_path(tv_drama.id), :title => tv_drama.tv_name }= tv_drama.tv_name.truncate(10)
               .likes
                 %a{ :href => tv_drama_path(tv_drama.id) }
-                  %span 喜欢
+                  %span 在追
                   %em= tv_drama.likes_count
               .topics
                 %a{ :href => tv_drama_path(tv_drama.id) }
