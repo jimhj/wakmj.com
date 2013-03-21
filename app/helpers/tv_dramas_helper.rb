@@ -16,12 +16,14 @@ module TvDramasHelper
   end
 
   def tv_status(tv_drama)
+
     if tv_drama.finished?
       link_to tv_drama_path(tv_drama.id), :class => 'finished', :title => "已完结" do
         raw(%(<span>已完结</span>))
       end   
     else
-      lastest_season = tv_drama.download_resources.max(:season)
+      lastest_season = tv_drama.download_resources.max(:season) rescue nil
+      return if lastest_season.nil?
       resource = tv_drama.download_resources.where(:season => lastest_season).desc("episode").first
       if resource && (Time.now - resource.created_at < 1.week)
         link_to tv_drama_path(tv_drama.id), :class => 'newest_update', :title => "" do

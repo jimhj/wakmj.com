@@ -9,11 +9,10 @@ namespace :parse do
   task :yyets => :environment do
     # TODO: Mark where does the loop ended at. 
     # unreadable code.
-    i = j = 0
-    1.upto(30).each do |page|
-      p "start scraping articles on page #{j + 1}..."
-      dom = Nokogiri::HTML open(res_url(page))
 
+    1.upto(36).each_with_index do |page, ind|
+      p "Start scraping on page #{ind + 1}..."
+      dom = Nokogiri::HTML open(res_url(page))
       html_str = dom.at('div.res_listview')
 
       fetch_urls = html_str.css('ul.boxPadd.dashed li a.imglink').collect do |ele|
@@ -21,33 +20,24 @@ namespace :parse do
       end
 
       fetch_urls.each do |url|
+        p "<<================================================= "
+        p "#{url}"
+        
         begin
           d_dom = Nokogiri::HTML open(url)
-
           new_drama = scrap_drama_res(d_dom)
-
           scrap_download_res(new_drama, d_dom)
-
-
-          i += 1
-          puts "Record added."
         rescue Exception => e
-          j += 1
           puts e.inspect
         end
+        
         sleep(1)
       end
 
-      # drama_ids = dom.xpath('//div[starts-with(@id, "collect_form_")]').collect do |ele|
-      #   ele.attributes['id'].value.delete('collect_form_') 
-      # end
-
     end
-    puts "#{i} succeed.   #{j} failed."
   end
 
   def res_url(page = 1)
-    # "http://www.yyets.com/php/resourcelist?channel=tv&area=%E7%BE%8E%E5%9B%BD&category=&format=&sort=pubdate"
     "http://www.yyets.com/php/resourcelist?page=#{page}&channel=tv&area=%E7%BE%8E%E5%9B%BD&category=&format=&sort=pubdate"
   end
 
@@ -72,15 +62,19 @@ namespace :parse do
     tv_drama[:verify] = true
     tv_drama.each_pair { |k, v| v.strip! if v.is_a?(String) }
 
-    tv_name = tv_drama[:tv_name].scan(/《(.+)》/).flatten.first || ""
+    tv_drama[:tv_name] = tv_drama[:tv_name].scan(/《(.+)》/).flatten.first || ""
 
-    tv_dramas = TvDrama.any_of(:tv_name => /#{tv_name}/)
+    tv_dramas = TvDrama.any_of(:tv_name => /#{tv_drama[:tv_name]}/)
+    
     if tv_dramas.blank?
+      p "#{tv_drama[:tv_name]} created."
       new_drama = TvDrama.create!(tv_drama)
     else
       new_drama = tv_dramas.first
-      new_drama.remote_cover_url = tv_drama[:remote_cover_url]
-      new_drama.save!
+      # new_drama.remote_cover_url = tv_drama[:remote_cover_url]
+      # new_drama.save!
+      # new_drama
+      p "#{tv_drama[:tv_name]} exist."
       new_drama
     end
     
@@ -89,7 +83,8 @@ namespace :parse do
 
   def scrap_download_res(drama, from_dom)
     begin
-      p "start scraping download resources..."
+      p "Scraping #{drama.tv_name} download resources..."
+      drama.download_resources.destroy_all
       resource = {}
         download_dom = from_dom.css('ul.resod_list li').xpath('//li').collect do |li|
       # download_dom = from_dom.css('ul.resod_list li').xpath('//li[@format="720P"]').collect do |li|
@@ -99,21 +94,24 @@ namespace :parse do
           resource[:link_text] = info.attribute_nodes.last.value
           resource[:episode_format] = info.child.content
           resource[:episode_size] = info.children.last.content
-          resource[:season] = resource[:link_text].scan(/S(\d{2,2})/).first || '01'
-          resource[:episode] = resource[:link_text].scan(/E(\d{2,2})/).first || '01'
+          resource[:season] = resource[:link_text].scan(/S(\d{2,2})/).flatten.first || '01'
+          resource[:episode] = resource[:link_text].scan(/E(\d{2,2})/).flatten.first || '01'
 
           link = li.at('span.r a').xpath(%Q(//a[@thunderrestitle="#{resource[:link_text]}"])).first
-          resource[:download_link] = link.attribute_nodes.last.value  if link
+          resource[:download_link] = link.attribute_nodes.last.value if link
           # drama.download_resources.create!(resource)
           if drama.download_resources.where(:season => resource[:season], :episode => resource[:episode], :episode_format => resource[:episode_format]).blank?
             drama.download_resources.create!(resource)
+            p "S#{resource[:season]} E#{resource[:episode]} #{resource[:episode_format]} created."
+          else
+            p "S#{resource[:season]} E#{resource[:episode]} #{resource[:episode_format]} exist."
           end
         end
       end
-    rescue Exception => e
-      p e.inspect
-      puts "scrap download resources failed."
+    rescue => e
+      p "Scraping #{drama.tv_name} failed."
     end
+    p "=====================================================>>"
   end
 
 end

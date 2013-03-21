@@ -10,6 +10,7 @@ class DownloadResource
   field :episode
   field :episode_size
   field :episode_format
+  # filed :ext
   field :download_link
 
   belongs_to :user
