@@ -40,7 +40,9 @@ img { border: none; }
   .site_logo {
     float: left;
     padding-top: 5px;
-    padding-left: 30px;
+    padding-left: 26px;
+    margin-left: 10px;
+    background: url('tv_24.png') bottom left no-repeat;
     a { font-weight: bold; }
     a span b { color: $green; }
   }

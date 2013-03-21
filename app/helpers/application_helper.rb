@@ -2,6 +2,10 @@
 
 module ApplicationHelper
 
+  def ico_tag
+    raw %Q(<link href="#{image_path('favicon.ico')}" rel="shortcut icon" type="image/x-icon">)
+  end
+
   def fancy_tag(likeable)
 
     icon = %Q(<i class="icon icons_fancy"></i>)
