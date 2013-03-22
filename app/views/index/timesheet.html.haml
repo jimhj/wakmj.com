@@ -1,0 +1,89 @@
+- content_for :header_css do
+  = stylesheet_link_tag 'lib/fullcalendar/fullcalendar'
+  = stylesheet_link_tag 'lib/fullcalendar/fullcalendar.print', :media => 'print'
+  = stylesheet_link_tag 'lib/hot-sneaks/hot-sneaks.min'
+- content_for :header_js do
+  = javascript_include_tag 'lib/jquery-ui-1.10.2.custom.min'
+  = javascript_include_tag 'lib/fullcalendar/fullcalendar.min'
+
+.content_detail
+  #calendar
+
+:javascript
+  $(document).ready(function() {
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    
+    $('#calendar').fullCalendar({
+      buttonText: {
+        today: '今日'
+      },      
+      editable: false,
+      theme: true,
+      monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+      monthNamesShort : ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+      dayNamesShort: ['日','一','二','三','四','五','六'],
+      dayNames: ['周日','周一','周二','周三','周四','周五','周六'],            
+      events: [
+        {
+          title: 'Click for Google',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 29),
+          url: 'http://google.com/'
+        },
+        {
+          title: 'Click for Google',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 29),
+          url: 'http://google.com/'
+        },
+        {
+          title: 'Click for Google',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 29),
+          url: 'http://google.com/'
+        },
+        {
+          title: 'Click for Google',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 29),
+          url: 'http://google.com/'
+        },
+        {
+          title: '行尸走肉 S01E03',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 28),
+          url: 'http://google.com/'
+        },
+        {
+          title: '行尸走肉 S01E03',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 28),
+          url: 'http://google.com/'
+        },
+        {
+          title: '行尸走肉 S01E03',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 28),
+          url: 'http://google.com/'
+        },
+        {
+          title: '行尸走肉 S01E03',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 28),
+          url: 'http://google.com/'
+        },
+        {
+          title: '行尸走肉 S01E03',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 28),
+          url: 'http://google.com/'
+        }
+
+
+      ]
+    });
+    
+  });

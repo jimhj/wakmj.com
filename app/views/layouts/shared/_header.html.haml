@@ -11,7 +11,8 @@
         %a{ :href => hots_dramas_path, :class => url_for == hots_dramas_path ? 'active' : nil } 热门
       %li
         %a{ :href => recents_dramas_path, :class => url_for == recents_dramas_path ? 'active' : nil  } 新剧
-
+      %li
+        %a{ :href => timesheet_path, :class => url_for == timesheet_path ? 'active' : nil  } 美剧时间表
   .search_panel
     = form_tag search_path, :method => 'GET' do
       %input.white_text{ :type => 'text', :value => '搜索剧集...', :name => 'q', :default_text => '搜索剧集...' }
