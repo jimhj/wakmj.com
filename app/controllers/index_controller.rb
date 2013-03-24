@@ -134,7 +134,7 @@ class IndexController < ApplicationController
   def timesheet
     @pre_releases = PreRelease.all.collect do |p| 
       { 
-        :title => "#{p.tv_drama_tv_name} #{p.season} #{p.episode}", 
+        :title => "#{p.tv_drama_tv_name} S#{p.season}E#{p.episode}", 
         :start => p.release_date.at_beginning_of_day,
         :end => p.release_date.end_of_day,
         :url => tv_drama_path(p.tv_drama) 
