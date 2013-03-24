@@ -66,9 +66,9 @@ class TvDrama
                      :condition_fields => [:verify],
                      :ext_fields => [:alias_names, :categories, :release_date, :topics_count, :likes_count])  
 
-  after_create do |tv_drama|
-    TvDrama.perform_async(:send_new_tv_drama, tv_drama.id)
-  end
+  # after_create do |tv_drama|
+  #   TvDrama.perform_async(:send_new_tv_drama, tv_drama.id)
+  # end
 
   def self.send_new_tv_drama(tv_drama_id)
     tv_drama = self.find_by_id(tv_drama_id)
