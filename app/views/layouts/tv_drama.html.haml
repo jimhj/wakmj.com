@@ -44,14 +44,14 @@
             - if @tv_drama.pre_releases.blank?
               %li 暂时还没有预告...
             - else          
-              - @tv_drama.pre_releases.each_with_index do |pre, i|
+              - @tv_drama.pre_releases.asc('release_date').each_with_index do |pre, i|
                 %li{ :class => i.zero? ? 'first' : '' }
                   %a{ :href => tv_drama_path(pre.tv_drama_id) }
                     %span.time
                       = pre.release_date.strftime('%F')
                     %span.title
                       = pre.release_day_of_week
-                    %span.version= "[#{pre.season_epi}]"                    
+                    %span.version= "[S#{pre.season}E#{pre.episode}]"                    
 
         .latest_news.article_list
           .title_bar
