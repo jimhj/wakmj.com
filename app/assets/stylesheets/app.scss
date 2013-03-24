@@ -13,10 +13,22 @@
   ul li {
     float: left;
     margin-left: 10px;
-    a { font-size: 14px; padding: 5px 5px;  }
+    a {
+      position: relative; 
+      font-size: 14px; padding: 5px 5px;   
+    }
     a.active { background: none repeat scroll 0 0 green; }
-    a.active.red { @include bg($red); }
-  }  
+    a.active.red { @include bg($red); }  }
+
+  ul li a span.new-red {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url('new-red.png') bottom right no-repeat; 
+    position: absolute;
+    right: -19px;
+    top: -10px;
+  }   
 }
 
 html {
@@ -139,6 +151,15 @@ img { border: none; }
   .new_drama_panel {
     width: 70%;
     margin: 0 auto;    
+  }
+
+  .timesheet {
+    #calendar { 
+      .fc-header-left h2 {
+        color: $green; 
+        font-size: 24px; 
+      }
+    }
   }
 
   #error_page {

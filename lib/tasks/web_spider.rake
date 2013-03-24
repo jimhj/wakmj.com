@@ -84,7 +84,7 @@ namespace :parse do
   def scrap_download_res(drama, from_dom)
     begin
       p "Scraping #{drama.tv_name} download resources..."
-      drama.download_resources.destroy_all
+      # drama.download_resources.destroy_all
       resource = {}
         download_dom = from_dom.css('ul.resod_list li').xpath('//li').collect do |li|
       # download_dom = from_dom.css('ul.resod_list li').xpath('//li[@format="720P"]').collect do |li|

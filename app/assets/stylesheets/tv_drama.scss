@@ -123,6 +123,16 @@
   width: 25%;
   padding-left: 0px;
   color: $text-color;
+  li.first {
+    a { 
+      padding: 5px 5px;
+      @include bg($red);
+      opacity: 0.5;
+      color: $white;
+      &:hover { @include bg($red); }
+    } 
+
+  }
   .new_topic { padding-bottom: 10px; }
   .comming_soon {
     font-size: 12px;

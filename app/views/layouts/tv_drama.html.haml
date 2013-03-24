@@ -34,18 +34,24 @@
                   = link_to user_path(u.login), :title => u.login, :rel => 'tipsy' do
                     = image_tag u.avatar_url(:small), :size => '30x30'
 
-        .new_replies.article_list.dotted_bottom
+
+        .pre_releases.article_list.dotted_bottom
           .title_bar
-            %a.title 最新回复
+            %a.title 播出预告
+            / %a{ :href => '#' } 更多
+
           %ul
-            - if @tv_drama.replies.recent.blank?
-              %li 暂无回复...
-            - else   
-              - @tv_drama.replies.recent.each do |reply|
-                %li
-                  %a{ :href => topic_path(reply.topic) } 
-                    %span= reply.user_login 
-                    = reply.content
+            - if @tv_drama.pre_releases.blank?
+              %li 暂时还没有预告...
+            - else          
+              - @tv_drama.pre_releases.each_with_index do |pre, i|
+                %li{ :class => i.zero? ? 'first' : '' }
+                  %a{ :href => tv_drama_path(pre.tv_drama_id) }
+                    %span.time
+                      = pre.release_date.strftime('%F')
+                    %span.title
+                      = pre.release_day_of_week
+                    %span.version= "[#{pre.season_epi}]"                    
 
         .latest_news.article_list
           .title_bar

@@ -12,6 +12,8 @@ class PreRelease
 
   belongs_to :tv_drama, :inverse_of => :pre_releases
 
+  delegate :tv_name, :to => :tv_drama, :prefix => true
+
   index :tv_drama_id => 1
 
   validates_presence_of :season, :episode, :release_date

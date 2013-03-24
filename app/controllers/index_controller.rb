@@ -131,6 +131,17 @@ class IndexController < ApplicationController
     redirect_to root_path    
   end
 
+  def timesheet
+    @pre_releases = PreRelease.all.collect do |p| 
+      { 
+        :title => "#{p.tv_drama_tv_name} #{p.season} #{p.episode}", 
+        :start => p.release_date.at_beginning_of_day,
+        :end => p.release_date.end_of_day,
+        :url => tv_drama_path(p.tv_drama) 
+      }
+    end.to_json
+  end
+
   private
 
   def check_signed_in
