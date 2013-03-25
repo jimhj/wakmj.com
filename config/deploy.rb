@@ -71,4 +71,8 @@ end
 #   run "cd #{deploy_to}/current/log; #{try_sudo} rm -rf production.log"
 # end
 
-after "deploy:finalize_update","deploy:create_symlink", :resprite, :compile_assets, :sitemap
+task :crontab, :roles => :web do
+  run "cd #{deploy_to}/current/; whenever -c; whenever .; whenever -i"
+end
+
+after "deploy:finalize_update","deploy:create_symlink", :resprite, :compile_assets, :sitemap, :crontab

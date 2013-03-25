@@ -43,7 +43,8 @@ gem 'redis-search', '0.9.0'
 gem 'omniauth', '~> 1.1.0'
 gem 'omniauth-oauth2', '~> 1.0.2'
 
-
+# Whenever Cron Jobs
+gem 'whenever', '~> 0.8.2'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
