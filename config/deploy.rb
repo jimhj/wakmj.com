@@ -57,7 +57,7 @@ task :compile_assets, :roles => :web do
 end
 
 task :sitemap, :roles => :web do
-  run "cd #{deploy_to}/current/; RAILS_ENV=production rake g:sitemap"
+  run "cd #{deploy_to}/current/; RAILS_ENV=production rake sitemap:clean; RAILS_ENV=production rake sitemap:create"
 end
 
 # task :start_sidekiq, :roles => :web do

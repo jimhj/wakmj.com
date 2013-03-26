@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+# gem 'rails', '3.2.8'
+gem 'rails', '3.2.12'
 
 # Mongoid 
 gem "mongoid", "~> 3.0.1"
@@ -45,6 +46,9 @@ gem 'omniauth-oauth2', '~> 1.0.2'
 
 # Whenever Cron Jobs
 gem 'whenever', '~> 0.8.2'
+
+# Sitemap Generator
+gem 'sitemap_generator', '~> 4.0.alpha'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

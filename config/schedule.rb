@@ -22,4 +22,6 @@ set :output, "/home/deploy/www/wakmj/current/log/#{Time.now.strftime('%F')}.cron
 set :environment, 'production' 
 every :day, :at => '00:01am' do
   rake "parse:yyets"
+  rake "sitemap:clean"
+  rake "sitemap:create"
 end

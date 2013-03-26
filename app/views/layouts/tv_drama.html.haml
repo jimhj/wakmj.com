@@ -45,7 +45,7 @@
               %li 暂时还没有预告...
             - else          
               - @tv_drama.pre_releases.asc('release_date').each_with_index do |pre, i|
-                %li{ :class => i.zero? ? 'first' : '' }
+                %li{ :class => next_episode(@tv_drama.pre_releases) == pre ? 'first' : '' }
                   %a{ :href => tv_drama_path(pre.tv_drama_id) }
                     %span.time
                       = pre.release_date.strftime('%F')
