@@ -15,7 +15,8 @@ module OmniAuth
       }
 
       option :authorize_params, {
-        :redirect_uri => Setting.renren_callback_url
+        :redirect_uri => Setting.renren_callback_url,
+        :scope => 'publish_blog publish_feed photo_upload status_update'
       } 
 
       option :token_params, {

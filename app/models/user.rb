@@ -78,7 +78,34 @@ class User
       logger.error "===============同步到新浪微博失败========"
       logger.error e.backtrace.join("\n")
     end
-  end     
+  end
+
+  def self.sync_to_renren(user_id, tv_drama_id)
+    begin
+      logger.info "===============开始同步喜欢到人人========"
+      user = User.where(:_id => user_id).first
+      tv_drama = TvDrama.where(:_id => tv_drama_id).first
+      tv_drama_url = "#{Setting.site_url}tv_dramas/#{tv_drama.id}"
+      status = %Q(我正在追美剧 #{tv_drama.tv_name} 哦，感兴趣就一起追吧 #{tv_drama_url})
+
+      conn = Faraday.new(:url => 'https://api.renren.com') do |faraday|
+        faraday.response :logger
+        faraday.request :url_encoded
+        faraday.adapter :net_http
+      end
+      
+      conn.post "restserver.do", {
+        :access_token => user.renren_token,
+        :method => "status.set",
+        :v => '1.0',
+        :format => 'json',
+        :status => status
+      }
+    rescue => e
+      logger.error "===============同步喜欢到人人失败========"
+      logger.error e.backtrace.join("\n")
+    end
+  end       
 
   def like(likeable)
     return false if likeable.blank?
@@ -89,6 +116,10 @@ class User
     
     if self.weibo_token.present?
       User.perform_async(:sync_to_weibo, self.id, likeable.id) 
+    end
+
+    if self.renren_token.present?
+      User.perform_async(:sync_to_renren, self.id, likeable.id)
     end
   end
 

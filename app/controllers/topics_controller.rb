@@ -26,6 +26,7 @@ class TopicsController < ApplicationController
     )
 
     topic.sync_to_weibo = true if params[:sync_to_weibo]
+    topic.sync_to_renren = true if params[:sync_to_renren]
 
     if topic.save
       # expire_fragment('recent_topics')

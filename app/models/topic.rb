@@ -1,5 +1,5 @@
 # coding: utf-8
-
+require 'open-uri'
 class Topic
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -15,6 +15,7 @@ class Topic
   field :last_replied_user_id
   field :last_replied_at, :type => Time
   field :sync_to_weibo, :type => Boolean, :default => false
+  field :sync_to_renren, :type => Boolean, :default => false
 
   belongs_to :user, :inverse_of => :topics
   belongs_to :tv_drama, :inverse_of => :topics
@@ -43,8 +44,11 @@ class Topic
 
   after_create do
     if self.sync_to_weibo? && self.user.weibo_token.present?
-       Topic.perform_async(:sync_to_weibo, self._id)
+      Topic.perform_async(:sync_to_weibo, self._id)
     end
+    if self.sync_to_renren? && self.user.renren_token.present?
+      Topic.perform_async(:sync_to_renren, self._id)
+    end    
   end
 
   def self.sync_to_weibo(topic_id)
@@ -70,5 +74,33 @@ class Topic
     end
   end  
 
+  def self.sync_to_renren(topic_id)
+    begin
+      topic = Topic.find_by_id(topic_id)
+      topic_url = "#{Setting.site_url}topics/#{topic.id}"
+      status = %Q(我在美剧 #{topic.tv_drama.tv_name} 中发表了主题 《#{topic.title}》#{topic_url})
+
+      conn = Faraday.new(:url => 'https://api.renren.com') do |faraday|
+        faraday.response :logger
+        faraday.request :url_encoded
+        faraday.adapter :net_http
+      end
+
+      conn.post "restserver.do", {
+        :access_token => topic.user.renren_token,
+        :method => "feed.publishFeed",
+        :v => '1.0',
+        :format => 'json',
+        :name => topic.tv_drama.tv_name,
+        :description => topic.content.truncate(160),
+        :url => topic_url,
+        :message => status,
+        :image => "#{Setting.site_url}#{topic.tv_drama.cover_url(:large)}"
+      }
+    rescue => e
+      logger.error "===============同步到人人失败========"
+      logger.error e.backtrace.join("\n")
+    end              
+  end
 
 end
