@@ -67,6 +67,7 @@ Wakmj::Application.routes.draw do
   end
   
   match 'auth/weibo/callback' => 'auth#weibo_login'
+  match 'auth/renren/callback' => 'auth#renren_login'
   match 'auth/new_user' => 'auth#new_user', :as => :auth_new_user, :via => 'POST'
 
   resources :miscs, :only => :show

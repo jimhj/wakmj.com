@@ -21,7 +21,9 @@
         %textarea.editor{ :name => 'content' }
       - if current_user.weibo_uid.present?
         .blank_li.clearfix
-          %span.lab 同步到微博:
+          %span.lab 
+            %i.icon.icons_weibo_s_16
+            同步到微博:
           %input{ :type => "checkbox", :checked => true, :name => "sync_to_weibo" }
 
       .blank_li.clearfix

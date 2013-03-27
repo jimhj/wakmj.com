@@ -18,6 +18,8 @@ class User
 
   field :weibo_uid, :type => String, :default => ''
   field :weibo_token, :type => String, :default => ''
+  field :renren_uid, :type => String, :default => ''
+  field :renren_token, :type => String, :default => ''  
 
   field :last_signed_in_at, :type => Time
   field :roles, :type => Array, :default => ['member']
@@ -133,21 +135,21 @@ class User
     end
     
     def create_by_email_and_auth(email, auth)
-      weibo_uid = auth['uid']
-      return nil if weibo_uid.blank?
+      return nil if auth['weibo_uid']
       user = User.new
       user.email = email
       user.login = auth['name']
       user.password_confirmation = user.password = SecureRandom.hex(4)
-      user.remote_avatar_url = "#{auth['avatar_url']}/sample.jpg"
-      user.weibo_uid = weibo_uid
-      user.weibo_token = auth['weibo_token']
-      if user.valid?
-        user.save
-        user
-      else
-        nil
+      avatar_pic = auth['avatar_url']
+      unless auth['avatar_url'].end_with?('.jpg')
+        avatar_pic = "#{avatar_pic}/sample.jpg"
       end
+      user.remote_avatar_url = avatar_pic
+      user.weibo_uid = auth['weibo_uid']
+      user.weibo_token = auth['weibo_token']
+      user.renren_uid = auth['renren_uid']
+      user.renren_token = auth['renren_token']      
+      user.save ? user : nil
     end    
 
   end   

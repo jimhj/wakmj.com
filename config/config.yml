@@ -2,6 +2,8 @@ defaults: &defaults
   app_name: "我爱看美剧"
   weibo_key: "146154564"
   weibo_secret: "6bb9ba83bdbb38ecff074d155a27d6c0"
+  renren_key: "4742ff74dd124b77a8862b821b72264a"
+  renren_secret: "bb3e012024104a8d9d36753193b463ae"
   admin_user_emails: 
     - "bzu_2007@126.com"
     - "wahaha@sina.com.cn"
@@ -11,7 +13,8 @@ defaults: &defaults
 development:
   <<: *defaults
   site_url: "http://127.0.0.1:3000/"
-  weibo_callback_url: "http://www.wakmj.com:3000/auth/weibo/callback"
+  weibo_callback_url: "http://www.wakmj.com:3001/auth/weibo/callback"
+  renren_callback_url: "http://www.wakmj.com:3001/auth/renren/callback"
   qq_exmail_user_name: "webmaster@wakmj.com"
   qq_exmail_password: "huangjin0819"
   pic_loc: "/Users/huangjin/wakmj/public"
@@ -20,6 +23,7 @@ test:
   <<: *defaults
 
   weibo_callback_url: "http://www.wakmj.com:3000/auth/weibo/callback"
+  renren_callback_url: "http://www.wakmj.com:3000/auth/renren/callback"
   qq_exmail_user_name: "webmaster@wakmj.com"
   qq_exmail_password: "huangjin0819"
 
@@ -27,6 +31,7 @@ production:
   <<: *defaults
   site_url: "http://www.wakmj.com/"
   weibo_callback_url: "http://www.wakmj.com/auth/weibo/callback"
+  renren_callback_url: "http://www.wakmj.com/auth/renren/callback"
   qq_exmail_user_name: "webmaster@wakmj.com"
   qq_exmail_password: "huangjin0819"
   pic_loc: "/home/deploy/www/wakmj/current/public"

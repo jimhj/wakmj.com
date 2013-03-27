@@ -3,19 +3,11 @@ class AuthController < ApplicationController
   before_filter :check_signed_in
 
   def weibo_login
-    auth = request.env["omniauth.auth"]
-    @auth_hash = {
-      'uid'          =>    auth.uid,
-      'name'         =>    auth.info.name,
-      'avatar_url'   =>    auth.info.avatar_url,
-      'weibo_token'  =>    auth.credentials.token
-    }
-    user = User.where(:weibo_uid => @auth_hash['uid']).first
-    if user.present?
-      user.update_attribute(:weibo_token, @auth_hash['weibo_token'])
-      self.current_user = user
-      redirect_to root_path
-    end  
+    render_auth_login  
+  end
+
+  def renren_login
+    render_auth_login('renren')    
   end
 
   def new_user
@@ -32,7 +24,7 @@ class AuthController < ApplicationController
         redirect_to root_path
       else
         flash[:error] = '注册出错了...'
-        render :template => 'auth/weibo_login'        
+        render :template => 'auth/auth_login'        
       end
     end    
   end
@@ -42,6 +34,24 @@ class AuthController < ApplicationController
   def check_signed_in
     redirect_to :root if signed_in?
     return
+  end
+
+  def render_auth_login(auth_type = 'weibo')
+    auth = request.env["omniauth.auth"]
+    @auth_hash = {
+      "#{auth_type}_uid"    =>    auth.uid,
+      'name'                =>    auth.info.name,
+      'avatar_url'          =>    auth.info.avatar_url,
+      "#{auth_type}_token"  =>    auth.credentials.token
+    }
+    user = User.where(:"#{auth_type}_uid" => auth.uid).first
+    if user.present?
+      user.update_attribute(:"#{auth_type}_token", auth.credentials.token)
+      self.current_user = user
+      redirect_to root_path
+      return
+    end
+    render :template => 'auth/auth_login'   
   end
 
 end

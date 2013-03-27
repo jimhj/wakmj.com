@@ -25,7 +25,8 @@
         %li
           %a.active{ :href => notifications_user_path(current_user.login), :class => current_user.unread_notifications_count > 0 ? 'red' : nil }= current_user.unread_notifications_count
         %li
-          %a{ :href => user_path(current_user.login), :class => url_for == user_path(current_user.login) ? 'active' : nil }= current_user.login
+          %a{ :href => user_path(current_user.login), :class => url_for == user_path(current_user.login) ? 'active' : nil }
+            = current_user.login
         %li
           %a{ :href => account_setting_path, :class => url_for == account_setting_path ? 'active' : nil } 设置          
         %li
@@ -38,4 +39,8 @@
         %li.authlogin
           %a.active{ :href => '/auth/weibo' }
             %i.icon.icons_weibo_s_16
-            用微博账号登录
+            微博登录
+        %li.authlogin
+          %a.active{ :href => '/auth/renren' }
+            %i.icon.icons_renren16
+            人人登录            

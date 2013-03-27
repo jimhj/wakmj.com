@@ -35,6 +35,19 @@ module ApplicationHelper
   def render_page_title
     title = @page_title ? "#{@page_title} | #{SITE_NAME}" : SITE_NAME rescue "SITE_NAME"
     content_tag("title", title, nil, false)
+  end
+
+  def binded_icon_tag(user)
+    icon = ""
+    if user.weibo_uid.present?
+      icon << image_tag("weibo16.png").to_s
+    end
+
+    if user.renren_uid.present?
+      icon << image_tag("renren16.png").to_s
+    end
+
+    raw icon
   end      
 
 end
