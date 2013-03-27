@@ -25,3 +25,7 @@ every :day, :at => '00:01am' do
   rake "sitemap:clean"
   rake "sitemap:create"
 end
+
+every :day, :at => '09:00am' do
+  rake "post_to:weibo"
+end
