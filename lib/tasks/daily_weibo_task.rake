@@ -48,8 +48,8 @@ namespace :post_to do
         :caption => r_status,
         :upload => Faraday::UploadIO.new(pic_path, 'image/jpeg')
       }
+
     rescue => e
-      raise e
       p "定时发微博到人人失败<========================================"
     end    
   end

@@ -17,7 +17,7 @@ development:
   renren_callback_url: "http://www.wakmj.com:3001/auth/renren/callback"
   qq_exmail_user_name: "webmaster@wakmj.com"
   qq_exmail_password: "huangjin0819"
-  pic_loc: "/Users/huangjin/wakmj/public"
+  pic_loc: "/Users/huangjin/Workspace/wakmj.com/public"
 
 test:
   <<: *defaults
