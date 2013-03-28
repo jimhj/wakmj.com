@@ -5,7 +5,7 @@ namespace :post_to do
       tv = TvDrama.all.sample
       pic_path = File.join(Setting.pic_loc, tv.cover_url(:large))
       tv_url = "#{Setting.site_url}tv_dramas/#{tv.id}"
-      summary = (tv.summary || '').truncate(60)
+      summary = (tv.summary || '').truncate(100)
         
     begin
       p "=====================================>开始定时发微博到新浪"

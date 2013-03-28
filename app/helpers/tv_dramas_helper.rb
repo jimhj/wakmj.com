@@ -34,8 +34,9 @@ module TvDramasHelper
   end
 
   def next_episode(pre_releases)
-    today = Time.now.end_of_day
-    unreleases = pre_releases.select{ |p| p.release_date.end_of_day >= today }
+    pre_releases = pre_releases.asc('release_date')
+    today = Time.now.at_beginning_of_day
+    unreleases = pre_releases.select{ |p| p.release_date.at_beginning_of_day >= today }
     unreleases.first
   end
 

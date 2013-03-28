@@ -52,6 +52,7 @@
 
       // topic list
       .topics_panel {
+        display: none;
         .topic {
           border-bottom: 1px solid $w_grey;
           padding: 10px 10px;
@@ -68,7 +69,7 @@
 
       // download panel
       .downloads_panel {
-        display: none;
+        // display: none;
         .res_seasons {
           border-bottom: 1px solid $w_grey;
           padding: 14px 10px;
@@ -130,9 +131,26 @@
       opacity: 0.5;
       color: $white;
       &:hover { @include bg($red); }
-    } 
-
+    }
   }
+
+  li {
+    a.finished {
+      text-decoration: none;
+      padding: 5px 5px;
+      @include bg(#666);
+      color: $white;
+      &:hover { @include bg(#666); }
+    }
+    a.newest_update {
+      text-decoration: none;
+      padding: 5px 5px;
+      @include bg(#f89406);
+      color: $white;
+      &:hover { @include bg(#f89406); }
+    }         
+  }
+
   .new_topic { padding-bottom: 10px; }
   .comming_soon {
     font-size: 12px;

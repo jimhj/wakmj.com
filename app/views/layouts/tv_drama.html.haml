@@ -34,6 +34,14 @@
                   = link_to user_path(u.login), :title => u.login, :rel => 'tipsy' do
                     = image_tag u.avatar_url(:small), :size => '30x30'
 
+        .pre_releases.article_list.dotted_bottom
+          .title_bar
+            %a.title 资源通知
+            / %a{ :href => '#' } 更多
+
+          %ul
+            %li
+              = tv_status(@tv_drama) || '最近无更新'
 
         .pre_releases.article_list.dotted_bottom
           .title_bar

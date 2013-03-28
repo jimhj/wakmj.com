@@ -64,9 +64,9 @@
       = simple_format @tv_drama.summary
   .tv_relateds
     .nav_tabs.clearfix
-      .topics.tab.active
+      .topics.tab
         %a{ :href => 'javascript:;' }= "讨论帖子(#{@tv_drama.topics_count})"
-      .downloads.tab
+      .downloads.tab.active
         %a{ :href => 'javascript:;' }= "下载资源(#{@tv_drama.download_resources_count})"
       / .comming_soon.tab
       /   %a{ :href => 'javascript:;' } 播出预告        
