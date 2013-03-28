@@ -29,3 +29,11 @@ end
 every :day, :at => '09:00am' do
   rake "post_to:weibo"
 end
+
+every :day, :at => '15:00pm' do
+  rake "post_to:weibo"
+end
+
+every :day, :at => '19:00pm' do
+  rake "post_to:weibo"
+end
