@@ -50,11 +50,11 @@ class AuthController < ApplicationController
       user = User.create_by_email_and_auth(email, @auth_hash)
       if user
         user.update_attribute(:last_signed_in_at, Time.now)
-        self.current_user = user        
       else
         flash[:error] = '授权注册出错了...'
       end
     end
+    self.current_user = user 
     redirect_to root_path
   end
 
