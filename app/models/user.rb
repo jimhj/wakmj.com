@@ -166,7 +166,6 @@ class User
     end
     
     def create_by_email_and_auth(email, auth)
-      return nil if auth['weibo_uid']
       user = User.new
       user.email = email
       user.login = auth['name']

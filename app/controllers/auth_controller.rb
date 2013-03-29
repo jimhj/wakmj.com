@@ -10,24 +10,24 @@ class AuthController < ApplicationController
     render_auth_login('renren')    
   end
 
-  def new_user
-    @auth_hash = MultiJson.load(params[:auth] || '{}')
-    email = params[:email]
-    if User.where(:email => email).exists?
-      flash[:error] = 'Email 已经被注册过了'
-      render :template => 'auth/weibo_login'
-    else
-      user = User.create_by_email_and_auth(email, @auth_hash)
-      if user
-        user.update_attribute(:last_signed_in_at, Time.now)
-        self.current_user = user
-        redirect_to root_path
-      else
-        flash[:error] = '注册出错了...'
-        render :template => 'auth/auth_login'        
-      end
-    end    
-  end
+  # def new_user
+  #   @auth_hash = MultiJson.load(params[:auth] || '{}')
+  #   email = params[:email]
+  #   if User.where(:email => email).exists?
+  #     flash[:error] = 'Email 已经被注册过了'
+  #     render :template => 'auth/weibo_login'
+  #   else
+  #     user = User.create_by_email_and_auth(email, @auth_hash)
+  #     if user
+  #       user.update_attribute(:last_signed_in_at, Time.now)
+  #       self.current_user = user
+  #       redirect_to root_path
+  #     else
+  #       flash[:error] = '注册出错了...'
+  #       render :template => 'auth/auth_login'        
+  #     end
+  #   end    
+  # end
 
   private
 
@@ -45,13 +45,17 @@ class AuthController < ApplicationController
       "#{auth_type}_token"  =>    auth.credentials.token
     }
     user = User.where(:"#{auth_type}_uid" => auth.uid).first
-    if user.present?
-      user.update_attribute(:"#{auth_type}_token", auth.credentials.token)
-      self.current_user = user
-      redirect_to root_path
-      return
+    if user.blank?
+      email = "#{SecureRandom.hex(6)}@#{auth_type}.random.com"
+      user = User.create_by_email_and_auth(email, @auth_hash)
+      if user
+        user.update_attribute(:last_signed_in_at, Time.now)
+        self.current_user = user        
+      else
+        flash[:error] = '授权注册出错了...'
+      end
     end
-    render :template => 'auth/auth_login'   
+    redirect_to root_path
   end
 
 end
