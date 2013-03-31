@@ -20,7 +20,7 @@
 
 set :output, "/home/deploy/www/wakmj/current/log/#{Time.now.strftime('%F')}.crontab.log"
 set :environment, 'production' 
-every :day, :at => '00:01am' do
+every 2.days, :at => '00:01am' do
   rake "parse:yyets"
   rake "sitemap:clean"
   rake "sitemap:create"
@@ -30,9 +30,9 @@ every :day, :at => '09:00am' do
   rake "post_to:weibo"
 end
 
-every :day, :at => '15:00pm' do
-  rake "post_to:weibo"
-end
+# every :day, :at => '15:00pm' do
+#   rake "post_to:weibo"
+# end
 
 every :day, :at => '19:00pm' do
   rake "post_to:weibo"
