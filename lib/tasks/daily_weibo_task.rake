@@ -2,7 +2,7 @@
 namespace :post_to do
   desc "每日定时随机推荐美剧到新浪微博和人人网"
   task :weibo => :environment do
-      tv = TvDrama.all.sample(1)
+      tv = TvDrama.all.sample(1).first
       pic_path = File.join(Setting.pic_loc, tv.cover_url(:large))
       tv_url = "#{Setting.site_url}tv_dramas/#{tv.id}"
       summary = (tv.summary || '').truncate(100)
