@@ -2,7 +2,8 @@
 namespace :post_to do
   desc "每日定时随机推荐美剧到新浪微博和人人网"
   task :weibo => :environment do
-      tv = TvDrama.all.sample(1).first
+      # tv = TvDrama.all.sample(1).first
+      tv = find_tv
       pic_path = File.join(Setting.pic_loc, tv.cover_url(:large))
       tv_url = "#{Setting.site_url}tv_dramas/#{tv.id}"
       summary = (tv.summary || '').truncate(100)
@@ -52,5 +53,15 @@ namespace :post_to do
     rescue => e
       p "定时发微博到人人失败<========================================"
     end    
+  end
+
+  def find_tv
+    tv_id = 1.upto(999).to_a.sample
+    tv = TvDrama.find_by_id tv_id
+    if tv.present?
+      return tv
+    else
+      find_tv
+    end
   end
 end

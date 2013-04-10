@@ -53,6 +53,8 @@ class AuthController < ApplicationController
       else
         flash[:error] = '授权注册出错了...'
       end
+    else
+      user.update_attribute("#{auth_type}_token".to_sym, auth.credentials.token)
     end
     self.current_user = user 
     redirect_to root_path
