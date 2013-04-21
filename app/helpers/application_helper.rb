@@ -40,15 +40,18 @@ module ApplicationHelper
   def binded_icon_tag(user)
     icon = ""
     if user.weibo_uid.present?
-      icon << image_tag("weibo16.png").to_s
+      link1 = %Q(<a href="http://weibo.com/u/#{user.weibo_uid}" target="_blank">#{image_tag("weibo16.png").to_s}</a>)
+      icon << link1
     end
 
     if user.renren_uid.present?
-      icon << image_tag("renren16.png").to_s
+      link2 = %Q(<a href="http://www.renren.com/#{user.renren_uid}" target="_blank">#{image_tag("renren16.png").to_s}</a>)
+      icon << link2
     end
 
     if user.tqq_uid.present?
-      icon << image_tag("tqq16.png").to_s
+      link3 = %Q(<a href="http://t.qq.com/#{user.login}" target="_blank">#{image_tag("tqq16.png").to_s}</a>)
+      icon << link3
     end
 
     raw icon

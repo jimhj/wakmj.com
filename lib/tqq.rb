@@ -64,7 +64,6 @@ module OmniAuth
         }.to_query
         response ||= access_token.get("https://open.t.qq.com/api/user/info?#{query_params}").response.env[:body]
         @raw_info = (JSON.parse(response || '{}')) rescue {}
-        p @raw_info
         @raw_info
       end
     end
