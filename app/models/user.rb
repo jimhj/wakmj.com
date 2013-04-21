@@ -20,6 +20,8 @@ class User
   field :weibo_token, :type => String, :default => ''
   field :renren_uid, :type => String, :default => ''
   field :renren_token, :type => String, :default => ''  
+  field :tqq_uid, :type => String, :default => ''
+  field :tqq_token, :type => String, :default => ''
 
   field :last_signed_in_at, :type => Time
   field :roles, :type => Array, :default => ['member']
@@ -178,7 +180,9 @@ class User
       user.weibo_uid = auth['weibo_uid']
       user.weibo_token = auth['weibo_token']
       user.renren_uid = auth['renren_uid']
-      user.renren_token = auth['renren_token']      
+      user.renren_token = auth['renren_token']
+      user.tqq_uid = auth['tqq_uid']
+      user.tqq_token = auth['tqq_token']       
       user.save ? user : nil
     end    
 

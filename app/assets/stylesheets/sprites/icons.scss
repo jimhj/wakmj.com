@@ -9,6 +9,7 @@
         app/assets/images/sprites/icons/play.png (16x16)
         app/assets/images/sprites/icons/renren16.png (16x16)
         app/assets/images/sprites/icons/right.png (16x16)
+        app/assets/images/sprites/icons/tqq16.png (16x16)
         app/assets/images/sprites/icons/weibo_s_16.png (16x16)
 
         Output files:
@@ -16,7 +17,7 @@
           app/assets/stylesheets/sprites/icons.scss
 
         Output size:
-          16x128
+          16x144
 
 
 */
@@ -27,4 +28,5 @@
 .icons_play { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -64px no-repeat; }
 .icons_renren16 { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -80px no-repeat; }
 .icons_right { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -96px no-repeat; }
-.icons_weibo_s_16 { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -112px no-repeat; }
+.icons_tqq16 { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -112px no-repeat; }
+.icons_weibo_s_16 { width: 16px; height: 16px; background: url(image-path('sprites/icons.png')) 0px -128px no-repeat; }

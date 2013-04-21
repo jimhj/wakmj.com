@@ -10,6 +10,10 @@ class AuthController < ApplicationController
     render_auth_login('renren')    
   end
 
+  def tqq_login
+    render_auth_login('tqq')
+  end
+
   # def new_user
   #   @auth_hash = MultiJson.load(params[:auth] || '{}')
   #   email = params[:email]

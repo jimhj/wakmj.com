@@ -10,7 +10,7 @@ namespace :parse do
     # TODO: Mark where does the loop ended at. 
     # unreadable code.
 
-    1.upto(36).each_with_index do |page, ind|
+    1.upto(38).each_with_index do |page, ind|
       p "Start scraping on page #{ind + 1}..."
       dom = Nokogiri::HTML open(res_url(page))
       html_str = dom.at('div.res_listview')

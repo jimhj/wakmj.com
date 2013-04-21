@@ -47,6 +47,10 @@ module ApplicationHelper
       icon << image_tag("renren16.png").to_s
     end
 
+    if user.tqq_uid.present?
+      icon << image_tag("tqq16.png").to_s
+    end
+
     raw icon
   end      
 
